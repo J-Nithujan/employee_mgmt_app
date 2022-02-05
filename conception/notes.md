@@ -29,11 +29,14 @@
     - simple et versatile (?) et màj régulière
     - alternative rejetée: ReportLab, freemium
 
-## 4. Versions des import:
+## 4. Versions:
 
-- Flask:
-- Flask-SQLAlchemy:
-- fpdf2:
+- Python: 3.9.10, non compatible si OS <= Windows 7
+- Import:
+  - Flask:
+  - Flask-SQLAlchemy:
+  - fpdf2:
+
 
 
 ## n. Réflexions:
