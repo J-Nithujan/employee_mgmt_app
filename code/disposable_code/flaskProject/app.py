@@ -47,8 +47,9 @@ def login():
 
 @app.route('/logout')
 def logout():
+    username = session['username']
     session.pop('username')
-    return render_template('logout.html', username=session['username'])
+    return render_template('logout.html', username=username)
 
 
 if __name__ == '__main__':
