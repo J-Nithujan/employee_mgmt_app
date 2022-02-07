@@ -9,7 +9,7 @@
 - [ ] modélisation bdd
 - [x] choix langages (et logiciels) => python + flask + flask-sqlalchemy + 
 - [x] choix implémentation c# et /ou web+PHP ou python => python + web
-- [ ] TDD quand c'est possible (?)
+- [ ] ~~TDD quand c'est possible (?)~~
 - [ ] Implémentation du programme
 - [ ] Documentation
 
@@ -21,6 +21,7 @@
 - librairies python:
   - Flask: 
     - plus rapide à apprendre et mettre en place que Django
+    - met à disposition le minimum => possible de personnaliser comme on veut
   - Flask-SQLAlchemy: 
     - fork de SQLAlchemy destiné à Flask
     - supported dbs: SQLite, Postgresql, MySQL, Oracle,        MS-SQL, Firebird, Sybase and others
