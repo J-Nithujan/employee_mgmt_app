@@ -1,0 +1,63 @@
+FACTURE
+	 
+DATE
+Date
+N° DE LA FACTURE
+Numéro
+VOTRE SOCIÉTÉ
+Rue
+Code postal, Ville
+Téléphone
+Télécopie
+Adresse de courrier
+
+FACTURER À
+Rue
+Code postal, Ville
+Téléphone
+Télécopie
+Adresse de courrier
+	
+
+VENDEUR
+POSTE
+CONDITIONS DE PAIEMENT
+DATE D’ECHEANCE
+
+		À la réception
+
+
+QUANTITE
+DESCRIPTION
+PRIX UNITAIRE
+TOTAL DE LA LIGNE
+
+
+
+Produit
+Description du produit
+Montant en €
+Montant en €
+
+Produit
+Description du produit
+Montant en €
+Montant en €
+
+Produit
+Description du produit
+Montant en €
+Montant en €
+
+Produit
+Description du produit
+Montant en €
+Montant en €
+
+Sous-total
+
+T.V.A.
+
+Total
+
+
