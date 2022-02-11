@@ -38,6 +38,10 @@
   - Flask-SQLAlchemy:
   - fpdf2:
 
+## 5. TO DO:
+
+MLD: penser au heures de travail des employés
+
 
 
 ## n. Réflexions:
