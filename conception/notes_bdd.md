@@ -1,0 +1,21 @@
+## MCD:
+
+- n'a qu'un seul supérieur hiérarchique
+- n'a qu'un seul logement enregistré dans la base de données (adresse de correspondance)
+- plusieurs employés peuvent habiter à une même adresse (bâtiment avec plusieurs logements, colocation, etc)
+- heures de travail:
+  - Event scheduler: 
+    - https://stackoverflow.com/questions/38878746/how-to-periodically-update-status-in-mysql
+    - https://sebhastian.com/mysql-timer/
+- Champ :
+  - modifiable:
+    - nom
+    - pourcentage de travail
+    - sous contrat
+    - poste
+    - salaire
+    - solde de vacances ==> le garder ou trop complexe ?
+    - téléphone
+  - justification:
+    - email : pro donc ne va pas changer
+    - prénom: pour simplifier on ne va pas autoriser le changement de prénom dans l'appli.
