@@ -19,3 +19,6 @@
   - justification:
     - email : pro donc ne va pas changer
     - prénom: pour simplifier on ne va pas autoriser le changement de prénom dans l'appli.
+- génération de données:
+  - http://filldb.info/dummy/step2/addresses
+- mot de passe : pas crypté (extension)

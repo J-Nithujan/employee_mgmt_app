@@ -9,6 +9,7 @@
 - [x] choix langages (et logiciels) => python + flask + flask-sqlalchemy + 
 - [x] choix implémentation c# et /ou web+PHP ou python => python + web
 - [ ] maquettes
+- [ ] use cases
 - [ ] ~~TDD quand c'est possible (?)~~
 - [ ] Implémentation du programme
 - [ ] Documentation
@@ -59,3 +60,4 @@
 
   - page de contact (support, entreprise, etc)
   - backup de la base de données
+  - crypté les mots de passes
