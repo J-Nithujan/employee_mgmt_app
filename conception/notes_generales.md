@@ -21,7 +21,7 @@
 
 ## 2. Choix techniques
 
-- Logiciels et langage: Python
+- Logiciels et langage: Python, PyCharm
 - Techno BDD: MySQL
 
 ### 	librairies python:
@@ -31,11 +31,12 @@
   - met à disposition le minimum => possible de personnaliser comme on veut
 - Flask-SQLAlchemy: 
   - fork de SQLAlchemy destiné à Flask
-  - supported dbs: SQLite, Postgresql, MySQL, Oracle,        MS-SQL, Firebird, Sybase and others
+  - supported dbs: SQLite, Postgresql, MySQL, Oracle, MS-SQL, Firebird, Sybase and others
 - fpdf2: 
   - fork de fpdf1 () qui est lui-même un portage de FPDF (PHP)
   - simple et versatile (?) et màj régulière
   - alternative rejetée: ReportLab, freemium
+- planif ?
 
 
 
@@ -46,7 +47,7 @@
   - Flask:
   - Flask-SQLAlchemy:
   - fpdf2:
-  - 
+  - planif ?
 
 ## n. Réflexions:
 
@@ -56,8 +57,12 @@
 
   ==> Le tout en python
   
+- planification pour les fiches de salaires:
+
+  - https://www.geeksforgeeks.org/python-schedule-library/
+  
 - extensions possible
 
   - page de contact (support, entreprise, etc)
   - backup de la base de données
-  - crypté les mots de passes
+  - crypté les mots de passe
