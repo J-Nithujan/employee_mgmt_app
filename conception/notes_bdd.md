@@ -21,4 +21,5 @@
     - prénom: pour simplifier on ne va pas autoriser le changement de prénom dans l'appli.
 - génération de données:
   - http://filldb.info/dummy/step2/addresses
+  - https://generatedata.com/generator
 - mot de passe : pas crypté (extension)
