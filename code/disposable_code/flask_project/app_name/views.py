@@ -1,7 +1,17 @@
 from flask import Flask, redirect, url_for, request, render_template, session
 
 app = Flask(__name__)
-app.secret_key = 'dfaljfj'
+app.config.from_object('config')
+
+
+@app.route('/')
+@app.route('/index/')
+def index():
+    return render_template('index.html')
+
+@app.route('/table/')
+def table():
+    return render_template('table.html')
 
 
 @app.route('/hello/<name>')
@@ -51,6 +61,6 @@ def logout():
     session.pop('username')
     return render_template('logout.html', username=username)
 
-
-if __name__ == '__main__':
-    app.run(debug=True)
+# Note: application started in run.py
+# if __name__ == '__main__':
+#     app.run(debug=True)
