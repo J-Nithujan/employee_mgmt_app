@@ -124,8 +124,10 @@ CREATE TABLE IF NOT EXISTS `db_employees`.`tasks` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `project` VARCHAR(45) NOT NULL,
   `title` VARCHAR(45) NOT NULL,
-  `description` TINYTEXT NULL,
-  `validation` TINYINT(1) NULL,
+  `description` TINYTEXT NULL DEFAULT NULL,
+  `validation` TINYINT(1) NULL DEFAULT 0,
+  `since` DATETIME NOT NULL,
+  `until` DATETIME NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `unique_tasks` (`project` ASC, `title` ASC) VISIBLE)
 ENGINE = InnoDB;
