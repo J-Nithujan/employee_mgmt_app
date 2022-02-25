@@ -9,7 +9,7 @@
 - [x] choix langages (et logiciels) => python + flask + flask-sqlalchemy + 
 - [x] choix implémentation c# et /ou web+PHP ou python => python + web
 - [ ] maquettes
-- [ ] use cases
+- [x] use cases
 - [ ] ~~TDD quand c'est possible (?)~~
 - [ ] Implémentation du programme
 - [ ] Documentation
@@ -17,9 +17,10 @@
 ### TO DO  (actuel):
 
 - Emails: librairie ou service intégré à python
-- avis sur mcd / mld (?)
+- librairie flask-login à checker
+- Laisser le département IT entrer les mots de passe dans la base de données ???
 
-## 2. Choix techniques
+## 2. Choix
 
 - Logiciels et langage: Python, PyCharm
 - Techno BDD: MySQL
@@ -36,9 +37,11 @@
   - fork de fpdf1 () qui est lui-même un portage de FPDF (PHP)
   - simple et versatile (?) et màj régulière
   - alternative rejetée: ReportLab, freemium
-- planif ?
+- planification d'events ?
 
+### Conception
 
+Le programme sera destiné à une entreprise informatique (software)
 
 ## 4. Versions:
 
@@ -61,6 +64,8 @@
 
   - https://www.geeksforgeeks.org/python-schedule-library/
   
+- 
+
 - extensions possible
 
   - page de contact (support, entreprise, etc)
