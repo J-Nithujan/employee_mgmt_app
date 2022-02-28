@@ -5,7 +5,10 @@
 ## 1. Tâches globales
 
 - [x] clarification CdC
-- [x] modélisation bdd
+- [ ] modélisation bdd
+  - [x] script création
+  - [ ] ajouter DROP
+
 - [x] choix langages (et logiciels) => python + flask + flask-sqlalchemy + 
 - [x] choix implémentation c# et /ou web+PHP ou python => python + web
 - [ ] maquettes
@@ -64,8 +67,6 @@ Le programme sera destiné à une entreprise informatique (software)
 
   - https://www.geeksforgeeks.org/python-schedule-library/
   
-- 
-
 - extensions possible
 
   - page de contact (support, entreprise, etc)
