@@ -22,4 +22,4 @@
 - génération de données:
   - http://filldb.info/dummy/step2/addresses
   - https://generatedata.com/generator
-- mot de passe : pas crypté (extension)
+- mot de passe : crypté en ???

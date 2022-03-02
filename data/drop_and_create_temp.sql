@@ -28,7 +28,6 @@ CREATE TABLE IF NOT EXISTS `addresses` (
   UNIQUE KEY `address_unique` (`ZIP`,`city`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Les données exportées n'étaient pas sélectionnées.
 
 -- Listage de la structure de la table db_employees. departments
 DROP TABLE IF EXISTS `departments`;
@@ -39,7 +38,6 @@ CREATE TABLE IF NOT EXISTS `departments` (
   UNIQUE KEY `name_UNIQUE` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Les données exportées n'étaient pas sélectionnées.
 
 -- Listage de la structure de la table db_employees. employees
 DROP TABLE IF EXISTS `employees`;
@@ -71,7 +69,6 @@ CREATE TABLE IF NOT EXISTS `employees` (
   CONSTRAINT `fk_employees_job1` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Les données exportées n'étaient pas sélectionnées.
 
 -- Listage de la structure de la table db_employees. employees_has_tasks
 DROP TABLE IF EXISTS `employees_has_tasks`;
@@ -86,7 +83,6 @@ CREATE TABLE IF NOT EXISTS `employees_has_tasks` (
   CONSTRAINT `fk_employees_has_tasks_tasks1` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Les données exportées n'étaient pas sélectionnées.
 
 -- Listage de la structure de la table db_employees. jobs
 DROP TABLE IF EXISTS `jobs`;
@@ -100,7 +96,6 @@ CREATE TABLE IF NOT EXISTS `jobs` (
   CONSTRAINT `fk_jobs_departments1` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Les données exportées n'étaient pas sélectionnées.
 
 -- Listage de la structure de la table db_employees. payslips
 DROP TABLE IF EXISTS `payslips`;
@@ -114,7 +109,6 @@ CREATE TABLE IF NOT EXISTS `payslips` (
   CONSTRAINT `fk_payslips_employees1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Les données exportées n'étaient pas sélectionnées.
 
 -- Listage de la structure de la table db_employees. tasks
 DROP TABLE IF EXISTS `tasks`;
@@ -130,7 +124,6 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   UNIQUE KEY `unique_tasks` (`project`,`title`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Les données exportées n'étaient pas sélectionnées.
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
