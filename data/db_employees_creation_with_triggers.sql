@@ -160,26 +160,6 @@ USE `db_employees`;
 
 DELIMITER $$
 USE `db_employees`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `db_employees`.`payslips_BEFORE_INSERT` BEFORE INSERT ON `payslips` FOR EACH ROW
-BEGIN
-    declare employee_id INT;
-	set employee_id = (select `db_employees`.employees.id from `db_employees`.employees where new.employee_id = `db_employees`.employees.id);
-    if new.date > (select `db_employees`.employees.`hiring_date`from `db_employees`.employees where `db_employees`.employees.id = employee_id)
-    then signal sqlstate '45000' set message_text = 'Bad date';
-    end if;
-END$$
-
-USE `db_employees`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `db_employees`.`payslips_BEFORE_UPDATE` BEFORE UPDATE ON `payslips` FOR EACH ROW
-BEGIN
-	declare employee_id INT;
-	set employee_id = (select `db_employees`.employees.id from `db_employees`.employees where new.employee_id = `db_employees`.employees.id);
-    if new.date > (select `db_employees`.employees.`hiring_date`from `db_employees`.employees where `db_employees`.employees.id = employee_id)
-    then signal sqlstate '45000' set message_text = 'Bad date';
-    end if;
-END$$
-
-USE `db_employees`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `db_employees`.`tasks_BEFORE_INSERT` BEFORE INSERT ON `tasks` FOR EACH ROW
 BEGIN
 	if new.until > new.since 
