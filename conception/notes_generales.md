@@ -21,7 +21,7 @@
 
 - Emails: librairie ou service intégré à python
 - librairie flask-login à checker
-- Laisser le département IT entrer les mots de passe dans la base de données ???
+- Laisser le département IT entrer les mots de passe dans la base de données ou valeur par défaut
 
 ## 2. Choix
 
@@ -44,7 +44,7 @@
 
 ### Conception
 
-Le programme sera destiné à une entreprise informatique (software)
+Le programme sera destiné à une entreprise informatique ()
 
 ## 4. Versions:
 

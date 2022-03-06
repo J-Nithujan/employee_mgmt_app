@@ -15,7 +15,7 @@
     <IncludeEmptyStringPercent>10</IncludeEmptyStringPercent>
     <DatabaseName>db_employees</DatabaseName>
     <PopulationType>RowsCount</PopulationType>
-    <RowsToGenerate>500</RowsToGenerate>
+    <RowsToGenerate>1000</RowsToGenerate>
     <ProportionOfExistingData>10</ProportionOfExistingData>
     <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
     <GenerateUniqueValues>false</GenerateUniqueValues>
@@ -23,7 +23,7 @@
     <DistributionMode>Seed</DistributionMode>
     <Seed>1</Seed>
     <LastSeedValue>0</LastSeedValue>
-    <Language>US</Language>
+    <Language>DE</Language>
     <ShowDataPreview>true</ShowDataPreview>
   </Settings>
   <Tables>
@@ -34,7 +34,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>125</RowsCount>
+          <RowsCount>1000</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -73,11 +73,11 @@
             <SeedValue>1</SeedValue>
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>\d{5}</Expression>
+            <Expression>\d\D\d\d\d</Expression>
           </GeneratorOptions>
           <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
-          <GeneratorName>US Post Code (ZIP)</GeneratorName>
-          <GeneratorDescription>48470, 90189, 10265, 55078, 22067, ...</GeneratorDescription>
+          <GeneratorName>DE Post Code</GeneratorName>
+          <GeneratorDescription>70173, 26001, 14195, 51147, 35100, 98367, ...</GeneratorDescription>
           <GeneratorCategory>Location</GeneratorCategory>
           <Length>25</Length>
         </Column>
@@ -94,14 +94,14 @@
             <IsLoop>true</IsLoop>
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <FileName>USCities.txt</FileName>
+            <FileName>DECities.txt</FileName>
             <TrimLeft>false</TrimLeft>
             <TrimRight>false</TrimRight>
             <CodePage>-1</CodePage>
           </GeneratorOptions>
           <GeneratorType>MySqlTextFileGenerator</GeneratorType>
-          <GeneratorName>US City</GeneratorName>
-          <GeneratorDescription>Washington, Las Vegas, Malibu, New York, Detroit, Los Angeles, Redmond, ...</GeneratorDescription>
+          <GeneratorName>DE City</GeneratorName>
+          <GeneratorDescription>München, Crölpa-Löbschütz, Daaden, Wassenberg, Bad Neuenahr-Ahrweiler, ...</GeneratorDescription>
           <GeneratorCategory>Location</GeneratorCategory>
           <Length>45</Length>
         </Column>
@@ -114,7 +114,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>50</RowsCount>
+          <RowsCount>1000</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -170,7 +170,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>30</RowsCount>
+          <RowsCount>20</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -226,7 +226,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>500</RowsCount>
+          <RowsCount>1000</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -265,7 +265,7 @@
             <SeedValue>11</SeedValue>
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>[0-9A-Z]+</Expression>
+            <Expression>[A-Z]{4}[1-9][3]</Expression>
           </GeneratorOptions>
           <GeneratorType>MySqlStringRegularExpressionGenerator</GeneratorType>
           <GeneratorName>Reg Exp</GeneratorName>
@@ -275,20 +275,35 @@
         <Column Name="title">
           <Checked>true</Checked>
           <DataType>VARCHAR</DataType>
-          <GeneratorOptions p6:type="MySqlRegularExpressionGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+          <GeneratorOptions p6:type="MySqlLoremIpsumGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
             <AllowEmptyStrings>false</AllowEmptyStrings>
             <EmptyStringProportion>10</EmptyStringProportion>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>12</SeedValue>
+            <MinLength>1</MinLength>
+            <MaxLength>20</MaxLength>
+            <MaxAllowedLength>45</MaxAllowedLength>
+            <MinWordsInSentence>4</MinWordsInSentence>
+            <MaxWordsInSentence>6</MaxWordsInSentence>
+            <MinSentences>2</MinSentences>
+            <MaxSentences>2</MaxSentences>
+            <MinParagraphs>1</MinParagraphs>
+            <MaxParagraphs>1</MaxParagraphs>
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>[0-9A-Z]+</Expression>
+            <PunctuationSigns>,.!?...;</PunctuationSigns>
+            <StartParagraphWithIndent>false</StartParagraphWithIndent>
+            <AddParagraphTags>false</AddParagraphTags>
+            <AddItalicTags>false</AddItalicTags>
+            <AddBoldTags>false</AddBoldTags>
+            <AddSingleLineBreakTags>false</AddSingleLineBreakTags>
+            <AddNewLines>false</AddNewLines>
           </GeneratorOptions>
-          <GeneratorType>MySqlStringRegularExpressionGenerator</GeneratorType>
-          <GeneratorName>Reg Exp</GeneratorName>
-          <GeneratorDescription>values based on a regular expression</GeneratorDescription>
+          <GeneratorType>MySqlLoremIpsumGenerator</GeneratorType>
+          <GeneratorName>Lorem Ipsum</GeneratorName>
+          <GeneratorDescription>dummy text filler with some characteristics of a real written text</GeneratorDescription>
           <Length>45</Length>
         </Column>
         <Column Name="description">
@@ -334,7 +349,7 @@
             <UseDefault>false</UseDefault>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>11</SeedValue>
-            <TrueProbability>0.5</TrueProbability>
+            <TrueProbability>0.9</TrueProbability>
             <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
           </GeneratorOptions>
@@ -358,11 +373,12 @@
             <OffsetFromColumnMaxTimeTicks>10000000</OffsetFromColumnMaxTimeTicks>
             <OffsetFromColumnMinTimeTicks>10000000</OffsetFromColumnMinTimeTicks>
             <DateTimeRange>MinMaxDate</DateTimeRange>
+            <SelectedColumn>until</SelectedColumn>
             <UseOffsetDetails>false</UseOffsetDetails>
             <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
             <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
-            <MinDate>1970-01-01T00:00:00</MinDate>
-            <MaxDate>2022-03-04T00:00:00+01:00</MaxDate>
+            <MinDate>2015-01-01T00:00:00</MinDate>
+            <MaxDate>2021-12-31T00:00:00+01:00</MaxDate>
             <IsRandomizeDate>true</IsRandomizeDate>
             <MinFraction>0</MinFraction>
             <MaxFraction>0</MaxFraction>
@@ -392,12 +408,13 @@
             <SequentialValueTicks>864000000000</SequentialValueTicks>
             <OffsetFromColumnMaxTimeTicks>10000000</OffsetFromColumnMaxTimeTicks>
             <OffsetFromColumnMinTimeTicks>10000000</OffsetFromColumnMinTimeTicks>
-            <DateTimeRange>MinMaxDate</DateTimeRange>
-            <UseOffsetDetails>false</UseOffsetDetails>
-            <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
-            <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
+            <DateTimeRange>OffsetFromColumn</DateTimeRange>
+            <SelectedColumn>since</SelectedColumn>
+            <UseOffsetDetails>true</UseOffsetDetails>
+            <OffsetFromColumnMinDays>1</OffsetFromColumnMinDays>
+            <OffsetFromColumnMaxDays>5</OffsetFromColumnMaxDays>
             <MinDate>1970-01-01T00:00:00</MinDate>
-            <MaxDate>2022-03-04T00:00:00+01:00</MaxDate>
+            <MaxDate>2022-03-06T00:00:00+01:00</MaxDate>
             <IsRandomizeDate>true</IsRandomizeDate>
             <MinFraction>0</MinFraction>
             <MaxFraction>0</MaxFraction>
@@ -422,7 +439,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>150</RowsCount>
+          <RowsCount>1000</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -461,7 +478,7 @@
             <SeedValue>3</SeedValue>
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>((((($"FirstNamesMale.txt")|($"FirstNamesFemale.txt"))).($"LastNames.txt")))@example.com</Expression>
+            <Expression>(((((($"FirstNamesMale.txt")|($"FirstNamesFemale.txt"))[_.]?)?($"LastNames.txt"))|(($"LastNames.txt")\C?)|(((($"FirstNamesMale.txt")|($"FirstNamesFemale.txt"))[_.]?(\C[_.]?)?)?($"LastNames.txt")))(\D{,3})?|\c{4,8}(\d{1,4}|[_.]\c{4,10}))@(example$"7"|nowhere$"3").com</Expression>
           </GeneratorOptions>
           <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
           <GeneratorName>Email</GeneratorName>
@@ -481,11 +498,11 @@
             <SeedValue>3</SeedValue>
             <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>($"FirstNamesMale.txt")|($"FirstNamesFemale.txt")</Expression>
+            <Expression>($"DEFirstNamesMale.txt")|($"DEFirstNamesFemale.txt")</Expression>
           </GeneratorOptions>
           <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
-          <GeneratorName>First Name (any gender)</GeneratorName>
-          <GeneratorDescription>Nickolas, Agnes, Sabrina, Albert, Rozanne, Kerri, Roberta, ...</GeneratorDescription>
+          <GeneratorName>DE First Name (any gender)</GeneratorName>
+          <GeneratorDescription>Kristina, Bartholomäus, Samella, Karl-Heinz, Hugbert, Annekläre, Mauritz, ...</GeneratorDescription>
           <GeneratorCategory>Personal</GeneratorCategory>
           <Length>45</Length>
         </Column>
@@ -502,14 +519,14 @@
             <IsLoop>true</IsLoop>
             <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <FileName>LastNames.txt</FileName>
+            <FileName>DELastNames.txt</FileName>
             <TrimLeft>false</TrimLeft>
             <TrimRight>false</TrimRight>
             <CodePage>-1</CodePage>
           </GeneratorOptions>
           <GeneratorType>MySqlTextFileGenerator</GeneratorType>
-          <GeneratorName>Last Name</GeneratorName>
-          <GeneratorDescription>Harter, Nicholson, Eller, Kozlowski, Bennett, Norwood, Olivarez, ...</GeneratorDescription>
+          <GeneratorName>DE Last Name</GeneratorName>
+          <GeneratorDescription>Kohlberg, Blücher, Rennenkampf, Münch, Heinemann, Schwarz, Küchenmeister, ...</GeneratorDescription>
           <GeneratorCategory>Personal</GeneratorCategory>
           <Length>45</Length>
         </Column>
@@ -582,11 +599,11 @@
             <SeedValue>3</SeedValue>
             <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>\(\D\d{2}\) \d{3}\-\d{4}</Expression>
+            <Expression>07[45789]\d{7}|07\d24\d{5}</Expression>
           </GeneratorOptions>
           <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
-          <GeneratorName>Phone Number (domestic)</GeneratorName>
-          <GeneratorDescription>(102) 136-0584, (462) 681-9028, (252) 889-1273, ...</GeneratorDescription>
+          <GeneratorName>UK Phone Number (mobile)</GeneratorName>
+          <GeneratorDescription>07770211173, 07803931184, 07961715468, ...</GeneratorDescription>
           <GeneratorCategory>Personal</GeneratorCategory>
           <Length>45</Length>
         </Column>
@@ -628,8 +645,8 @@
             <UseOffsetDetails>false</UseOffsetDetails>
             <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
             <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
-            <MinDate>2015-01-01T00:00:00</MinDate>
-            <MaxDate>2022-03-04T00:00:00+01:00</MaxDate>
+            <MinDate>2014-01-01T00:00:00</MinDate>
+            <MaxDate>2021-12-31T00:00:00+01:00</MaxDate>
             <IsRandomizeDate>true</IsRandomizeDate>
           </GeneratorOptions>
           <GeneratorType>MySqlDateGenerator</GeneratorType>
@@ -648,7 +665,7 @@
             <SeedValue>3</SeedValue>
             <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>(\D0|5.0|5)|100</Expression>
+            <Expression>\d[05](.[05])</Expression>
           </GeneratorOptions>
           <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
           <GeneratorName>Reg Exp</GeneratorName>
@@ -667,7 +684,7 @@
             <Increment xmlns:q6="http://www.w3.org/2001/XMLSchema" p6:type="q6:decimal">1</Increment>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>3</SeedValue>
-            <MinValue>6999</MinValue>
+            <MinValue>6000</MinValue>
             <MaxValue>9999</MaxValue>
             <UseDefault>false</UseDefault>
           </GeneratorOptions>
@@ -690,7 +707,7 @@
             <SeedValue>4</SeedValue>
             <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>1?[0-9].[05]</Expression>
+            <Expression>[1]?\d(.0|.5)</Expression>
           </GeneratorOptions>
           <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
           <GeneratorName>Reg Exp</GeneratorName>
@@ -786,35 +803,22 @@
         <Column Name="address_id">
           <Checked>true</Checked>
           <DataType>INT</DataType>
-          <GeneratorOptions p6:type="MySqlWeightedListGeneratorRangeValuesOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
-            <AllowEmptyStrings>false</AllowEmptyStrings>
-            <EmptyStringProportion>10</EmptyStringProportion>
-            <ColumnDataTypeName>INT</ColumnDataTypeName>
-            <Scale>0</Scale>
-            <Precision>0</Precision>
+          <GeneratorOptions p6:type="ForeignKeyGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>4</SeedValue>
-            <Unique>false</Unique>
-            <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Values>
-              <WeightedListItem>
-                <Value p6:type="WeightedListRangeItem">
-                  <From xmlns:q9="http://www.w3.org/2001/XMLSchema" p6:type="q9:decimal">1</From>
-                  <To xmlns:q10="http://www.w3.org/2001/XMLSchema" p6:type="q10:decimal">125</To>
-                  <DateTimeOffsetFromValue />
-                  <DateTimeOffsetToValue />
-                  <TimeSpanFromValue>-1</TimeSpanFromValue>
-                  <TimeSpanToValue>-1</TimeSpanToValue>
-                </Value>
-                <Weight>25</Weight>
-              </WeightedListItem>
-            </Values>
+            <RepeatValues>false</RepeatValues>
+            <FromTimes>1</FromTimes>
+            <ToTimes>10</ToTimes>
+            <ExcludeValues>false</ExcludeValues>
+            <ExclusionValuesPercent>1</ExclusionValuesPercent>
           </GeneratorOptions>
-          <GeneratorType>MySqlWeightedListGeneratorRangeValues</GeneratorType>
-          <GeneratorName>Weighted List (ranged)</GeneratorName>
-          <GeneratorDescription>ranged values list with specified frequency of occurrence</GeneratorDescription>
+          <GeneratorType>ForeignKeyGenerator</GeneratorType>
+          <GeneratorName>Foreign Key (auto assigned)</GeneratorName>
+          <GeneratorDescription>references a column from parent table</GeneratorDescription>
           <HasForeignKey>true</HasForeignKey>
         </Column>
         <Column Name="job_id">
@@ -868,7 +872,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>500</RowsCount>
+          <RowsCount>1000</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -883,7 +887,7 @@
             <NullProportion>0</NullProportion>
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Increment xmlns:q11="http://www.w3.org/2001/XMLSchema" p6:type="q11:int">1</Increment>
+            <Increment xmlns:q9="http://www.w3.org/2001/XMLSchema" p6:type="q9:int">1</Increment>
             <ValueDistributionMode>Sequential</ValueDistributionMode>
             <SeedValue>7</SeedValue>
             <MinValue>1</MinValue>
@@ -946,7 +950,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>400</RowsCount>
+          <RowsCount>1000</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -961,7 +965,7 @@
             <NullProportion>0</NullProportion>
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Increment xmlns:q12="http://www.w3.org/2001/XMLSchema" p6:type="q12:int">1</Increment>
+            <Increment xmlns:q10="http://www.w3.org/2001/XMLSchema" p6:type="q10:int">1</Increment>
             <ValueDistributionMode>Sequential</ValueDistributionMode>
             <SeedValue>10</SeedValue>
             <MinValue>1</MinValue>
@@ -985,7 +989,7 @@
             <SeedValue>10</SeedValue>
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>(payslips/[1-150])</Expression>
+            <Expression>\\payslips\\(\d|[1-4]\d|50)\\(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)-(1[5-9]|2[01]).pdf</Expression>
           </GeneratorOptions>
           <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
           <GeneratorName>File Path (Windows)</GeneratorName>
@@ -1005,7 +1009,7 @@
             <SeedValue>10</SeedValue>
             <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>(01).[1-12].[2015-2021]</Expression>
+            <Expression>01-(\D|1[0-2])-(1[5-9]|2[01])</Expression>
           </GeneratorOptions>
           <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
           <GeneratorName>Reg Exp</GeneratorName>
@@ -1036,7 +1040,10 @@
     </Table>
   </Tables>
   <SynchronizationOptions p2:type="DataSyncOptionGroup" xmlns:p2="http://www.w3.org/2001/XMLSchema-instance">
-    <SynchronizationFileName>C:\Pré-TPI\data\DataGeneration_202203041413.sql</SynchronizationFileName>
+    <SynchronizeType>File</SynchronizeType>
+    <SynchronizationFileName>D:\FPA\Annee_2\T3\Pre-TPI\employees_mgmt_app\data\DataGeneration_202203041413.sql</SynchronizationFileName>
+    <ExecuteCustomScriptTypeBefore>None UseEmbeddedScript</ExecuteCustomScriptTypeBefore>
+    <ExecuteCustomScriptTypeAfter>None UseEmbeddedScript</ExecuteCustomScriptTypeAfter>
     <BulkInsert>false</BulkInsert>
   </SynchronizationOptions>
 </DataGenDocument>

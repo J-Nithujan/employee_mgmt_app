@@ -7,6 +7,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema db_employees
 -- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `db_employees` ;
 
 -- -----------------------------------------------------
 -- Schema db_employees
@@ -17,6 +18,8 @@ USE `db_employees` ;
 -- -----------------------------------------------------
 -- Table `db_employees`.`addresses`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `db_employees`.`addresses` ;
+
 CREATE TABLE IF NOT EXISTS `db_employees`.`addresses` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `ZIP` VARCHAR(25) NOT NULL,
@@ -29,6 +32,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `db_employees`.`jobs`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `db_employees`.`jobs` ;
+
 CREATE TABLE IF NOT EXISTS `db_employees`.`jobs` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
@@ -40,6 +45,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `db_employees`.`departments`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `db_employees`.`departments` ;
+
 CREATE TABLE IF NOT EXISTS `db_employees`.`departments` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
@@ -51,6 +58,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `db_employees`.`employees`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `db_employees`.`employees` ;
+
 CREATE TABLE IF NOT EXISTS `db_employees`.`employees` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(100) NOT NULL,
@@ -60,9 +69,9 @@ CREATE TABLE IF NOT EXISTS `db_employees`.`employees` (
   `phone_number` VARCHAR(45) NULL DEFAULT NULL,
   `road` VARCHAR(75) NOT NULL,
   `hiring_date` DATE NOT NULL,
-  `percentage` DECIMAL(3,2) NOT NULL,
-  `salary` DECIMAL(6,2) NOT NULL,
-  `holiday_balance` DECIMAL(2,2) NOT NULL DEFAULT 0,
+  `percentage` DECIMAL(5,2) NOT NULL,
+  `salary` DECIMAL(7,2) NOT NULL,
+  `holiday_balance` DECIMAL(4,2) NOT NULL DEFAULT 0,
   `under_contract` TINYINT NOT NULL,
   `work_time` DECIMAL NOT NULL DEFAULT 0,
   `password` VARCHAR(255) NULL DEFAULT NULL,
@@ -102,6 +111,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `db_employees`.`payslips`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `db_employees`.`payslips` ;
+
 CREATE TABLE IF NOT EXISTS `db_employees`.`payslips` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `file_path` VARCHAR(100) NOT NULL,
@@ -121,6 +132,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `db_employees`.`tasks`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `db_employees`.`tasks` ;
+
 CREATE TABLE IF NOT EXISTS `db_employees`.`tasks` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `project` VARCHAR(45) NOT NULL,
@@ -137,6 +150,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `db_employees`.`employees_has_tasks`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `db_employees`.`employees_has_tasks` ;
+
 CREATE TABLE IF NOT EXISTS `db_employees`.`employees_has_tasks` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `employee_id` INT NOT NULL,
@@ -159,6 +174,9 @@ ENGINE = InnoDB;
 USE `db_employees`;
 
 DELIMITER $$
+
+USE `db_employees`$$
+DROP TRIGGER IF EXISTS `db_employees`.`tasks_BEFORE_INSERT` $$
 USE `db_employees`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `db_employees`.`tasks_BEFORE_INSERT` BEFORE INSERT ON `tasks` FOR EACH ROW
 BEGIN
@@ -167,6 +185,9 @@ BEGIN
     end if;
 END$$
 
+
+USE `db_employees`$$
+DROP TRIGGER IF EXISTS `db_employees`.`tasks_BEFORE_UPDATE` $$
 USE `db_employees`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `db_employees`.`tasks_BEFORE_UPDATE` BEFORE UPDATE ON `tasks` FOR EACH ROW
 BEGIN
