@@ -304,47 +304,7 @@ INSERT INTO employee_has_task(id, employee_id, task_id) VALUES
 -- Inserting data into table payslips
 --
 INSERT INTO payslips(id, file_path, date, employee_id) VALUES
---
--- Enabling DML triggers for 
---
-DELIMITER $$
-
---
--- Enabling DML triggers for tasks
---
-CREATE 
-	DEFINER = 'root'@'localhost'
-TRIGGER db_employees.tasks_BEFORE_INSERT
-	BEFORE INSERT
-	ON db_employees.tasks
-	FOR EACH ROW
-BEGIN
-	if new.until > new.since 
-    then signal sqlstate '45000' set message_text = 'Bad dates';
-    end if;
-END
-$$
-
---
--- Enabling DML triggers for tasks
---
-CREATE 
-	DEFINER = 'root'@'localhost'
-TRIGGER db_employees.tasks_BEFORE_UPDATE
-	BEFORE UPDATE
-	ON db_employees.tasks
-	FOR EACH ROW
-BEGIN
-	if new.until > new.since 
-    then signal sqlstate '45000' set message_text = 'Bad Dates';
-    end if;
-END
-$$
-
---
--- Enabling DML triggers for 
---
-DELIMITER ;(1, '\\payslips\\7\\FEB-21.pdf', '2021-02-01', 10),
+(1, '\\payslips\\7\\FEB-21.pdf', '2021-02-01', 10),
 (2, '\\payslips\\5\\JUL-15.pdf', '2016-04-01', 10),
 (3, '\\payslips\\38\\JAN-21.pdf', '2020-07-01', 11),
 (4, '\\payslips\\2\\AUG-15.pdf', '2021-01-01', 48),

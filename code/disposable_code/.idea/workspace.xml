@@ -2,60 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63d51f5f-d695-4434-aa15-ff5d7ddd5f6f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../project_app/employees_mgmt/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../project_app/employees_mgmt/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../project_app/employees_mgmt/templates/top_navbar_login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/../project_app/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../project_app/employees_mgmt/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-grid.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-grid.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-grid.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-grid.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-grid.rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-grid.rtl.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-grid.rtl.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-grid.rtl.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-reboot.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-reboot.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-reboot.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-reboot.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-reboot.rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-reboot.rtl.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-reboot.rtl.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-reboot.rtl.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-utilities.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-utilities.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-utilities.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-utilities.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-utilities.rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-utilities.rtl.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-utilities.rtl.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap-utilities.rtl.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap.rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap.rtl.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap.rtl.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/css/bootstrap.rtl.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/js/bootstrap.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/js/bootstrap.bundle.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/js/bootstrap.esm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/js/bootstrap.esm.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/js/bootstrap.esm.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/js/bootstrap.esm.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/js/bootstrap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/js/bootstrap.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/static/bootstrap-5.1.3-dist/js/bootstrap.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_app/employees_mgmt/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../project_app/employees_mgmt/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/.idea/project_app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/.idea/project_app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/DataGeneration_dbforge.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/DataGeneration_dbforge.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../data/db_employees_creation_with_triggers.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/db_employees_creation_with_triggers.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../documentation/JdT-Nithujan_Jegatheeswaran.xlsm" beforeDir="false" afterPath="$PROJECT_DIR$/../../documentation/JdT-Nithujan_Jegatheeswaran.xlsm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../documentation/images/flask-version.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +41,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/flask_project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager" selected="Python.main">
     <configuration name="joined_table_app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
@@ -146,6 +101,7 @@
       <workItem from="1646649719821" duration="1474000" />
       <workItem from="1646742927172" duration="1218000" />
       <workItem from="1646745066457" duration="5287000" />
+      <workItem from="1647007105781" duration="555000" />
     </task>
     <servers />
   </component>
@@ -162,6 +118,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/disposable_code$main.coverage" NAME="joined_table_app Coverage Results" MODIFIED="1646650298492" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/flask_sqlalchemy" />

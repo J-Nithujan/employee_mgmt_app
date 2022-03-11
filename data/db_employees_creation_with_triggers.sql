@@ -7,7 +7,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema db_employees
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `db_employees` ;
 
 -- -----------------------------------------------------
 -- Schema db_employees
@@ -152,7 +151,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `db_employees`.`employee_has_task` ;
 
-CREATE TABLE IF NOT EXISTS `db_employees`.`employees_has_tasks` (
 CREATE TABLE IF NOT EXISTS `db_employees`.`employee_has_task` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `employee_id` INT NOT NULL,
@@ -173,32 +171,6 @@ CREATE TABLE IF NOT EXISTS `db_employees`.`employee_has_task` (
 ENGINE = InnoDB;
 
 USE `db_employees`;
-
-DELIMITER $$
-
-USE `db_employees`$$
-DROP TRIGGER IF EXISTS `db_employees`.`tasks_BEFORE_INSERT` $$
-USE `db_employees`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `db_employees`.`tasks_BEFORE_INSERT` BEFORE INSERT ON `tasks` FOR EACH ROW
-BEGIN
-	if new.until > new.since 
-    then signal sqlstate '45000' set message_text = 'Bad dates';
-    end if;
-END$$
-
-
-USE `db_employees`$$
-DROP TRIGGER IF EXISTS `db_employees`.`tasks_BEFORE_UPDATE` $$
-USE `db_employees`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `db_employees`.`tasks_BEFORE_UPDATE` BEFORE UPDATE ON `tasks` FOR EACH ROW
-BEGIN
-	if new.until > new.since 
-    then signal sqlstate '45000' set message_text = 'Bad Dates';
-    end if;
-END$$
-
-
-DELIMITER ;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
