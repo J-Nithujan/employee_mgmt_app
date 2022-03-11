@@ -6,12 +6,13 @@ app.config.from_object('config')
 
 @app.route('/')
 @app.route('/login/')
-def login():  # put application's code here
-    # if 'username' in session:
-    #     return redirect(url_for('index'))
-    # else:
-    #     return render_template('login.html')
-    return check_login()
+def login():
+    if 'username' in session:
+        return redirect(url_for('index'))
+    else:
+        return render_template('login.html')
+    # return check_login()
+    pass
 
 
 @app.route('/')
@@ -21,7 +22,3 @@ def index():
         return render_template('index.html')
     else:
         return redirect(url_for('login'))
-    
-
-if __name__ == '__main__':
-    app.run()
