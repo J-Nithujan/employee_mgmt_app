@@ -148,10 +148,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `db_employees`.`employees_has_tasks`
 -- Table `db_employees`.`employee_has_task`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `db_employees`.`employees_has_tasks` ;
+DROP TABLE IF EXISTS `db_employees`.`employee_has_task` ;
 
 CREATE TABLE IF NOT EXISTS `db_employees`.`employees_has_tasks` (
 CREATE TABLE IF NOT EXISTS `db_employees`.`employee_has_task` (
@@ -161,13 +160,11 @@ CREATE TABLE IF NOT EXISTS `db_employees`.`employee_has_task` (
   PRIMARY KEY (`id`),
   INDEX `fk_employees_has_tasks_tasks1_idx` (`task_id` ASC) VISIBLE,
   INDEX `fk_employees_has_tasks_employees1_idx` (`employee_id` ASC) VISIBLE,
-  CONSTRAINT `fk_employees_has_tasks_employees1`
   CONSTRAINT `fk_employee_has_task_employees1`
     FOREIGN KEY (`employee_id`)
     REFERENCES `db_employees`.`employees` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_employees_has_tasks_tasks1`
   CONSTRAINT `fk_employee_has_task_tasks1`
     FOREIGN KEY (`task_id`)
     REFERENCES `db_employees`.`tasks` (`id`)

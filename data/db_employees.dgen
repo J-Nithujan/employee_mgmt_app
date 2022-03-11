@@ -671,7 +671,7 @@
           <GeneratorName>Reg Exp</GeneratorName>
           <GeneratorDescription>values based on a regular expression</GeneratorDescription>
           <Scale>2</Scale>
-          <Precision>3</Precision>
+          <Precision>5</Precision>
         </Column>
         <Column Name="salary">
           <Checked>true</Checked>
@@ -693,7 +693,7 @@
           <GeneratorDescription>23500, 44600, 35800, 110000, ...</GeneratorDescription>
           <GeneratorCategory>Personal</GeneratorCategory>
           <Scale>2</Scale>
-          <Precision>6</Precision>
+          <Precision>7</Precision>
         </Column>
         <Column Name="holiday_balance">
           <Checked>true</Checked>
@@ -713,7 +713,7 @@
           <GeneratorName>Reg Exp</GeneratorName>
           <GeneratorDescription>values based on a regular expression</GeneratorDescription>
           <Scale>2</Scale>
-          <Precision>2</Precision>
+          <Precision>4</Precision>
         </Column>
         <Column Name="under_contract">
           <Checked>true</Checked>
@@ -726,8 +726,8 @@
             <Increment xmlns:q7="http://www.w3.org/2001/XMLSchema" p6:type="q7:int">1</Increment>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>3</SeedValue>
-            <MinValue>-128</MinValue>
-            <MaxValue>127</MaxValue>
+            <MinValue>0</MinValue>
+            <MaxValue>1</MaxValue>
             <UseDefault>false</UseDefault>
           </GeneratorOptions>
           <GeneratorType>MySqlTinyIntegerGenerator</GeneratorType>
@@ -745,8 +745,8 @@
             <Increment xmlns:q8="http://www.w3.org/2001/XMLSchema" p6:type="q8:decimal">1</Increment>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>5</SeedValue>
-            <MinValue>-9999999999</MinValue>
-            <MaxValue>9999999999</MaxValue>
+            <MinValue>0</MinValue>
+            <MaxValue>160</MaxValue>
             <UseDefault>false</UseDefault>
             <DefaultValue>0</DefaultValue>
           </GeneratorOptions>
@@ -865,8 +865,8 @@
         </Column>
       </Columns>
     </Table>
-    <Table Name="employees_has_tasks">
-      <Checked>true</Checked>
+    <Table Name="employee_has_task">
+      <Checked>false</Checked>
       <Settings>
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
@@ -880,27 +880,11 @@
       </Settings>
       <Columns>
         <Column Name="id">
-          <Checked>true</Checked>
+          <Checked>false</Checked>
           <DataType>INT</DataType>
-          <GeneratorOptions p6:type="MySqlIntegerGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
-            <AllowNulls>false</AllowNulls>
-            <NullProportion>0</NullProportion>
-            <Unique>true</Unique>
-            <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Increment xmlns:q9="http://www.w3.org/2001/XMLSchema" p6:type="q9:int">1</Increment>
-            <ValueDistributionMode>Sequential</ValueDistributionMode>
-            <SeedValue>7</SeedValue>
-            <MinValue>1</MinValue>
-            <MaxValue>9999999</MaxValue>
-            <UseDefault>false</UseDefault>
-          </GeneratorOptions>
-          <GeneratorType>MySqlIntegerGenerator</GeneratorType>
-          <GeneratorName>ID (sequential)</GeneratorName>
-          <GeneratorDescription>1, 2, 3, 4, ..., 9, 10, 11, 12, ...</GeneratorDescription>
-          <GeneratorCategory>Business</GeneratorCategory>
         </Column>
         <Column Name="employee_id">
-          <Checked>true</Checked>
+          <Checked>false</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions p6:type="ForeignKeyGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
             <Unique>false</Unique>
@@ -908,7 +892,7 @@
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
-            <SeedValue>7</SeedValue>
+            <SeedValue>3</SeedValue>
             <RepeatValues>false</RepeatValues>
             <FromTimes>1</FromTimes>
             <ToTimes>10</ToTimes>
@@ -921,7 +905,7 @@
           <HasForeignKey>true</HasForeignKey>
         </Column>
         <Column Name="task_id">
-          <Checked>true</Checked>
+          <Checked>false</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions p6:type="ForeignKeyGeneratorOptions" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
             <Unique>false</Unique>
@@ -929,7 +913,7 @@
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
-            <SeedValue>8</SeedValue>
+            <SeedValue>4</SeedValue>
             <RepeatValues>false</RepeatValues>
             <FromTimes>1</FromTimes>
             <ToTimes>10</ToTimes>
@@ -965,7 +949,7 @@
             <NullProportion>0</NullProportion>
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Increment xmlns:q10="http://www.w3.org/2001/XMLSchema" p6:type="q10:int">1</Increment>
+            <Increment xmlns:q9="http://www.w3.org/2001/XMLSchema" p6:type="q9:int">1</Increment>
             <ValueDistributionMode>Sequential</ValueDistributionMode>
             <SeedValue>10</SeedValue>
             <MinValue>1</MinValue>
@@ -1041,7 +1025,7 @@
   </Tables>
   <SynchronizationOptions p2:type="DataSyncOptionGroup" xmlns:p2="http://www.w3.org/2001/XMLSchema-instance">
     <SynchronizeType>File</SynchronizeType>
-    <SynchronizationFileName>D:\FPA\Annee_2\T3\Pre-TPI\employees_mgmt_app\data\DataGeneration_202203041413.sql</SynchronizationFileName>
+    <SynchronizationFileName>C:\Pré-TPI\data\DataGeneration_dbforge.sql</SynchronizationFileName>
     <ExecuteCustomScriptTypeBefore>None UseEmbeddedScript</ExecuteCustomScriptTypeBefore>
     <ExecuteCustomScriptTypeAfter>None UseEmbeddedScript</ExecuteCustomScriptTypeAfter>
     <BulkInsert>false</BulkInsert>
