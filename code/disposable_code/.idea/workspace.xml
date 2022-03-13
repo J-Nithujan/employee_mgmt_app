@@ -2,14 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63d51f5f-d695-4434-aa15-ff5d7ddd5f6f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/disposable_code.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/model/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/model/tables.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/model/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_project/app_name/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_project/app_name/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/.idea/project_app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/.idea/project_app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../data/DataGeneration_dbforge.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/DataGeneration_dbforge.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../data/db_employees_creation_with_triggers.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/db_employees_creation_with_triggers.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../documentation/JdT-Nithujan_Jegatheeswaran.xlsm" beforeDir="false" afterPath="$PROJECT_DIR$/../../documentation/JdT-Nithujan_Jegatheeswaran.xlsm" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -102,6 +108,7 @@
       <workItem from="1646742927172" duration="1218000" />
       <workItem from="1646745066457" duration="5287000" />
       <workItem from="1647007105781" duration="555000" />
+      <workItem from="1647160904222" duration="6389000" />
     </task>
     <servers />
   </component>
@@ -118,6 +125,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -9,6 +9,7 @@ app.config.from_object('config')
 def index():
     return render_template('index.html')
 
+
 @app.route('/table/')
 def table():
     return render_template('table.html')
@@ -44,7 +45,7 @@ def success(name):
     return render_template('main_menu.html', username=name)
 
 
-@app.route('/login', methods=['POST', 'GET'])
+@app.route('/login/', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
         user = request.form['nm']
