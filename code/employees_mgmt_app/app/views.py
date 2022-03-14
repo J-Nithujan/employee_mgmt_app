@@ -8,24 +8,28 @@ app.config.from_object('config')
 @app.route('/')
 @app.route('/login/',  methods=['POST'])
 def login():
-    if 'username' in session:
-        return redirect(url_for('index'))
-    else:
-        if request.method == 'POST':
-            if check_login(request.form['email'], request.form['password']):
-                session['username'] = request.form['email']
-                return redirect(url_for('index'))
-            else:
-                return render_template('login.html')
+    if request.method == 'POST':
+        if check_login(request.form['email'], request.form['password']):
+            # Successfully logged in
+            session['email'] = request.form['email']
+            return redirect(url_for('index'))
         else:
+            # Log in failed
             return render_template('login.html')
-    pass
+    else:
+        # First visit on the login page
+        return render_template('login.html')
+        
 
+@app.route('/logout/')
+def logout():
+    session.pop('email')
+    return redirect(url_for('login'))
+    
 
-@app.route('/')
 @app.route('/index/')
 def index():
-    if 'username' in session:
+    if 'email' in session:
         return render_template('index.html')
     else:
         return redirect(url_for('login'))
