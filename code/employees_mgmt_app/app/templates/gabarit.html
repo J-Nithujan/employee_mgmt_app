@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet"/>
     <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename='css/custom_styles.css') }}" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
 </head>
 <body>
@@ -14,19 +16,19 @@
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
             class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
-{#    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">#}
-{#        <div class="input-group">#}
-{#            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."#}
-{#                   aria-describedby="btnNavbarSearch"/>#}
-{#            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>#}
-{#        </div>#}
-{#    </form>#}
-    <p class="navbar-text ms-auto me-0 me-md-3 my-2 my-md-0"> firstname lastname</p>
+    {#    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">#}
+    {#        <div class="input-group">#}
+    {#            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."#}
+    {#                   aria-describedby="btnNavbarSearch"/>#}
+    {#            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>#}
+    {#        </div>#}
+    {#    </form>#}
+
     <!-- Navbar-->
-    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+    <ul class="navbar-nav ms-auto me-0 me-md-3 my-2 my-md-0">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-               aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+               aria-expanded="false">firstname lastname <i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
             </ul>
@@ -39,20 +41,16 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Menu</div>
-                    <a class="nav-link" href="index.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <a class="nav-link" href="{{ url_for('index') }}">
                         Profil
                     </a>
                     <a class="nav-link" href="#">
-                        <div class="sb-nav-link-icon"><i class="fas"></i></div>
                         Liste des tâches
                     </a>
                     <a class="nav-link" href="#">
-                        <div class="sb-nav-link-icon"><i class="fas"></i></div>
                         Nouvelle tâche
                     </a>
                     <a class="nav-link" href="#">
-                        <div class="sb-nav-link-icon"><i class="fas"></i></div>
                         Fiches de salaire
                     </a>
                 </div>
@@ -69,13 +67,29 @@
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid px-4">
                 <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; Your Website 2021</div>
-                    <div>
-                        <a href="#">Privacy Policy</a>
-                        &middot;
-                        <a href="#">Terms &amp; Conditions</a>
+                    <div class="d-flex">
+                        <img id="logo" src="{{ url_for('static', filename='assets/img/logo.png') }}" alt="logo">
+                        <div class="text-center align-self-center">Entreprise ABC</div>
                     </div>
-                </div>
+                    <div>
+                        <div>Contact:</div>
+                        <div class="d-grid gap-1">
+                            <div><i class="fas fa-map-marker-alt me-1"></i>Rue Example 1, 1000 Lausanne</div>
+                            <div><i class="fas fa-at me-1"></i>contact@entreprise_abc.ch</div>
+                            <div><i class="fas fa-phone me-1"></i>+41 21 123 45 67</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card-title">Suivez-nous:</div>
+                        <div class="fa-3x">
+                            <a href="#"><i class="fab fa-twitter-square"></i></a>
+                            <a href="#"><i class="fab fa-facebook-square"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github-square"></i></a>
+                        </div>
+                    </div>
+                </
+                >
             </div>
         </footer>
     </div>

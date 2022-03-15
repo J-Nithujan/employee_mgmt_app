@@ -12,9 +12,10 @@ def login():
         if check_login(request.form['email'], request.form['password']):
             # Successfully logged in
             session['email'] = request.form['email']
+            get_index_data(session['email'])
             return redirect(url_for('index'))
         else:
-            # Log in failed
+            # Login failed
             return render_template('login.html')
     else:
         # First visit on the login page
@@ -29,7 +30,7 @@ def logout():
 
 @app.route('/index/')
 def index():
-    if 'email' in session:
+    # if 'email' in session:
         return render_template('index.html')
-    else:
-        return redirect(url_for('login'))
+    # else:
+    #     return redirect(url_for('login'))
