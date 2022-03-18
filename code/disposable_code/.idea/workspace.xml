@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63d51f5f-d695-4434-aa15-ff5d7ddd5f6f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/static/assets/img/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/static/css/custom_styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/model/tables.py" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/model/tables.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/model/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/model/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/static/css/custom_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/static/css/custom_styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/templates/gabarit.html" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/templates/gabarit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/views.py" afterDir="false" />
@@ -106,6 +106,7 @@
       <workItem from="1647250466567" duration="41000" />
       <workItem from="1647251828973" duration="268000" />
       <workItem from="1647353081991" duration="666000" />
+      <workItem from="1647601543019" duration="1481000" />
     </task>
     <servers />
   </component>
@@ -122,7 +123,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

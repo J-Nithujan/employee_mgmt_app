@@ -12,7 +12,7 @@ def login():
         if check_login(request.form['email'], request.form['password']):
             # Successfully logged in
             session['email'] = request.form['email']
-            # get_index_data(session['email'])
+            data = get_index_data(session['email'])
             return redirect(url_for('index'))
         else:
             # Login failed
