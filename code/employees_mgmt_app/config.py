@@ -1,4 +1,8 @@
-import os
+# File: config.py
+# Author: Nithujan Jegatheeswaran
+# Brief: 
+# Version: 16.03.2022
+
 import random
 import string
 

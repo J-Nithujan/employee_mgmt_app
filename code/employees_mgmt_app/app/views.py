@@ -1,18 +1,23 @@
+# File: views.py
+# Author: Nithujan Jegatheeswaran
+# Brief: 
+# Version: 19.03.2022
+
 from flask import Flask, request, redirect, url_for, render_template, session
 from .model.utils import *
+import base64
 
 app = Flask(__name__)
 app.config.from_object('config')
 
 
 @app.route('/')
-@app.route('/login/',  methods=['POST'])
+@app.route('/login/', methods=['POST'])
 def login():
     if request.method == 'POST':
         if check_login(request.form['email'], request.form['password']):
             # Successfully logged in
             session['email'] = request.form['email']
-            data = get_index_data(session['email'])
             return redirect(url_for('index'))
         else:
             # Login failed
@@ -20,17 +25,49 @@ def login():
     else:
         # First visit on the login page
         return render_template('login.html')
-        
+
 
 @app.route('/logout/')
 def logout():
-    session.pop('email')
+    session.clear()
     return redirect(url_for('login'))
-    
+
 
 @app.route('/index/')
 def index():
-    # if 'email' in session:
-        return render_template('index.html')
-    # else:
-    #     return redirect(url_for('login'))
+    data = get_index_data(session['email'])
+    session['firstname'] = data['firstname']
+    session['lastname'] = data['lastname']
+    if data['department'] == 'Human Ressources':
+        session['is_hr_employee'] = True
+    else:
+        session['is_hr_employee'] = False
+    return render_template('index.html', data=data)
+
+
+@app.route('/tasks_list/<email>/')
+def tasks_list(email):
+    tasks = get_tasks(email)
+    return render_template('tasks_list.html', items=tasks)
+
+
+@app.route('/new_task/', methods=['POST'])
+@app.route('/new_task/')
+def new_task():
+    if request.method == 'POST':
+        add_task(request.form)
+        return url_for('tasks_list', email=session['email'])
+    else:
+        return render_template('new_task.html')
+    pass
+
+
+@app.route('/tasks_list/<task_id>/')
+def edit_task(task_id):
+    pass
+
+
+@app.route('/payslips/')
+def payslips():
+    # TODO: payslips page and model functions
+    pass
