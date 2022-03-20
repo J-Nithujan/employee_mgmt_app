@@ -1,0 +1,48 @@
+{% extends 'gabarit.html' %}
+
+{% block title %}Liste des Tâches{% endblock title %}
+
+{% block content %}
+    <h1 class="mt-4">Liste des Tâches Effectuées</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Liste Des Tâches</li>
+    </ol>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-header">Tâches Effectuées Durant Ce Mois</div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                        <tr>
+                            <th>Projet</th>
+                            <th>Titre</th>
+                            <th>Heure de début</th>
+                            <th>Heure de fin</th>
+                            <th>Date</th>
+                            <th>Édition</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for task in list %}
+                            <tr>
+                                <td>{{ task['project'] }}</td>
+                                <td>{{ task['title'] }}</td>
+                                <td>{{ task['since'].strftime('%H:%M') }}</td>
+                                <td>{{ task['until'].strftime('%H:%M') }}</td>
+                                <td>{{ task['until'].strftime('%d-%m-%Y') }}</td>
+                                <td>
+                                    <a href="{{ url_for('edit_task', task_id=task['id']) }}">
+                                        <i class="far fa-pencil"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+

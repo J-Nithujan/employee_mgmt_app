@@ -1,0 +1,53 @@
+{% extends 'gabarit.html' %}
+
+{% block title %}Nouvelle Tâche{% endblock title %}
+
+{% block content %}
+    <h1 class="mt-4">Entrer Une Nouvelle Tâche Terminée</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Nouvelle Tâche</li>
+    </ol>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-header">Informations sur la tâche</div>
+                <div class="card-body">
+                    <form action="{{ url_for('new_task') }}" method="post">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="project">Projet</label>
+                                    <input type="text" id="project" name="project" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="title">Titre</label>
+                                    <input type="text" id="title" name="title" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="since">Heure de début</label>
+                                    <input type="time" id="since" name="since" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="until">Heure de fin</label>
+                                    <input type="time" id="until" name="until" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="date">Date</label>
+                                    <input type="date" id="date" name="date" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="description">Description</label>
+                                    <textarea id="description" name="description" class="form-control"></textarea>
+                                </div>
+                                <input type="submit" class="form-control bg-dark text-white" value="Valider">
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

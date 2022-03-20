@@ -1,0 +1,50 @@
+{% extends 'gabarit.html' %}
+
+{% block title %}Liste des Employés{% endblock title %}
+
+{% block content %}
+    <h1 class="mt-4">Liste des Employés De L'Entreprise</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Liste Des Employés</li>
+    </ol>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-header">Liste Complète Des Employés</div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Email</th>
+                            <th>Engagé/e le</th>
+                            <th>Fonction</th>
+                            <th>Pourcentage</th>
+                            <th>Salaire</th>
+                            <th>Modifier</th>
+                            <th>Archiver</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for employee in list %}
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><i class="far fa-pencil"></i></td>
+                                <td><i class="fad fa-minus-circle"></i></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
