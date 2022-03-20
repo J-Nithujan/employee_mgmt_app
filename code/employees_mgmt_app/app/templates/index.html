@@ -1,55 +1,92 @@
 {% extends 'gabarit.html' %}
+
+{% block title %}Index{% endblock title %}
+
 {% block content %}
     <h1 class="mt-4">Mon Profil</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">Profil</li>
     </ol>
     <div class="row">
-        <div class="col-xl-6">
-            <div class="card mb-4">
-                <div class="card-header">Données Personnelles</div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-xl-6">Nom {{ lname }}</div>
-                        <div class="col-xl-6">Date de naissance {{ birthdate }}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-6">Prénom {{ fname }}</div>
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">Données Personnelles</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="fst-italic fw-bold text-primary">Nom</div>
+                                {{ data['lastname'] }}
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="fst-italic fw-bold text-primary">Date de naissance</div>
+                                {{ data['birthdate'].strftime('%d-%m-%Y') }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="fst-italic fw-bold text-primary">Prénom</div>
+                                {{ data['firstname'] }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-xl-6">
-            <div class="card mb-4">
-                <div class="card-header">Coordonnées</div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-xl-6">Email {{ email }}</div>
-                        <div class="col-xl-6">Rue{{ street }}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-6">N° de téléphone {{ phone_number }}</div>
-                        <div class="col-xl-6">NPA Localité {{ zip }} {{ city }}</div>
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">Coordonnées</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="fst-italic fw-bold text-primary">Email</div>
+                                {{ session['email'] }}
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="fst-italic fw-bold text-primary">Rue</div>
+                                {{ data['road'] }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="fst-italic fw-bold text-primary">N° de téléphone</div>
+                                {{ data['phone_number'] }}
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="fst-italic fw-bold text-primary">NPA Localité</div>
+                                {{ data['zip'] }} {{ data['city'] }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-xl-6">
-            <div class="card mb-4">
-                <div class="card-header">Données Professionnelles</div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-xl-6">Date d'engagement {{ hiring_date }}</div>
-                        <div class="col-xl-6">Supérieur/e {{ supervisor }}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-6">Fonction {{ phone_number }}</div>
-                        <div class="col-xl-6">Taux {{ percentage }}</div>
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">Données Professionnelles</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="fst-italic fw-bold text-primary">Date d'engagement</div>
+                                {{ data['hiring_date'] }}
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="fst-italic fw-bold text-primary">Supérieur/e</div>
+                                {{ data['supervisor_lastname'] }} {{ data['supervisor_firstname'] }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="fst-italic fw-bold text-primary">Fonction</div>
+                                {{ data[''] }}
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="fst-italic fw-bold text-primary">Taux</div>
+                                {{ data['percentage'] }}%
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+
     </div>
 {% endblock content %}

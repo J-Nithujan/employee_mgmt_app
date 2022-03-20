@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>{% block title %}{% endblock title %}</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet"/>
     <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet"/>
     <link href="{{ url_for('static', filename='css/custom_styles.css') }}" rel="stylesheet"/>
@@ -19,7 +19,7 @@
     <ul class="navbar-nav ms-auto me-0 me-md-3 my-2 my-md-0">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-               aria-expanded="false">firstname lastname <i class="fas fa-user fa-fw"></i></a>
+               aria-expanded="false">{{ session['firstname'] }} {{ session['lastname'] }} <i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
             </ul>
@@ -35,15 +35,20 @@
                     <a class="nav-link" href="{{ url_for('index') }}">
                         Profil
                     </a>
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ url_for('tasks_list', email=session['email']) }}">
                         Liste des tâches
                     </a>
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ url_for('new_task') }}">
                         Nouvelle tâche
                     </a>
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ url_for('payslips') }}">
                         Fiches de salaire
                     </a>
+                    {% if session['is_hr_employee'] %}
+                    <div class="sb-sidenav-menu-heading">Gestion des employés</div>
+                        <a class="nav-link" href="#">Liste des employés</a>
+                        <a class="nav-link" href="#">Nouvel/le employé/e</a>
+                    {% endif %}
                 </div>
             </div>
         </nav>
@@ -57,21 +62,21 @@
         </main>
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid px-4">
-                <div class="d-flex align-items-center justify-content-between small">
-                    <div class="d-flex">
+                <div class="row">
+                    <div class="col-md-4 mb-3">
                         <img id="logo" src="{{ url_for('static', filename='assets/img/logo.png') }}" alt="logo">
-                        <div class="text-center align-self-center">Entreprise ABC</div>
+                        Entreprise ABC
                     </div>
-                    <div>
-                        <div>Contact:</div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card-title fw-bold text-secondary">Contact:</div>
                         <div class="d-grid gap-1">
                             <div><i class="fas fa-map-marker-alt me-1"></i>Rue Example 1, 1000 Lausanne</div>
-                            <div><i class="fas fa-at me-1"></i>contact@entreprise_abc.ch</div>
+                            <div><i class="fas fa-envelope me-1"></i>contact@entreprise_abc.ch</div>
                             <div><i class="fas fa-phone me-1"></i>+41 21 123 45 67</div>
                         </div>
                     </div>
-                    <div>
-                        <div class="card-title">Suivez-nous:</div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card-title fw-bold text-secondary">Suivez-nous:</div>
                         <div class="fa-3x">
                             <a href="#"><i class="social-icon fab fa-twitter-square"></i></a>
                             <a href="#"><i class="social-icon fab fa-facebook-square"></i></a>
@@ -79,8 +84,7 @@
                             <a href="#"><i class="social-icon fab fa-github-square"></i></a>
                         </div>
                     </div>
-                </
-                >
+                </div>
             </div>
         </footer>
     </div>

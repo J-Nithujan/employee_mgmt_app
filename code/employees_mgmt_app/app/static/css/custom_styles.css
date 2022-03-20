@@ -1,3 +1,4 @@
+/* TODO: Header ou pas ?????? */
 #logo{
     width: 50px;
     height: 45px;
@@ -5,6 +6,21 @@
     margin-right: 5px;
 }
 
-.social-icon{
+/* Source: https://gist.github.com/ksloan/d1b9ace61fddd2356ebf */
+.fa-facebook-square {
+    color: #3b5998
+}
+
+/* Source: https://gist.github.com/ksloan/d1b9ace61fddd2356ebf */
+.fa-twitter-square {
+    color: #00aced
+}
+
+/* Source: https://gist.github.com/ksloan/d1b9ace61fddd2356ebf */
+.fa-linkedin {
+    color: #007bb6
+}
+
+.fa-github-square {
     color: #000000;
 }
