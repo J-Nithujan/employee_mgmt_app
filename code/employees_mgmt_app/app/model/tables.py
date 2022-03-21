@@ -21,7 +21,6 @@ class Departments(db.Model):
 
 
 class Employees(db.Model):
-
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     email = db.Column(db.VARCHAR, nullable=False)
     firstname = db.Column(db.VARCHAR, nullable=False)
@@ -42,7 +41,7 @@ class Employees(db.Model):
     department_id = db.Column(db.Integer, nullable=False)
 
 
-class Employee_has_task(db.Model):
+class EmployeeHasTask(db.Model):
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     employee_id = db.Column(db.Integer, nullable=False)
     task_id = db.Column(db.Integer, nullable=False)
@@ -65,7 +64,7 @@ class Tasks(db.Model):
     project = db.Column(db.VARCHAR, nullable=False)
     title = db.Column(db.VARCHAR, nullable=False)
     description = db.Column(db.TEXT, nullable=False)
-    validation = db.Column(db.BOOLEAN, nullable=False)
+    validation = db.Column(db.BOOLEAN)
     since = db.Column(db.DATETIME, nullable=False)
     until = db.Column(db.DATETIME, nullable=False)
 

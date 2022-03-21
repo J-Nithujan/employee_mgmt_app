@@ -55,7 +55,7 @@ def tasks_list(email):
 @app.route('/new_task/')
 def new_task():
     if request.method == 'POST':
-        add_task(request.form)
+        add_task(request.form, session['email'])
         return url_for('tasks_list', email=session['email'])
     else:
         return render_template('new_task.html')

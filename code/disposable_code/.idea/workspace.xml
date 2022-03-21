@@ -2,26 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63d51f5f-d695-4434-aa15-ff5d7ddd5f6f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../employees_mgmt_app/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/templates/new_task.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/templates/tasks_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/templates/payslips.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/model/tables.py" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/model/tables.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/model/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/model/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/static/css/custom_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/static/css/custom_styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/templates/gabarit.html" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/templates/gabarit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/app/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../employees_mgmt_app/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/../employees_mgmt_app/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../data/create-tables.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../data/db_employees_creation_with_triggers.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../data/drop_and_create_temp.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../data/payslips_concat.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../data/payslips_date.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../data/payslips_file_path.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../documentation/DossierProjet-Nithujan_Jegatheeswaran.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../documentation/DossierProjet-Nithujan_Jegatheeswaran.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../documentation/JdT-Nithujan_Jegatheeswaran.xlsm" beforeDir="false" afterPath="$PROJECT_DIR$/../../documentation/JdT-Nithujan_Jegatheeswaran.xlsm" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +38,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/flask_project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../employees_mgmt_app" />
   </component>
   <component name="RunManager" selected="Python.main">
     <configuration name="joined_table_app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
@@ -124,6 +109,7 @@
       <workItem from="1647764161198" duration="959000" />
       <workItem from="1647782879238" duration="611000" />
       <workItem from="1647796890228" duration="245000" />
+      <workItem from="1647853038109" duration="618000" />
     </task>
     <servers />
   </component>
@@ -140,7 +126,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
