@@ -48,22 +48,25 @@ def index():
 @app.route('/tasks_list/<email>/')
 def tasks_list(email):
     tasks = get_tasks(email)
-    return render_template('tasks_list.html', items=tasks)
+    return render_template('tasks_list.html', list=tasks)
 
 
-@app.route('/new_task/', methods=['POST'])
 @app.route('/new_task/')
+@app.route('/new_task/', methods=['POST'])
 def new_task():
     if request.method == 'POST':
         add_task(request.form, session['email'])
-        return url_for('tasks_list', email=session['email'])
+        return redirect(url_for('tasks_list', email=session['email']))
     else:
         return render_template('new_task.html')
-    pass
 
 
+@app.route('/tasks_list/', methods=['POST'])
 @app.route('/tasks_list/<task_id>/')
 def edit_task(task_id):
+    if request.method == 'POST':
+        edit_task(request.form, id)
+        return redirect(url_for('tasks_list', email=session['email']))
     pass
 
 

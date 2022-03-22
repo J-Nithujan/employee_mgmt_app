@@ -64,7 +64,7 @@ class Tasks(db.Model):
     project = db.Column(db.VARCHAR, nullable=False)
     title = db.Column(db.VARCHAR, nullable=False)
     description = db.Column(db.TEXT, nullable=False)
-    validation = db.Column(db.BOOLEAN)
+    validation = db.Column(db.BOOLEAN, default=0)
     since = db.Column(db.DATETIME, nullable=False)
     until = db.Column(db.DATETIME, nullable=False)
 

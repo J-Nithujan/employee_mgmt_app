@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<!--
+ * File: gabarit.html
+ * Author: Nithujan Jegatheeswaran
+ * Brief:
+ * Version: ????
+ -->
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -44,7 +50,7 @@
                     <a class="nav-link" href="{{ url_for('payslips') }}">
                         Fiches de salaire
                     </a>
-                    {% if session['is_hr_employee'] %}
+                    {% if session['is_hr_employee'] %} {# TODO: ok to use session var in html ? #}
                     <div class="sb-sidenav-menu-heading">Gestion des employés</div>
                         <a class="nav-link" href="#">Liste des employés</a>
                         <a class="nav-link" href="#">Nouvel/le employé/e</a>
