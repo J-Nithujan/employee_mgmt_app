@@ -67,6 +67,7 @@ class Tasks(db.Model):
     validation = db.Column(db.BOOLEAN, default=0)
     since = db.Column(db.DATETIME, nullable=False)
     until = db.Column(db.DATETIME, nullable=False)
+    duration = db.Column(db.DATETIME, nullable=False)
 
 
 # INFO: This cannot be used for inner joins
