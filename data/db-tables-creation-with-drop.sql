@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `db_employees`.`employees` (
   `percentage` DECIMAL(5,2) NOT NULL,
   `salary` DECIMAL(7,2) NOT NULL,
   `holiday_balance` DECIMAL(4,2) NOT NULL DEFAULT 0,
-  `under_contract` TINYINT NOT NULL,
+  `under_contract` TINYINT NOT NULL DEFAULT 1,
   `work_time` DECIMAL NOT NULL DEFAULT 0,
   `password` VARCHAR(64) NOT NULL,
   `employee_id` INT NULL DEFAULT NULL,
