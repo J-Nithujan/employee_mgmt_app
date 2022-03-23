@@ -6,12 +6,12 @@
  -->
 {% extends 'gabarit.html' %}
 
-{% block title %}Nouvelle Tâche{% endblock title %}
+{% block title %}Édition d'une tâche{% endblock title %}
 
 {% block content %}
-    <h1 class="mt-4">Entrer Une Nouvelle Tâche Terminée</h1>
+    <h1 class="mt-4">Modification d'une tâche du mois en cours</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Nouvelle Tâche</li>
+        <li class="breadcrumb-item active">Édition de la tâche</li>
     </ol>
     <div class="row">
         {% if errors %}
@@ -36,35 +36,34 @@
                                 <div class="mb-3">
                                     <label class="form-label" for="project">Projet</label>
                                     <input type="text" id="project" name="project" class="form-control"
-                                            {% if form %} value="{{ form['project'] }}" {% endif %}>
+                                           value="{{ data['project'] }}" disabled>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="title">Titre</label>
-                                    <input type="text" id="title" name="title" class="form-control" {% if form %}
-                                           value="{{ form['title'] }}" {% endif %}>
+                                    <label class="data-label" for="title">Titre</label>
+                                    <input type="text" id="title" name="title" class="form-control"
+                                           value="{{ data['title'] }}" disabled>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="since">Heure de début</label>
-                                    <input type="time" id="since" name="since" class="form-control" {% if form %}
-                                           value="{{ form['since'] }}" {% endif %}>
+                                    <label class="data-label" for="since">Heure de début</label>
+                                    <input type="time" id="since" name="since" class="form-control"
+                                           value="{{ data['since'] }}">
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="until">Heure de fin</label>
-                                    <input type="time" id="until" name="until" class="form-control" {% if form %}
-                                           value="{{ form['until'] }}" {% endif %}>
+                                    <label class="data-label" for="until">Heure de fin</label>
+                                    <input type="time" id="until" name="until" class="form-control"
+                                           value="{{ data['until'] }}">
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="date">Date</label>
-                                    <input type="date" id="date" name="date" class="form-control" {% if form %}
-                                           value="{{ form['date'] }}" {% endif %}>
+                                    <label class="data-label" for="date">Date</label>
+                                    <input type="date" id="date" name="date" class="form-control"
+                                           value="{{ data['date'] }}">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="mb-3">
-                                    <label class="form-label" for="description">Description</label>
-                                    <textarea id="description" name="description" class="form-control">{% if form %}
-                                        {% if form['description'] %} {{ form['description'] }}
-                                        {% endif %}{% endif %}</textarea>
+                                    <label class="data-label" for="description">Description</label>
+                                    <textarea id="description" name="description"
+                                              class="form-control">{{ data['description'] }}</textarea>
                                 </div>
                                 <input type="submit" class="form-control bg-dark text-white" value="Valider">
                             </div>

@@ -41,7 +41,7 @@
                     <a class="nav-link" href="{{ url_for('index') }}">
                         Profil
                     </a>
-                    <a class="nav-link" href="{{ url_for('tasks_list', email=session['email']) }}">
+                    <a class="nav-link" href="{{ url_for('tasks_list', email=email) }}">
                         Liste des tâches
                     </a>
                     <a class="nav-link" href="{{ url_for('new_task') }}">
@@ -50,7 +50,7 @@
                     <a class="nav-link" href="{{ url_for('payslips') }}">
                         Fiches de salaire
                     </a>
-                    {% if session['is_hr_employee'] %} {# TODO: ok to use session var in html ? #}
+                    {% if is_hr_employee %}
                     <div class="sb-sidenav-menu-heading">Gestion des employés</div>
                         <a class="nav-link" href="#">Liste des employés</a>
                         <a class="nav-link" href="#">Nouvel/le employé/e</a>

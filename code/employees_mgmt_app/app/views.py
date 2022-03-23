@@ -42,31 +42,36 @@ def index():
         session['is_hr_employee'] = True
     else:
         session['is_hr_employee'] = False
-    return render_template('index.html', data=data)
+    return render_template('index.html', data=data, is_hr_employee=session['is_hr_employee'], email=session['email'])
 
 
 @app.route('/tasks_list/<email>/')
 def tasks_list(email):
     tasks = get_tasks(email)
-    return render_template('tasks_list.html', list=tasks)
+    return render_template('tasks_list.html', email=session['email'], list=tasks)
 
 
 @app.route('/new_task/')
 @app.route('/new_task/', methods=['POST'])
 def new_task():
     if request.method == 'POST':
-        add_task(request.form, session['email'])
-        return redirect(url_for('tasks_list', email=session['email']))
+        msg = add_task(request.form, session['email'])
+        if msg:
+            return render_template('new_task.html', email=session['email'], errors=msg, form=request.form)
+        else:
+            return redirect(url_for('tasks_list', email=session['email']))
     else:
-        return render_template('new_task.html')
+        return render_template('new_task.html', email=session['email'])
 
 
 @app.route('/tasks_list/', methods=['POST'])
 @app.route('/tasks_list/<task_id>/')
 def edit_task(task_id):
     if request.method == 'POST':
-        edit_task(request.form, id)
+        update_task(request.form, task_id)
         return redirect(url_for('tasks_list', email=session['email']))
+    else:
+        render_template('edit_task.html', email=session['email'])
     pass
 
 
