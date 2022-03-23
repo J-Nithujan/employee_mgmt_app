@@ -11,6 +11,10 @@
 SET NAMES 'utf8';
 USE db_employees;
 --
+-- -- Disable foreign keys
+--
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+--
 -- Delete data from the table 'tasks'
 --
 TRUNCATE TABLE tasks;
@@ -356,3 +360,6 @@ INSERT INTO tasks(id, project, title, description, validation, since, until, dur
 (48, 'IJVR23', 'Eum.', 'Sit eos veritatis unde magnam.', 1, '2015-01-01 00:00:07', '2015-01-02 13:34:12.104202', '01:08:03'),
 (49, 'HDYC33', 'Autem magni.', 'Sint quae architecto ipsa.', 1, '2020-09-26 02:45:24', '2020-09-28 05:46:55.271768', '02:12:08'),
 (50, 'JMFT93', 'Est dolore.', 'Deleniti ut. Sit cupiditate.', 1, '2021-01-28 09:00:08', '2021-01-30 18:01:52.58082', '06:57:33');
+-- -- Enable foreign keys
+--
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
