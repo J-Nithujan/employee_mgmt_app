@@ -47,7 +47,7 @@ def index():
 
 @app.route('/tasks_list/<email>/')
 def tasks_list(email):
-    tasks = get_tasks(email)
+    tasks = get_tasks_list(email)
     return render_template('tasks_list.html', email=session['email'], list=tasks)
 
 
@@ -55,23 +55,24 @@ def tasks_list(email):
 @app.route('/new_task/', methods=['POST'])
 def new_task():
     if request.method == 'POST':
-        msg = add_task(request.form, session['email'])
-        if msg:
-            return render_template('new_task.html', email=session['email'], errors=msg, form=request.form)
+        msg_list = add_task(request.form, session['email'])
+        if msg_list:
+            return render_template('new_task.html', email=session['email'], errors=msg_list, form=request.form)
         else:
             return redirect(url_for('tasks_list', email=session['email']))
     else:
         return render_template('new_task.html', email=session['email'])
 
 
-@app.route('/tasks_list/', methods=['POST'])
-@app.route('/tasks_list/<task_id>/')
+@app.route('/edit_task/<task_id>')
+@app.route('/edit_task/', methods=['POST'])
 def edit_task(task_id):
     if request.method == 'POST':
         update_task(request.form, task_id)
         return redirect(url_for('tasks_list', email=session['email']))
     else:
-        render_template('edit_task.html', email=session['email'])
+        task = get_selected_task(task_id)
+        return render_template('edit_task.html', email=session['email'], data=task)
     pass
 
 
