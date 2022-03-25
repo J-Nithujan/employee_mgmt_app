@@ -14,6 +14,12 @@ app.config.from_object('config')
 @app.route('/')
 @app.route('/login/', methods=['POST'])
 def login():
+    """
+    Displays the login page and handles the login form's submission,
+    when the credentials are correct redirect to the index URL.
+    
+    :return: Renders the 'login.html' template
+    """
     if request.method == 'POST':
         if check_login(request.form['email'], request.form['password']):
             # Successfully logged in
@@ -29,12 +35,22 @@ def login():
 
 @app.route('/logout/')
 def logout():
+    """
+    Clear Flask's session variable and displays  login page.
+    
+    :return: Renders the 'login.html' template
+    """
     session.clear()
     return redirect(url_for('login'))
 
 
 @app.route('/index/')
 def index():
+    """
+    Gets the index page data and displays it in the 'index.html' web page.
+    
+    :return: Renders the 'index.html' template
+    """
     data = get_index_data(session['email'])
     session['firstname'] = data['firstname']
     session['lastname'] = data['lastname']
@@ -47,6 +63,12 @@ def index():
 
 @app.route('/tasks_list/<email>/')
 def tasks_list(email):
+    """
+    Retrieve the logged employee's tasks list for the current month and displays it in the 'tasks_list.html' web page.
+    
+    :param email: logged employee's email address
+    :return: Renders the 'tasks_list.html' template
+    """
     tasks = get_tasks_list(email)
     return render_template('tasks_list.html', email=session['email'], list=tasks)
 
@@ -54,6 +76,12 @@ def tasks_list(email):
 @app.route('/new_task/')
 @app.route('/new_task/', methods=['POST'])
 def new_task():
+    """
+    Displays the web page used to add a new accomplished task,
+    on the form's submission adds the task in the database and redirect to the tasks_list's URL.
+    
+    :return: Renders the 'new_task.html' template
+    """
     if request.method == 'POST':
         msg_list = add_task(request.form, session['email'])
         if msg_list:
@@ -67,6 +95,13 @@ def new_task():
 @app.route('/edit_task/<task_id>')
 @app.route('/edit_task/', methods=['POST'])
 def edit_task(task_id):
+    """
+    Displays the web page with the form used to modify an existing task,
+    on the form's submission update the task in the database and redirect to the tasks_list's URL.
+    
+    :param task_id: Task's id in the database
+    :return: Renders the 'edit_task.html' template
+    """
     if request.method == 'POST':
         update_task(request.form, task_id)
         return redirect(url_for('tasks_list', email=session['email']))
@@ -78,5 +113,10 @@ def edit_task(task_id):
 
 @app.route('/payslips/')
 def payslips():
-    # TODO: payslips page and model functions
+    """
+    Gets the employee's payslips list in the database and displays it the 'payslips.html' web page.
+    
+    :return: Renders the 'payslips.html' template
+    """
+    # TODO: payslips list page and model functions
     pass

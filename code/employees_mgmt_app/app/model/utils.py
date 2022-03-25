@@ -14,6 +14,12 @@ from decimal import Decimal
 
 
 def check_login(email: str, password: str) -> bool:
+    """
+    
+    :param email:
+    :param password:
+    :return:
+    """
     encoded = password.encode()
     hashed = hashlib.sha256(encoded)
     stmt = select(Employees.email).where(Employees.email == email,
@@ -27,6 +33,11 @@ def check_login(email: str, password: str) -> bool:
 
 
 def get_index_data(email: str) -> list:
+    """
+    
+    :param email:
+    :return:
+    """
     supervisor = aliased(Employees)
     query = select(Employees.firstname, Employees.lastname, Employees.birthdate, Employees.road, Addresses.zip,
                    Addresses.city, Employees.phone_number, Employees.hiring_date, Employees.percentage,
@@ -44,6 +55,11 @@ def get_index_data(email: str) -> list:
 
 
 def get_tasks_list(email):
+    """
+    
+    :param email:
+    :return:
+    """
     query = select(Tasks.id, Tasks.project, Tasks.title, Tasks.since, Tasks.until, Tasks.validation). \
         join(EmployeeHasTask, Tasks.id == EmployeeHasTask.task_id). \
         join(Employees, EmployeeHasTask.employee_id == Employees.id).where(Employees.email == email)
@@ -53,6 +69,12 @@ def get_tasks_list(email):
 
 
 def add_task(post, email) -> list[str]:
+    """
+    
+    :param post:
+    :param email:
+    :return:
+    """
     msg_list = check_task_form(post)
     
     if len(msg_list) != 0:
@@ -87,12 +109,30 @@ def add_task(post, email) -> list[str]:
 
 
 def get_selected_task(task_id):
+    """
+    
+    :param task_id:
+    :return:
+    """
     query = select(Tasks.project, Tasks.title, Tasks.since, Tasks.until, Tasks.description).where(Tasks.id == task_id)
     task = db.session.execute(query).first()
+    
+    # change of the time related data to correspond to the form's input field
+    task_list = dict(task)
+    task_list['since'] = task['since'].strftime('%H:%M')
+    task_list['until'] = task['until'].strftime('%H:%M')
+    task_list['date'] = task['until'].strftime('%d-%m-%Y')
+    task = tuple(task_list)
     return task
 
 
 def update_task(form, task_id):
+    """
+    
+    :param form:
+    :param task_id:
+    :return:
+    """
     query = select(Tasks).where(Tasks.id == task_id)
     # old_duration =
     form_datetime_list = convert_str_to_datetime(form['since'], form['until'], form['date'])
@@ -100,15 +140,25 @@ def update_task(form, task_id):
     updated_task = Tasks(project=form['project'], title=form['title'], description=form['description'],
                          since=form_datetime_list[0], until=form_datetime_list[1], duration=duration)
     old_task = db.session.execute(query).first()
-    
-    pass
 
 
 def get_payslips():
+    """
+    
+    :return:
+    """
     pass
+
+# Other functions only used in this file
+# ------------------------------------------
 
 
 def check_task_form(post):
+    """
+    
+    :param post:
+    :return:
+    """
     error_msg: list[str] = []
     
     if post['project'] == '':
@@ -130,6 +180,13 @@ def check_task_form(post):
 
 
 def convert_str_to_datetime(time_1: str, time_2: str, date: str) -> tuple:
+    """
+    
+    :param time_1:
+    :param time_2:
+    :param date:
+    :return:
+    """
     time_1_str = date + " " + time_1
     time_2_str = date + " " + time_2
     
@@ -139,6 +196,11 @@ def convert_str_to_datetime(time_1: str, time_2: str, date: str) -> tuple:
 
 
 def get_employee_work_time(employee_id):
+    """
+    
+    :param employee_id:
+    :return:
+    """
     query_previous_work_time = select(Employees.work_time).where(Employees.id == employee_id)
     query_result = db.session.execute(query_previous_work_time).first()
     return query_result['work_time']
@@ -148,6 +210,12 @@ SECONDS_IN_AN_HOUR: Decimal = Decimal(3600)
 
 
 def update_employee_work_time(employee_id, duration):
+    """
+    
+    :param employee_id:
+    :param duration:
+    :return:
+    """
     current_work_time = get_employee_work_time(employee_id)
     duration_seconds: int = duration.seconds
     decimal_duration: Decimal = Decimal(round((duration_seconds / SECONDS_IN_AN_HOUR), ndigits=2))

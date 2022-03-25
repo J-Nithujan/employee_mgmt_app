@@ -5,22 +5,30 @@
 
 from flask_sqlalchemy import SQLAlchemy
 
-
 db = SQLAlchemy()
 
 
 class Addresses(db.Model):
+    """
+    A class for the table 'addresses' in the MySQL database
+    """
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     zip = db.Column(db.VARCHAR, nullable=False)
     city = db.Column(db.VARCHAR, nullable=False)
 
 
 class Departments(db.Model):
+    """
+        A class for the table 'departments' in the MySQL database
+    """
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.VARCHAR)
 
 
 class Employees(db.Model):
+    """
+        A class for the table 'employees' in the MySQL database
+    """
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     email = db.Column(db.VARCHAR, nullable=False)
     firstname = db.Column(db.VARCHAR, nullable=False)
@@ -42,17 +50,26 @@ class Employees(db.Model):
 
 
 class EmployeeHasTask(db.Model):
+    """
+        A class for the table 'employee_has_task' in the MySQL database
+    """
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     employee_id = db.Column(db.Integer, nullable=False)
     task_id = db.Column(db.Integer, nullable=False)
 
 
 class Jobs(db.Model):
+    """
+        A class for the table 'jobs' in the MySQL database
+    """
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.VARCHAR, nullable=False)
 
 
 class Payslips(db.Model):
+    """
+        A class for the table 'payslips' in the MySQL database
+    """
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     file_path = db.Column(db.VARCHAR, nullable=False)
     date = db.Column(db.DATE, nullable=False)
@@ -60,6 +77,9 @@ class Payslips(db.Model):
 
 
 class Tasks(db.Model):
+    """
+        A class for the table 'tasks' in the MySQL database
+    """
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     project = db.Column(db.VARCHAR, nullable=False)
     title = db.Column(db.VARCHAR, nullable=False)
@@ -68,7 +88,6 @@ class Tasks(db.Model):
     since = db.Column(db.DATETIME, nullable=False)
     until = db.Column(db.DATETIME, nullable=False)
     duration = db.Column(db.DATETIME, nullable=False)
-
 
 # INFO: This cannot be used for inner joins
 # ---
