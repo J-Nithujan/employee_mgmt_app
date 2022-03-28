@@ -129,4 +129,48 @@ def payslips():
     :return: Renders the 'payslips.html' template
     """
     # TODO: payslips list page and model functions
+@app.route('/employee_list/')
+def employee_list():
+    employees: list[tuple] = get_employee_list()
+    return render_template('employee_list.html', is_hr_employee=session['is_hr_employee'],
+                           email=session['email'], list=employees)
+
+
+@app.route('/new_employee/')
+@app.route('/new_employee/', methods=['POST'])
+def new_employee():
+    if request.method == 'POST':
+        errors = add_employee(request.form)
+        if errors:
+            options: dict = get_new_employee_form_select_options()
+            return render_template('new_employee.html', is_hr_employee=session['is_hr_employee'],
+                                   email=session['email'], addresses=options['addresses'],
+                                   supervisors=options['supervisors'], departments=options['departments'],
+                                   jobs=options['jobs'], error_list=errors, form=request.form)
+        else:
+            return redirect(url_for('employee_list'))
+    else:
+        options: dict = get_new_employee_form_select_options()
+        return render_template('new_employee.html', is_hr_employee=session['is_hr_employee'], email=session['email'],
+                               addresses=options['addresses'], supervisors=options['supervisors'],
+                               departments=options['departments'], jobs=options['jobs'])
+
+
+def get_new_employee_form_select_options() -> dict:
+    addresses = get_all_addresses()
+    supervisors = get_all_supervisors()
+    departments = get_all_departments()
+    jobs = get_all_jobs()
+    select_options: dict = {'addresses': addresses, 'supervisors': supervisors, 'departments': departments,
+                            'jobs': jobs}
+    return select_options
+
+
+@app.route('/employee_list/edit_employee/<employee_id>/')
+def edit_employee(employee_id):
+    pass
+
+
+@app.route('/employee_list/remove_employee/<employee_id>/')
+def remove_employee(employee_id):
     pass
