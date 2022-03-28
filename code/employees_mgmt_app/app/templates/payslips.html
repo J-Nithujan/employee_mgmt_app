@@ -1,37 +1,38 @@
 <!--
  * File: payslips.html
  * Author: Nithujan Jegatheeswaran
- * Brief:
- * Version: ????
+ * Brief: Template used to display the payslip list
+ * Version: 28.03.2022
  -->
-{% extends 'gabarit.html' %}
+{% extends 'header_nav_footer.html' %}
 
 {% block title %}Fiches de salaire{% endblock title %}
 
 {% block content %}
-    <h1 class="mt-4">Mes Fiches De Salaire</h1>
+    <h1 class="mt-4">Mes fiches de salaire</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Fiches De Salaire</li>
+        <li class="breadcrumb-item active">Fiches de salaire</li>
     </ol>
     <div class="row">
         <div class="col-md-12">
             <div class="card mb-4">
-                <div class="card-header">Liste Complète</div>
+                <div class="card-header">Liste complète</div>
                 <div class="card-body">
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Titre</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for payslip in list %}
-                        <tr>
-                            <td>{{ payslip['filepath'][::-1] }}</td>
-                        </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                    WORK IN PROGRESS
+{#                    <table>#}
+{#                        <thead>#}
+{#                        <tr>#}
+{#                            <th>Titre</th>#}
+{#                        </tr>#}
+{#                        </thead>#}
+{#                        <tbody>#}
+{#                        {% for payslip in list %}#}
+{#                        <tr>#}
+{#                            <td>{{ payslip['filepath'][::-1] }}</td>#}
+{#                        </tr>#}
+{#                        {% endfor %}#}
+{#                        </tbody>#}
+{#                    </table>#}
                 </div>
             </div>
         </div>

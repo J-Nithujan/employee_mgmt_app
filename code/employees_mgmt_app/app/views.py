@@ -1,7 +1,8 @@
 # File: views.py
 # Author: Nithujan Jegatheeswaran
-# Brief: 
-# Version: 19.03.2022
+# Brief: This file indicates the routes that are available to the Flask app
+# Version: 27.03.2022
+
 
 from flask import Flask, request, redirect, url_for, render_template, session
 
@@ -128,7 +129,10 @@ def payslips():
     
     :return: Renders the 'payslips.html' template
     """
-    # TODO: payslips list page and model functions
+    # TODO: finish payslips template page and model functions
+    return render_template('payslips.html', is_hr_employee=session['is_hr_employee'], email=session['email'])
+
+
 @app.route('/employee_list/')
 def employee_list():
     employees: list[tuple] = get_employee_list()
