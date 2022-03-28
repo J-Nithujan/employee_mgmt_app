@@ -1,22 +1,22 @@
 <!--
- * File: tasks_list.html
+ * File: task_list.html
  * Author: Nithujan Jegatheeswaran
- * Brief:
- * Version: ????
+ * Brief: Template used to display the logged employee's task list
+ * Version: 28.03.2022
  -->
-{% extends 'gabarit.html' %}
+{% extends 'header_nav_footer.html' %}
 
-{% block title %}Liste des Tâches{% endblock title %}
+{% block title %}Liste des tâches{% endblock title %}
 
 {% block content %}
-    <h1 class="mt-4">Liste des Tâches Effectuées</h1>
+    <h1 class="mt-4">Liste des tâches effectuées</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Liste Des Tâches</li>
+        <li class="breadcrumb-item active">Liste des tâches</li>
     </ol>
     <div class="row">
         <div class="col-md-12">
             <div class="card mb-4">
-                <div class="card-header">Tâches Effectuées Durant Ce Mois</div>
+                <div class="card-header">Tâches effectuées durant ce mois</div>
                 <div class="card-body">
                     <table id="datatablesSimple" class="table table-striped">
                         <thead>
@@ -31,15 +31,15 @@
                         </thead>
                         <tbody>
                         {% for task in list %}
-                            {% if task['validation'] == 0 %}
+                            {% if task.validation == 0 %}
                                 <tr>
-                                    <td>{{ task['project'] }}</td>
-                                    <td>{{ task['title'] }}</td>
-                                    <td>{{ task['since'].strftime('%H:%M') }}</td>
-                                    <td>{{ task['until'].strftime('%H:%M') }}</td>
-                                    <td>{{ task['until'].strftime('%d-%m-%Y') }}</td>
+                                    <td>{{ task.project }}</td>
+                                    <td>{{ task.title }}</td>
+                                    <td>{{ task.since.strftime('%H:%M') }}</td>
+                                    <td>{{ task.until.strftime('%H:%M') }}</td>
+                                    <td>{{ task.until.strftime('%d-%m-%Y') }}</td>
                                     <td class="text-center">
-                                        <a href="{{ url_for('edit_task', task_id=task['id']) }}">
+                                        <a href="{{ url_for('edit_task', task_id=task.id) }}">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                     </td>
