@@ -224,7 +224,8 @@ INSERT INTO employees(id, email, firstname, lastname, birthdate, phone_number, r
 (48, 'AntoineLittlefield@nowhere.com', 'Kresandra', 'Fuchs', '1967-03-18', '0758602395', '9 St. Alban''s Place', '2014-06-27', 95.0, 6191.46, 5.0, 0, 112, '1d34fec2f9bd590700efc740ec1a03f726cf2bd835663e8ca92404e7dd085481', 6, 26, 7, 2),
 (49, 'jfhbwpxk.jxmonkyjvl@example.com', 'Rüder', 'üdiger', '1957-02-26', '0702495807', '12-17 Bishop''s Bridge Road', '2020-04-13', 60.5, 7634.27, 8.0, 1, 87, '1f678b3f6ec73c5b9544c76354758cb82f8d1196fa68c43acc435aa7aa898ce8', 7, 37, 19, 9),
 (50, 'pqjndav80@example.com', 'Eyck', 'Heuer', '1971-01-29', '0778825391', '1 A-B Guilford Street', '2016-09-16', 70.0, 8998.51, 14.5, 0, 20, '89c195f17b27f42399098f9b743291dc04d7c7567b2cbbe8c509ea66a5a1cb3c', 1, 6, 14, 7),
-(51, 'ex.ample@example.com', 'Ex', 'Ample', '1971-01-29', '0778825391', '1 A-B Guilford Street', '2016-09-16', 70.0, 8998.51, 14.5, 1, 20, '97c94ebe5d767a353b77f3c0ce2d429741f2e8c99473c3c150e2faa3d14c9da6', 7, 24, 17, 12);
+(51, 'john.smith@example.com', 'John', 'Smith', '1971-01-29', '0778825391', '1 A-B Guilford Street', '2016-09-16', 70.0, 8998.51, 14.5, 1, 20, '97c94ebe5d767a353b77f3c0ce2d429741f2e8c99473c3c150e2faa3d14c9da6', 7, 24, 17, 12),
+(52, 'mona.dupree@example.com', 'Mona', 'Dupree', '1971-01-29', '0778825391', '1 A-B Guilford Street', '2016-09-16', 70.0, 8998.51, 14.5, 1, 20, '97c94ebe5d767a353b77f3c0ce2d429741f2e8c99473c3c150e2faa3d14c9da6', 7, 24, 17, 9);
 
 --
 -- Inserting data into table jobs
