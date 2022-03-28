@@ -1,7 +1,7 @@
 # File: config.py
 # Author: Nithujan Jegatheeswaran
-# Brief: Contains all the configuration variables for the application
-# Version: 16.03.2022
+# Brief: Contains all the configuration variables for the Flask application
+# Version: 27.03.2022
 
 import random
 import string
@@ -9,11 +9,9 @@ import string
 # Generate a random key for session
 SECRET_KEY = ''.join([random.choice(string.printable) for _ in range(24)])
 
-# Suppress error message due to future disabling
-SQLALCHEMY_TRACK_MODIFICATIONS = False
+# Set to True or False to suppress error message due to future disabling
+SQLALCHEMY_TRACK_MODIFICATIONS = True
 
-# MySQL config
-# ---
 # To display the interaction with the database and the program in the console
 SQLALCHEMY_ECHO = True
 

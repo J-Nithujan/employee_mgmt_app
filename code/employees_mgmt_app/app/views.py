@@ -56,10 +56,8 @@ def index():
     
     :return: Renders the 'index.html' template
     """
-    data = get_index_data(session['email'])
-    session['firstname'] = data['firstname']
-    session['lastname'] = data['lastname']
-    if data['department'] == 'Human Ressources':
+    data = get_employee_data(session['email'])
+    if data['department'] == 'Human Resources':
         session['is_hr_employee'] = True
     else:
         session['is_hr_employee'] = False
