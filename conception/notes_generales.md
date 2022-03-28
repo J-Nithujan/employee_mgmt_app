@@ -5,9 +5,9 @@
 ## 1. Tâches globales
 
 - [x] clarification CdC
-- [ ] modélisation bdd
+- [x] modélisation bdd
   - [x] script création
-  - [ ] ajouter DROP
+  - [x] ajouter DROP
 
 - [x] choix langages (et logiciels) => python + flask + flask-sqlalchemy + 
 - [x] choix implémentation c# et /ou web+PHP ou python => python + web
@@ -63,12 +63,12 @@ Le programme sera destiné à une entreprise informatique ()
 
   ==> Le tout en python
   
-- planification pour les fiches de salaires:
+- planification de la création des fiches de salaires:
 
   - https://www.geeksforgeeks.org/python-schedule-library/
   
-- extensions possible
+- extensions / améliorations possible
 
   - page de contact (support, entreprise, etc)
   - backup de la base de données
-  - crypté les mots de passe
+  - validation des formulaire avec Flask-WTF, extension Flask permettant d'utiliser WTForms
