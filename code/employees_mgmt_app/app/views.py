@@ -4,8 +4,13 @@
 # Version: 19.03.2022
 
 from flask import Flask, request, redirect, url_for, render_template, session
-from .model.utils import *
-import base64
+
+from app.model.employees_mgmt import *
+from app.model.tasks_mgmt import *
+from app.model.addresses_mgmt import *
+from app.model.jobs_mgmt import *
+from app.model.departments_mgmt import *
+from app.model.payslips_mgmt import *
 
 app = Flask(__name__)
 app.config.from_object('config')
