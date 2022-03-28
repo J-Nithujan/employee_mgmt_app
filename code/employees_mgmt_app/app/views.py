@@ -97,22 +97,27 @@ def new_task():
         return render_template('new_task.html', is_hr_employee=session['is_hr_employee'], email=session['email'])
 
 
-@app.route('/edit_task/<task_id>')
-@app.route('/edit_task/', methods=['POST'])
-def edit_task(task_id):
+@app.route('/task_list/edit_task/<task_id>')
+@app.route('/task_list/edit_task/<task_id>', methods=['POST'])
+def edit_task(task_id=None):
     """
     Displays the web page with the form used to modify an existing task,
     on the form's submission update the task in the database and redirect to the tasks_list's URL.
-    
+
     :param task_id: Task's id in the database
     :return: Renders the 'edit_task.html' template
     """
     if request.method == 'POST':
-        update_task(request.form, task_id)
-        return redirect(url_for('tasks_list', email=session['email']))
+        errors = update_task(request.form, int(task_id), session['email'])
+        if errors:
+            return render_template('edit_task.html', is_hr_employee=session['is_hr_employee'], email=session['email'],
+                                   data=request.form, error_list=errors)
+        else:
+            return redirect(url_for('task_list', email=session['email']))
     else:
         task = get_selected_task(task_id)
-        return render_template('edit_task.html', email=session['email'], data=task)
+        return render_template('edit_task.html', is_hr_employee=session['is_hr_employee'], email=session['email'],
+                               data=task)
     pass
 
 
