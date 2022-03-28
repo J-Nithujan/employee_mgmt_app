@@ -41,7 +41,7 @@ def login():
 @app.route('/logout/')
 def logout():
     """
-    Clear Flask's session variable and displays  login page.
+    Clear Flask's session variable and displays the login page.
     
     :return: Renders the 'login.html' template
     """
@@ -67,15 +67,16 @@ def index():
 
 
 @app.route('/tasks_list/<email>/')
-def tasks_list(email):
+def task_list(email):
     """
-    Retrieve the logged employee's tasks list for the current month and displays it in the 'tasks_list.html' web page.
+    Retrieve the logged employee's tasks list for the current month and displays it in the 'task_list.html' web page.
     
     :param email: logged employee's email address
-    :return: Renders the 'tasks_list.html' template
+    :return: Renders the 'task_list.html' template
     """
     tasks = get_tasks_list(email)
-    return render_template('tasks_list.html', email=session['email'], list=tasks)
+    return render_template('task_list.html', is_hr_employee=session['is_hr_employee'], email=session['email'],
+                           list=tasks)
 
 
 @app.route('/new_task/')
@@ -84,17 +85,18 @@ def new_task():
     """
     Displays the web page used to add a new accomplished task,
     on the form's submission adds the task in the database and redirect to the tasks_list's URL.
-    
+
     :return: Renders the 'new_task.html' template
     """
     if request.method == 'POST':
         msg_list = add_task(request.form, session['email'])
         if msg_list:
-            return render_template('new_task.html', email=session['email'], errors=msg_list, form=request.form)
+            return render_template('new_task.html', is_hr_employee=session['is_hr_employee'], email=session['email'],
+                                   error_list=msg_list, form=request.form)
         else:
-            return redirect(url_for('tasks_list', email=session['email']))
+            return redirect(url_for('task_list', email=session['email']))
     else:
-        return render_template('new_task.html', email=session['email'])
+        return render_template('new_task.html', is_hr_employee=session['is_hr_employee'], email=session['email'])
 
 
 @app.route('/edit_task/<task_id>')
