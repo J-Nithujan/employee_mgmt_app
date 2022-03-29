@@ -18,7 +18,7 @@ app.config.from_object('config')
 
 
 @app.route('/')
-@app.route('/login/', methods=['POST'])
+@app.route('/login/', methods=['POST', 'GET'])
 def login():
     """
     Displays the login page and handles the login form's submission,
@@ -30,6 +30,12 @@ def login():
         if check_login(request.form['email'], request.form['password']):
             # Successfully logged in
             session['email'] = request.form['email']
+            
+            # TODO: the session.permanent value to test ???
+            # Keeps the session variables for 31 days:
+            # src: https://flask.palletsprojects.com/en/2.1.x/api/?highlight=session#flask.session
+            session.permanent = True
+            
             return redirect(url_for('index'))
         else:
             # Login failed
@@ -91,7 +97,7 @@ def new_task():
         msg_list = add_task(request.form, session['email'])
         if msg_list:
             return render_template('new_task.html', is_hr_employee=session['is_hr_employee'], email=session['email'],
-                                   error_list=msg_list, form=request.form)
+                                   error_list=msg_list, data=request.form)
         else:
             return redirect(url_for('task_list', email=session['email']))
     else:
@@ -100,7 +106,7 @@ def new_task():
 
 @app.route('/task_list/edit_task/<task_id>')
 @app.route('/task_list/edit_task/<task_id>', methods=['POST'])
-def edit_task(task_id=None):
+def edit_task(task_id):
     """
     Displays the web page with the form used to modify an existing task,
     on the form's submission update the task in the database and redirect to the tasks_list's URL.
@@ -112,14 +118,13 @@ def edit_task(task_id=None):
         errors = update_task(request.form, int(task_id), session['email'])
         if errors:
             return render_template('edit_task.html', is_hr_employee=session['is_hr_employee'], email=session['email'],
-                                   data=request.form, error_list=errors)
+                                   is_disabled=True, data=request.form, task_id=task_id, error_list=errors)
         else:
             return redirect(url_for('task_list', email=session['email']))
     else:
         task = get_selected_task(task_id)
         return render_template('edit_task.html', is_hr_employee=session['is_hr_employee'], email=session['email'],
-                               data=task)
-    pass
+                               is_disabled=True, data=task, task_id=task.id)
 
 
 @app.route('/payslips/')
@@ -146,21 +151,21 @@ def new_employee():
     if request.method == 'POST':
         errors = add_employee(request.form)
         if errors:
-            options: dict = get_new_employee_form_select_options()
+            options: dict = get_select_options_for_new_employee_form()
             return render_template('new_employee.html', is_hr_employee=session['is_hr_employee'],
                                    email=session['email'], addresses=options['addresses'],
                                    supervisors=options['supervisors'], departments=options['departments'],
-                                   jobs=options['jobs'], error_list=errors, form=request.form)
+                                   jobs=options['jobs'], error_list=errors, data=request.form)
         else:
             return redirect(url_for('employee_list'))
     else:
-        options: dict = get_new_employee_form_select_options()
+        options: dict = get_select_options_for_new_employee_form()
         return render_template('new_employee.html', is_hr_employee=session['is_hr_employee'], email=session['email'],
                                addresses=options['addresses'], supervisors=options['supervisors'],
                                departments=options['departments'], jobs=options['jobs'])
 
 
-def get_new_employee_form_select_options() -> dict:
+def get_select_options_for_new_employee_form() -> dict:
     addresses = get_all_addresses()
     supervisors = get_all_supervisors()
     departments = get_all_departments()
@@ -172,7 +177,18 @@ def get_new_employee_form_select_options() -> dict:
 
 @app.route('/employee_list/edit_employee/<employee_id>/')
 def edit_employee(employee_id):
-    pass
+    if request.method == 'POST':
+        errors = update_employee(request.form, int(employee_id))
+        if errors:
+            return render_template('edit_employee.html', is_hr_employee=session['is_hr_employee'],
+                                   email=session['email'], is_disabled=True,
+                                   data=request.form, employee_id=employee_id, error_list=errors)
+        else:
+            return redirect(url_for('employee_list', email=session['email']))
+    else:
+        employee = get_selected_employee(employee_id)
+        return render_template('edit_employee.html', is_hr_employee=session['is_hr_employee'], email=session['email'],
+                               data=employee, is_disabled=True, employee_id=employee_id)
 
 
 @app.route('/employee_list/remove_employee/<employee_id>/')

@@ -1,0 +1,77 @@
+<!--
+ * File: task_form.html
+ * Author: Nithujan Jegatheeswaran
+ * Brief:
+ * Version: 29.03.2022
+ -->
+
+{% extends 'header_nav_footer.html' %}
+
+{% block content %}
+    <h1 class="mt-4">{% block h1 %}{% endblock h1 %}</h1>
+    <ol class="breadcrumb mb-4">
+        {% block breadcrumb_list %}{% endblock breadcrumb_list %}
+    </ol>
+    <div class="row">
+        {% if error_list %}
+            {% include 'error_messages.html' %}
+        {% endif %}
+        <div class="col-md-12">
+            <div class="card shadow mb-4">
+                <div class="card-header">Informations sur la tâche</div>
+                <div class="card-body">
+                    <form action="{% block form_action %}{% endblock form_action %}" method="post"
+                          enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label for="project" class="form-label">Projet</label>
+                                    <input type="text" id="project" name="project" class="form-control"
+                                            {% if data %} value="{{ data.project }}" {% endif %}
+                                           {% if is_disabled %}disabled{% endif %}>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="title" class="form-label">Titre</label>
+                                    <input type="text" id="title" name="title" class="form-control"
+                                            {% if data %}
+                                           value="{{ data.title }}" {% endif %}
+                                           {% if is_disabled %}disabled{% endif %}>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="since" class="form-label">Heure de début</label>
+                                    <input type="time" id="since" name="since" class="form-control"
+                                            {% if data %}
+                                           value="{{ data.since.strftime('%H:%M') }}" {% endif %}>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="until" class="form-label">Heure de fin</label>
+                                    <input type="time" id="until" name="until" class="form-control"
+                                            {% if data %}
+                                           value="{{ data.until.strftime('%H:%M') }}" {% endif %}>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="date" class="form-label">Date</label>
+                                    <input type="date" id="date" name="date" class="form-control"
+                                            {% if data %}
+                                           value="{{ data.since.strftime('%Y-%m-%d') }}" {% endif %}
+                                           min="2000-01-01" max="2099-12-31">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label for="description" class="form-label">Description</label>
+                                    <textarea id="description" name="description" class="form-control">{% if data %}
+                                        {% if data.description %} {{ data.description }}
+                                        {% endif %}{% endif %}</textarea>
+                                </div>
+                                <input type="submit" class="form-control bg-dark text-white"
+                                       value="{% block button_value %}{% endblock button_value %}">
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

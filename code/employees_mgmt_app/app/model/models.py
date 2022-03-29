@@ -7,11 +7,14 @@
 This module contains all the mapped class of the tables from database
 """
 
+from decimal import Decimal
+
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-# Relationship table created according to the docs
+# Relationship table created according to the docs at
+# https://docs.sqlalchemy.org/en/14/orm/tutorial.html#building-a-many-to-many-relationship
 employee_has_task = db.Table('employee_has_task',
                              db.Column('id', db.Integer, autoincrement=True, primary_key=True),
                              db.Column('employee_id', db.Integer, db.ForeignKey('employees.id'), primary_key=True,
@@ -27,6 +30,10 @@ class Addresses(db.Model):
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     zip = db.Column(db.VARCHAR, nullable=False)
     city = db.Column(db.VARCHAR, nullable=False)
+    
+    # TODO: add this to all the one-to-one relationship table
+    # one-to-many collection
+    employees = db.relationship("Employees", back_populates="addresses")
 
 
 class Departments(db.Model):
@@ -69,23 +76,14 @@ class Employees(db.Model):
     # if no default value is given the default value is NULL for SQLAlchemy
     holiday_balance = db.Column(db.DECIMAL, default=0.00)
     under_contract = db.Column(db.Boolean, default=1)
-    work_time = db.Column(db.DECIMAL, default=0)
+    work_time: Decimal = db.Column(db.DECIMAL, default=0)
     password = db.Column(db.VARCHAR, nullable=False)
-    employee_id = db.Column(db.Integer)
-    address_id = db.Column(db.Integer, nullable=False)
-    job_id = db.Column(db.Integer, nullable=False)
-    department_id = db.Column(db.Integer, nullable=False)
+    employee_id = db.Column(db.Integer, db.ForeignKey('employees.id'))
+    address_id = db.Column(db.Integer, db.ForeignKey(), nullable=False)
+    job_id = db.Column(db.Integer, db.ForeignKey(), nullable=False)
+    department_id = db.Column(db.Integer, db.ForeignKey(), nullable=False)
     tasks = db.relationship('Tasks', secondary=employee_has_task, lazy='subquery',
                             backref=db.backref('employee', lazy=True))
-
-
-# class EmployeeHasTask(db.Model):
-#     """
-#         A class for the table 'employee_has_task' in the MySQL database
-#     """
-#     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-#     employee_id = db.Column(db.Integer, nullable=False)
-#     task_id = db.Column(db.Integer, nullable=False)
 
 
 class Jobs(db.Model):

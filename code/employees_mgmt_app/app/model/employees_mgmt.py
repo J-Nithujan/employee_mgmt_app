@@ -4,8 +4,7 @@
 # Version: 27.03.2022
 
 from hashlib import sha256
-from decimal import Decimal
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from app.model.models import *
 from sqlalchemy.sql import *
@@ -24,11 +23,9 @@ def check_login(email: str, password: str) -> bool:
     """
     encoded: bytes = password.encode()
     hashed = sha256(encoded)
-    stmt = select(Employees.email).where(Employees.email == email,
-                                         Employees.password == hashed.hexdigest())
-    query_result = db.session.execute(stmt).all()
+    employee = Employees.query.filter_by(email=email, password=hashed.hexdigest()).first()
 
-    if len(query_result) == 1:
+    if employee:
         return True
     else:
         return False
@@ -69,27 +66,30 @@ def get_employee_data(email: str) -> tuple:
 
 
 def get_employee_list() -> list[tuple]:
-    stmt = select(Employees.firstname, Employees.lastname, Employees.email, Employees.hiring_date,
-                  Jobs.name.label('job'), Departments.name.label('department'),
-                  Employees.salary, Employees.percentage). \
-        join(Departments, Employees.department_id == Departments.id). \
-        join(Jobs, Employees.job_id == Jobs.id). \
-        where(Employees.under_contract > 0)
-
-    employee_list = db.session.execute(stmt).all()
+    """
+    
+    :return:
+    """
+    employee_list = Employees.query.order_by(Employees.id).all()
     return employee_list
 
 
 def get_all_supervisors():
+    """
+    
+    :return:
+    """
     # TODO: justify in the project file that supervisors don't have anyone above them
-    stmt = select(Employees.id, Employees.firstname, Employees.lastname).where(Employees.employee_id == None,
-                                                                               Employees.under_contract == 1).order_by(
-        Employees.id)
-    supervisors = db.session.execute(stmt).all()
-    return supervisors
+    supervisor_list = Employees.query.filter_by(id=None).all()
+    return supervisor_list
 
 
 def add_employee(form: ImmutableMultiDict) -> list[str]:
+    """
+    
+    :param form:
+    :return:
+    """
     errors: list[str] = []
     errors = get_error_messages(form)
 
@@ -113,7 +113,23 @@ def add_employee(form: ImmutableMultiDict) -> list[str]:
         return errors
 
 
-def update_employee(form: ImmutableMultiDict, employee_id: str) -> list[str]:
+def get_selected_employee(employee_id):
+    """
+    
+    :param employee_id:
+    :return:
+    """
+    employee = Employees.query.filter_by(id=employee_id).first()
+    return employee
+
+
+def update_employee(form: ImmutableMultiDict, employee_id: int) -> list[str]:
+    """
+    
+    :param form:
+    :param employee_id:
+    :return:
+    """
     # TODO: use ORM object to modify existing entries (same comment for task)
     errors: list[str] = []
     errors = get_error_messages(form, is_new=False)
@@ -121,16 +137,22 @@ def update_employee(form: ImmutableMultiDict, employee_id: str) -> list[str]:
     if errors:
         return errors
     else:
-        stmt = update(Employees).where(Employees.id == employee_id).values(lastname=form['lastname'], )
+        employee = Employees.query.filter_by(id=employee_id).first()
+        
+        for key in employee:
+            if form[key] != employee.key:
+                employee.key = form[key]
+                
+        db.session.add(employee)
+        db.session.commit()
 
 
 # Functions used only in this file
 # ---------------------------------------------
 
-def get_employee_id(email: str) -> int:
-    query = select(Employees.id).where(Employees.email == email)
-    query_result = db.session.execute(query).first()
-    return query_result.id
+def get_employee_by_email(email: str) -> Employees:
+    employee = Employees.query.filter_by(email=email).first()
+    return employee
 
 
 def get_employee_work_time(employee_id: int) -> Decimal:
@@ -147,20 +169,19 @@ def get_employee_work_time(employee_id: int) -> Decimal:
 SECONDS_IN_AN_HOUR: Decimal = Decimal(3600)
 
 
-def update_employee_work_time(employee_id: int, duration) -> None:
+def update_employee_work_time(employee: Employees, duration: timedelta) -> None:
     """
-
-    :param employee_id:
-    :param duration:
+    Update the employee's work_time without committing the change
+    
+    :param employee:
+    :param duration: the
     :return:
     """
-    current_work_time: Decimal = get_employee_work_time(employee_id)
+    current_work_time: Decimal = employee.work_time
     duration_seconds: int = duration.seconds
     decimal_duration: Decimal = Decimal(round((duration_seconds / SECONDS_IN_AN_HOUR), ndigits=2))
     new_total_work_time: Decimal = current_work_time + decimal_duration
-    update_query = update(Employees).where(Employees.id == employee_id).values(work_time=new_total_work_time)
-    db.session.execute(update_query)
-    db.session.commit()
+    employee.work_time = new_total_work_time
 
 
 def get_supervisor(email):

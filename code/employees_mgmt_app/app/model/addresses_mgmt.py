@@ -15,8 +15,5 @@ def get_all_addresses() -> list[tuple]:
     :return: A custom list of tuple ordered by addresses.id that contains addresses.id, addresses.zip and addresses.city
     """
     stmt = select(Addresses.id, Addresses.zip, Addresses.city).order_by(Addresses.id)
-    # TODO: change `db.session.execute()` to `ModelClass.query.[..]` where you can
-    # Get all the entries as ORM object
-    result = Addresses.query.order_by(Addresses.id).all()
     zip_city = db.session.execute(stmt).all()
     return zip_city

@@ -1,0 +1,159 @@
+<!--
+ * File: employee_form.html
+ * Author: Nithujan Jegatheeswaran
+ * Brief: Template containing the form to add or edit an employee in the database
+ * Version: 29.03.2022
+ -->
+
+{% extends 'header_nav_footer.html' %}
+
+{% macro input(type, name, label, form, div_class='col-sm-6 mb-3', disabled=False) %}
+    <div class="{{ div_class }}">
+        <label for="{{ name }}" class="form-label">{{ label }}</label>
+        <input type="{{ type }}" id="{{ name }}" name="{{ name }}" class="form-control"
+               {% if form %}value="{{ form[name] }}"{% endif %} min="" max="" {% if disabled %}disabled{% endif %}>
+    </div>
+{% endmacro %}
+
+{% block content %}
+    <h1 class="mt-4">{% block h1 %}{% endblock h1 %}</h1>
+    <ol class="breadcrumb mb-4">
+        {% block breadcrumb_list %}{% endblock breadcrumb_list %}
+    </ol>
+    <form action="{% block form_action %}{% endblock form_action %}" method="post" enctype="multipart/form-data">
+        <div class="row">
+            {% if error_list %}
+                {% include 'error_messages.html' %}
+            {% endif %}
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card shadow mb-4">
+                    <div class="card-header">Données Personnelles</div>
+                    <div class="card-body">
+                        <div class="row">
+                            {{ input('text', 'lastname', 'Nom', form=data) }}
+                            {{ input('date', 'birthdate', 'Date de naissance', form=data, disabled=is_disabled) }}
+                        </div>
+                        <div class="row">
+                            {{ input('text', 'firstname', 'Prénom', form=data, disabled=is_disabled) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card shadow mb-4">
+                    <div class="card-header">Coordonnées</div>
+                    <div class="card-body">
+                        <div class="row">
+                            {{ input('email', 'email', 'Email', form=data, disabled=is_disabled) }}
+                            {{ input('text', 'road', 'Rue', form=data) }}
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 mb-3">
+                                <label for="phone_number" class="form-label">N° de
+                                    téléphone</label>
+                                <input type="tel" id="phone_number" name="phone_number" class="form-control"
+                                       placeholder="02X XXX XX XX / 07X XXX XX XX"
+                                       {% if data %}value="{{ data.phone_number }}"{% endif %}
+                                       pattern="^0[27][0-9][ ]?[0-9]{3}[ ]?[0-9]{2}[ ]?[0-9]{2}">
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <label for="address_id" class="form-label">NPA Localité</label>
+                                <select name="address_id" id="address_id" class="form-select">
+                                    <option value="default" {% if not data or not data.address_id %}selected{% endif %}
+                                            disabled>...
+                                    </option>
+                                    {% for option in addresses %}
+                                        <option value="{{ option.id }}"
+                                                {% if data %}{% if data.address_id == option.id %}
+                                                selected
+                                                {% endif %}{% endif %}>{{ option.zip }} {{ option.city }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card shadow mb-4">
+                    <div class="card-header">Données Professionnelles</div>
+                    <div class="card-body">
+                        <div class="row">
+                            {{ input('date', 'hiring_date', 'Date d\'engagment', form=data, div_class='col-xl-6 mb-3') }}
+                            <div class="col-xl-6 mb-3">
+                                <label for="employee_id" class="form-label">Supérieur/e</label>
+                                <select name="employee_id" id="employee_id" class="form-select">
+                                    <option value="default"
+                                            {% if not data or not data.employee_id %}selected{% endif %}
+                                            disabled>...
+                                    </option>
+                                    <option value="None" {% if data %}{% if data.employee_id == 'None' %}selected
+                                    {% endif %}{% endif %}>Aucun
+                                    </option>
+                                    {% for option in supervisors %}
+                                        <option value="{{ option.id }}"
+                                                {% if data %}{% if data.employee_id == option.id %}
+                                                selected
+                                                {% endif %}{% endif %}>
+                                            {{ option.firstname }} {{ option.lastname }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6 mb-3">
+                                <label for="department_id" class="form-label">Département</label>
+                                <select name="department_id" id="department_id" class="form-select">
+                                    <option value="default"
+                                            {% if not data or not data.department_id %}selected{% endif %} disabled>...
+                                    </option>
+                                    {% for option in departments %}
+                                        <option value="{{ option.id }}"
+                                                {% if data %}{% if data.department_id == option.id %}
+                                                selected
+                                                {% endif %}{% endif %}>{{ option.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-xl-6 mb-3">
+                                <label for="job_id" class="form-label">Fonction</label>
+                                <select name="job_id" id="job_id" class="data-select">
+                                    <option value="default" {% if not data or not data.job_id %}selected{% endif %}
+                                            disabled>...
+                                    </option>
+                                    {% for option in jobs %}
+                                        <option value="{{ option.id }}"
+                                                {% if data %}{% if data.job_id == option.id %}
+                                                selected
+                                                {% endif %}{% endif %}>{{ option.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            {{ input('text', 'salary', 'Salaire', form=data, div_class='col-xl-6 mb-3') }}
+                            {{ input('text', 'percentage', 'Taux de travail', form=data, div_class='col-xl-6 mb-3') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header">Confirmation</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12 mb-3 mt-3">
+                                <input type="submit" class="form-control bg-dark text-white mb-3"
+                                       value="{% block button_value %}{% endblock button_value %}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock content %}
