@@ -25,11 +25,12 @@ def get_tasks_list(email: str) -> list[Tasks]:
     :return: a list of task object
     """
     employee: Employees = Employees.query.filter_by(email=email).first()
+    task_list: list[Tasks] = []
     for task in employee.tasks:
-        if task.validation != 0:
-            tasks_list = employee.tasks
+        if task.validation is False:
+            task_list = employee.tasks
             
-    return tasks_list
+    return task_list
 
 
 def add_task(form: ImmutableMultiDict[str, str], email: str) -> list[str]:

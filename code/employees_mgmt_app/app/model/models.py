@@ -3,10 +3,6 @@
 # Brief: This file contains all the classes for the database tables
 # Version: 27.03.2022
 
-"""
-This module contains all the mapped class of the tables from database
-"""
-
 from decimal import Decimal
 
 from flask_sqlalchemy import SQLAlchemy
@@ -30,10 +26,9 @@ class Addresses(db.Model):
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     zip = db.Column(db.VARCHAR, nullable=False)
     city = db.Column(db.VARCHAR, nullable=False)
-    
-    # TODO: add this to all the one-to-one relationship table
+
     # one-to-many collection
-    employees = db.relationship("Employees", back_populates="addresses")
+    employees = db.relationship("Employees", lazy=True, backref=db.backref("address", lazy=False))
 
 
 class Departments(db.Model):
@@ -42,6 +37,8 @@ class Departments(db.Model):
     """
     id: db.Column = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.VARCHAR)
+
+    employees = db.relationship("Employees", lazy=True, backref=db.backref("department", lazy=False))
 
 
 class Tasks(db.Model):
@@ -79,11 +76,16 @@ class Employees(db.Model):
     work_time: Decimal = db.Column(db.DECIMAL, default=0)
     password = db.Column(db.VARCHAR, nullable=False)
     employee_id = db.Column(db.Integer, db.ForeignKey('employees.id'))
-    address_id = db.Column(db.Integer, db.ForeignKey(), nullable=False)
-    job_id = db.Column(db.Integer, db.ForeignKey(), nullable=False)
-    department_id = db.Column(db.Integer, db.ForeignKey(), nullable=False)
-    tasks = db.relationship('Tasks', secondary=employee_has_task, lazy='subquery',
-                            backref=db.backref('employee', lazy=True))
+    address_id = db.Column(db.Integer, db.ForeignKey('addresses.id'), nullable=False)
+    job_id = db.Column(db.Integer, db.ForeignKey('jobs.id'), nullable=False)
+    department_id = db.Column(db.Integer, db.ForeignKey('departments.id'), nullable=False)
+    # To get the employees list in the one to many relationship
+    employees = db.relationship("Employees", remote_side=[employee_id], lazy='dynamic')
+    # To get the tasks list in the many to many relationship
+    tasks = db.relationship('Tasks', secondary=employee_has_task, lazy=True,
+                            backref=db.backref('employee', lazy=False))
+    # To get the paylsips list in the one to many relationship
+    payslips = db.relationship('Payslips', lazy=True, backref=db.backref('payslips', lazy=False))
 
 
 class Jobs(db.Model):
@@ -93,6 +95,8 @@ class Jobs(db.Model):
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.VARCHAR, nullable=False)
 
+    employees = db.relationship("Employees", backref=db.backref("job", lazy=True))
+
 
 class Payslips(db.Model):
     """
@@ -101,4 +105,4 @@ class Payslips(db.Model):
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     file_path = db.Column(db.VARCHAR, nullable=False)
     date = db.Column(db.DATE, nullable=False)
-    employee_id = db.Column(db.Integer, nullable=False)
+    employee_id = db.Column(db.Integer, db.ForeignKey('employees.id'), nullable=False)

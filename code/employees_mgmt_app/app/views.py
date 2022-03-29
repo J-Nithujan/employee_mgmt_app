@@ -3,6 +3,7 @@
 # Brief: This file indicates the routes that are available to the Flask app
 # Version: 27.03.2022
 
+from datetime import date, datetime
 
 from flask import Flask, request, redirect, url_for, render_template, session
 
@@ -30,12 +31,12 @@ def login():
         if check_login(request.form['email'], request.form['password']):
             # Successfully logged in
             session['email'] = request.form['email']
-            
+
             # TODO: the session.permanent value to test ???
             # Keeps the session variables for 31 days:
             # src: https://flask.palletsprojects.com/en/2.1.x/api/?highlight=session#flask.session
             session.permanent = True
-            
+
             return redirect(url_for('index'))
         else:
             # Login failed
@@ -96,6 +97,12 @@ def new_task():
     if request.method == 'POST':
         msg_list = add_task(request.form, session['email'])
         if msg_list:
+            if request.form['date'] != '':
+                date_input = datetime.strptime(request.form['date'], '%Y-%m-%d')
+                return render_template('new_task.html', is_hr_employee=session['is_hr_employee'],
+                                       email=session['email'],
+                                       error_list=msg_list, data=request.form, date=date_input)
+
             return render_template('new_task.html', is_hr_employee=session['is_hr_employee'], email=session['email'],
                                    error_list=msg_list, data=request.form)
         else:
@@ -122,9 +129,13 @@ def edit_task(task_id):
         else:
             return redirect(url_for('task_list', email=session['email']))
     else:
-        task = get_selected_task(task_id)
+        task: Tasks = get_selected_task(task_id)
+        task_date = task.until.strftime('%Y-%m-%d')
+        task_until = task.until.strftime('%H:%M')
+        task_since = task.since.strftime('%H:%M')
         return render_template('edit_task.html', is_hr_employee=session['is_hr_employee'], email=session['email'],
-                               is_disabled=True, data=task, task_id=task.id)
+                               is_disabled=True, data=task, since=task_since, until=task_until, date=task_date,
+                               task_id=task.id)
 
 
 @app.route('/payslips/')
@@ -148,24 +159,52 @@ def employee_list():
 @app.route('/new_employee/')
 @app.route('/new_employee/', methods=['POST'])
 def new_employee():
+    options: dict = get_select_options_for_employee_form()
     if request.method == 'POST':
         errors = add_employee(request.form)
         if errors:
-            options: dict = get_select_options_for_new_employee_form()
+            hiring_date = request.form['hiring_date']
             return render_template('new_employee.html', is_hr_employee=session['is_hr_employee'],
                                    email=session['email'], addresses=options['addresses'],
                                    supervisors=options['supervisors'], departments=options['departments'],
-                                   jobs=options['jobs'], error_list=errors, data=request.form)
+                                   jobs=options['jobs'], error_list=errors, data=request.form, hiring_date=hiring_date)
         else:
             return redirect(url_for('employee_list'))
     else:
-        options: dict = get_select_options_for_new_employee_form()
         return render_template('new_employee.html', is_hr_employee=session['is_hr_employee'], email=session['email'],
                                addresses=options['addresses'], supervisors=options['supervisors'],
                                departments=options['departments'], jobs=options['jobs'])
 
 
-def get_select_options_for_new_employee_form() -> dict:
+@app.route('/employee_list/edit_employee/<employee_id>/')
+@app.route('/employee_list/edit_employee/<employee_id>/', methods=['POST'])
+def edit_employee(employee_id):
+    options: dict = get_select_options_for_employee_form()
+    if request.method == 'POST':
+        errors = update_employee(request.form, int(employee_id))
+        if errors:
+            return render_template('edit_employee.html', is_hr_employee=session['is_hr_employee'],
+                                   email=session['email'], is_disabled=True,
+                                   data=request.form, employee_id=employee_id, addresses=options['addresses'],
+                                   supervisors=options['supervisors'], departments=options['departments'],
+                                   jobs=options['jobs'], error_list=errors)
+        else:
+            return redirect(url_for('employee_list', email=session['email']))
+    else:
+        employee: Employees = get_selected_employee(employee_id)
+        return render_template('edit_employee.html', is_hr_employee=session['is_hr_employee'], email=session['email'],
+                               is_disabled=True, data=employee, addresses=options['addresses'],
+                               supervisors=options['supervisors'], departments=options['departments'],
+                               jobs=options['jobs'], employee_id=employee_id)
+
+
+@app.route('/employee_list/remove_employee/<employee_id>/')
+def remove_employee(employee_id):
+    archive_employee(int(employee_id))
+    return redirect(url_for('employee_list'))
+
+
+def get_select_options_for_employee_form() -> dict:
     addresses = get_all_addresses()
     supervisors = get_all_supervisors()
     departments = get_all_departments()
@@ -173,24 +212,3 @@ def get_select_options_for_new_employee_form() -> dict:
     select_options: dict = {'addresses': addresses, 'supervisors': supervisors, 'departments': departments,
                             'jobs': jobs}
     return select_options
-
-
-@app.route('/employee_list/edit_employee/<employee_id>/')
-def edit_employee(employee_id):
-    if request.method == 'POST':
-        errors = update_employee(request.form, int(employee_id))
-        if errors:
-            return render_template('edit_employee.html', is_hr_employee=session['is_hr_employee'],
-                                   email=session['email'], is_disabled=True,
-                                   data=request.form, employee_id=employee_id, error_list=errors)
-        else:
-            return redirect(url_for('employee_list', email=session['email']))
-    else:
-        employee = get_selected_employee(employee_id)
-        return render_template('edit_employee.html', is_hr_employee=session['is_hr_employee'], email=session['email'],
-                               data=employee, is_disabled=True, employee_id=employee_id)
-
-
-@app.route('/employee_list/remove_employee/<employee_id>/')
-def remove_employee(employee_id):
-    pass

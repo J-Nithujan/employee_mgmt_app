@@ -88,7 +88,7 @@
                                 <label for="employee_id" class="form-label">Supérieur/e</label>
                                 <select name="employee_id" id="employee_id" class="form-select">
                                     <option value="default"
-                                            {% if not data or not data.employee_id %}selected{% endif %}
+                                            {% if not data %}selected{% endif %}
                                             disabled>...
                                     </option>
                                     <option value="None" {% if data %}{% if data.employee_id == 'None' %}selected
@@ -121,7 +121,7 @@
                             </div>
                             <div class="col-xl-6 mb-3">
                                 <label for="job_id" class="form-label">Fonction</label>
-                                <select name="job_id" id="job_id" class="data-select">
+                                <select name="job_id" id="job_id" class="form-select">
                                     <option value="default" {% if not data or not data.job_id %}selected{% endif %}
                                             disabled>...
                                     </option>

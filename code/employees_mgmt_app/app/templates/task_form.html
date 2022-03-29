@@ -40,29 +40,29 @@
                                 <div class="mb-3">
                                     <label for="since" class="form-label">Heure de début</label>
                                     <input type="time" id="since" name="since" class="form-control"
-                                            {% if data %}
-                                           value="{{ data.since.strftime('%H:%M') }}" {% endif %}>
+                                            {% if since %}
+                                           value="{{ since }}" {% elif data %}value="{{ data.since }}" {% endif %}>
                                 </div>
                                 <div class="mb-3">
                                     <label for="until" class="form-label">Heure de fin</label>
                                     <input type="time" id="until" name="until" class="form-control"
-                                            {% if data %}
-                                           value="{{ data.until.strftime('%H:%M') }}" {% endif %}>
+                                            {% if until %}
+                                           value="{{ until }}" {% elif data %}value="{{ data.until }}" {% endif %}>
                                 </div>
                                 <div class="mb-3">
                                     <label for="date" class="form-label">Date</label>
                                     <input type="date" id="date" name="date" class="form-control"
-                                            {% if data %}
-                                           value="{{ data.since.strftime('%Y-%m-%d') }}" {% endif %}
+                                            {% if date %}
+                                           value="{{ date }}"{% endif %}
                                            min="2000-01-01" max="2099-12-31">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="mb-3">
                                     <label for="description" class="form-label">Description</label>
-                                    <textarea id="description" name="description" class="form-control">{% if data %}
-                                        {% if data.description %} {{ data.description }}
-                                        {% endif %}{% endif %}</textarea>
+                                    {# WARNING: do not auto indent this file because textarea will be filled #}
+                                    {#          with whitespaces #}
+                                    <textarea id="description" name="description" class="form-control">{% if data %}{% if data.description %}{{ data.description }}{% endif %}{% endif %}</textarea>
                                 </div>
                                 <input type="submit" class="form-control bg-dark text-white"
                                        value="{% block button_value %}{% endblock button_value %}">

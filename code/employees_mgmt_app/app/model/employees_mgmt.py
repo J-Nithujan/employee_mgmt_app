@@ -5,6 +5,7 @@
 
 from hashlib import sha256
 from datetime import datetime, timedelta
+import re
 
 from app.model.models import *
 from sqlalchemy.sql import *
@@ -70,7 +71,12 @@ def get_employee_list() -> list[tuple]:
     
     :return:
     """
-    employee_list = Employees.query.order_by(Employees.id).all()
+    stmt = select(Employees.id, Employees.firstname, Employees.lastname, Employees.birthdate, Employees.email,
+                  Employees.road, Addresses.zip, Addresses.city, Employees.hiring_date,
+                  Departments.name.label('department'), Jobs.name.label('job'), Employees.salary,
+                  Employees.percentage).join(Addresses).join(Departments).join(Jobs).order_by(Employees.id).where(
+        Employees.under_contract != 0)
+    employee_list = db.session.execute(stmt).all()
     return employee_list
 
 
@@ -80,7 +86,7 @@ def get_all_supervisors():
     :return:
     """
     # TODO: justify in the project file that supervisors don't have anyone above them
-    supervisor_list = Employees.query.filter_by(id=None).all()
+    supervisor_list = Employees.query.filter_by(employee_id=None).all()
     return supervisor_list
 
 
@@ -137,20 +143,43 @@ def update_employee(form: ImmutableMultiDict, employee_id: int) -> list[str]:
     if errors:
         return errors
     else:
-        employee = Employees.query.filter_by(id=employee_id).first()
-        
-        for key in employee:
-            if form[key] != employee.key:
-                employee.key = form[key]
-                
-        db.session.add(employee)
+        employee: Employees = Employees.query.filter_by(id=employee_id).first()
+
+        employee.firstname = form['firstname']
+        employee.road = form['road']
+        employee.phone_number = form['phone_number']
+        employee.address_id = form['address_id']
+        employee.hiring_date = form['hiring_date'].strftime('%Y-%m-%d')
+        employee.employee_id = form['employee_id']
+        employee.department_id = form['department_id']
+        employee.job_id = form['job_id']
+        employee.salary = form['salary']
+        employee.percentage = form['percentage']
         db.session.commit()
+
+
+def archive_employee(employee_id: int) -> None:
+    """
+    Sets an employee's `under_contract` column's value to zero.
+
+    :param employee_id: The id of the employee that will be archived
+    :return:
+    """
+    archived_employee: Employees = Employees.query.filter_by(id=employee_id).first()
+    archived_employee.under_contract = 0
+    db.session.commit()
 
 
 # Functions used only in this file
 # ---------------------------------------------
 
 def get_employee_by_email(email: str) -> Employees:
+    """
+    Gets the `Employees` object of an employee.
+
+    :param email: used to select the employee that will be returned
+    :return: an `Employees` ORM object of the selected employee
+    """
     employee = Employees.query.filter_by(email=email).first()
     return employee
 
@@ -196,7 +225,7 @@ def get_supervisor(email):
 
 def get_error_messages(form: ImmutableMultiDict, is_new: bool = True) -> list[str]:
     errors: list[str] = []
-
+    float_pattern = re.compile("^[0-9]*.?[0-9]{1,2}$")
     if form['lastname'] == '':
         errors.append('Indiquer un nom')
 
@@ -231,14 +260,14 @@ def get_error_messages(form: ImmutableMultiDict, is_new: bool = True) -> list[st
 
     if form['salary'] == '':
         errors.append('Indiquer un salaire')
-    elif not form['salary'].isdigit():
+    elif not float_pattern.match(form['salary']):
         errors.append('Indiquer un nombre pour le salaire')
 
     if form['percentage'] == '':
         errors.append('Indiquer un taux de travail')
-    elif not form['percentage'].isdigit():
+    elif not float_pattern.match(form['percentage']):
         errors.append('Indiquer un nombre pour le taux de travail')
-    elif int(form['percentage']) < 0 or int(form['percentage']) > 100:
+    elif float(form['percentage']) < 0 or float(form['percentage']) > 100:
         errors.append('Indiquer un taux de travail strictement supérieur à 0 et inférieur ou égal à 100')
 
     return errors
