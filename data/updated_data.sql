@@ -88,7 +88,7 @@ INSERT INTO `departments` (`id`, `name`) VALUES
 /*!40000 ALTER TABLE `employees` DISABLE KEYS */;
 INSERT INTO `employees` (`id`, `email`, `firstname`, `lastname`, `birthdate`, `phone_number`, `road`, `hiring_date`, `percentage`, `salary`, `holiday_balance`, `under_contract`, `work_time`, `password`, `employee_id`, `address_id`, `job_id`, `department_id`) VALUES
 	(1, 'Conrad_Frizzell61@example.com', 'Paschalis', 'Kleiner', '1980-01-16', '0722457009', '24-36 Wandsworth Bridge Road', '2015-02-14', 15.50, 6871.96, 5.00, 1, 73, '9ff5654065f786b252c6733a6651d87848e6f45603b30cdaec3a42eb47d2de90', NULL, 13, 3, 2),
-	(2, 'Schuler@example.com', 'Joerge', 'Zurbriggen', '1986-08-14', '0732447390', '3 Eversholt Street', '2014-12-22', 80.50, 9111.41, 2.00, 1, 6, 'b56ec8f2611887143057b14d11a73910108506c5d8f4d4f4a163b41e3a839cfc', NULL, 29, 7, 10),
+	(2, 'Schuler@example.com', 'Joerge', 'Zurbriggen', '1986-08-14', '0732447390', '3 Eversholt Street', '2014-12-22', 80.50, 9111.41, 2.00, 0, 6, 'b56ec8f2611887143057b14d11a73910108506c5d8f4d4f4a163b41e3a839cfc', NULL, 29, 7, 10),
 	(3, 'ZapataF@example.com', 'Felin', 'Albrecht', '1965-01-14', '0732412758', '5-9 Bishops Square', '2015-04-02', 10.50, 8316.53, 8.00, 0, 8, '49d2262ea6ee5d742e7abdf5116300ebe488ce975af47c64e2af01987ca4316d', NULL, 32, 1, 7),
 	(4, 'Sanford549@nowhere.com', 'Balintt ', 'Büchner', '1992-04-27', '0753827508', '2-7 Pretoria Avenue', '2021-06-26', 75.00, 8973.45, 9.50, 1, 39, '45ba5d5e6701537c1121c599ecdcb0023418f47af5ad93d8f993c0eca6e50622', NULL, 48, 9, 8),
 	(5, 'Barr@nowhere.com', 'Filiberta', 'Altmann', '1994-02-05', '0742449929', '4 Allsopp Place', '2015-09-11', 50.00, 6338.52, 6.00, 0, 11, '1127319de447cc56fd27680051657a7bb1fbbae8d92165b4f60723867ec71e5b', NULL, 12, 8, 7),
@@ -138,11 +138,11 @@ INSERT INTO `employees` (`id`, `email`, `firstname`, `lastname`, `birthdate`, `p
 	(49, 'jfhbwpxk.jxmonkyjvl@example.com', 'Rüder', 'üdiger', '1957-02-26', '0702495807', '12-17 Bishop\'s Bridge Road', '2020-04-13', 60.50, 7634.27, 8.00, 1, 87, '1f678b3f6ec73c5b9544c76354758cb82f8d1196fa68c43acc435aa7aa898ce8', 7, 37, 19, 9),
 	(50, 'pqjndav80@example.com', 'Eyck', 'Heuer', '1971-01-29', '0778825391', '1 A-B Guilford Street', '2016-09-16', 70.00, 8998.51, 14.50, 0, 20, '89c195f17b27f42399098f9b743291dc04d7c7567b2cbbe8c509ea66a5a1cb3c', 1, 6, 14, 7),
 	(51, 'john.smith@example.com', 'John', 'Smith', '1971-01-29', '0778825391', '1 A-B Guilford Street', '2016-09-16', 70.00, 8998.51, 14.50, 1, 21, '97c94ebe5d767a353b77f3c0ce2d429741f2e8c99473c3c150e2faa3d14c9da6', 7, 24, 17, 12),
-	(52, 'mona.dupre@example.com', 'Mona', 'Dupree', '1971-01-29', '0778825391', '1 A-B Guilford Street', '2016-09-16', 70.00, 8998.51, 14.50, 1, 21, '97c94ebe5d767a353b77f3c0ce2d429741f2e8c99473c3c150e2faa3d14c9da6', 7, 24, 17, 9),
+	(52, 'mona.dupree@example.com', 'Mona', 'Dupree', '1971-01-29', '0778825391', '1 A-B Guilford Street', '2016-09-16', 70.00, 8998.51, 14.50, 1, 21, '97c94ebe5d767a353b77f3c0ce2d429741f2e8c99473c3c150e2faa3d14c9da6', 7, 24, 17, 9),
 	(53, 'test1.1tset@example.com', '1tset', 'Test1', '1960-01-10', '', 'Road 66', '2021-09-27', 100.00, 9999.00, 0.00, 1, 0, '69aa423272eacf55bcbc6c36fc3923868565a2d2dc7ce18c1db1f9a44ac07f95', NULL, 1, 1, 1);
 /*!40000 ALTER TABLE `employees` ENABLE KEYS */;
 
--- Listage des données de la table db_employees.employee_has_task : ~50 rows (environ)
+-- Listage des données de la table db_employees.employee_has_task : ~54 rows (environ)
 /*!40000 ALTER TABLE `employee_has_task` DISABLE KEYS */;
 INSERT INTO `employee_has_task` (`id`, `employee_id`, `task_id`) VALUES
 	(1, 3, 7),
@@ -198,7 +198,9 @@ INSERT INTO `employee_has_task` (`id`, `employee_id`, `task_id`) VALUES
 	(51, 51, 51),
 	(52, 51, 52),
 	(53, 52, 53),
-	(54, 52, 54);
+	(54, 52, 54),
+	(55, 51, 55),
+	(56, 51, 56);
 /*!40000 ALTER TABLE `employee_has_task` ENABLE KEYS */;
 
 -- Listage des données de la table db_employees.jobs : ~20 rows (environ)
@@ -281,7 +283,7 @@ INSERT INTO `payslips` (`id`, `file_path`, `date`, `employee_id`) VALUES
 	(50, '\\payslips\\42\\OCT-21.pdf', '2001-08-20', 42);
 /*!40000 ALTER TABLE `payslips` ENABLE KEYS */;
 
--- Listage des données de la table db_employees.tasks : ~50 rows (environ)
+-- Listage des données de la table db_employees.tasks : ~54 rows (environ)
 /*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
 INSERT INTO `tasks` (`id`, `project`, `title`, `description`, `validation`, `since`, `until`, `duration`) VALUES
 	(1, 'EVDF93', 'Omnis et neque.', 'Quibusdam eos reprehenderit.', 1, '2015-01-01 00:00:02', '2015-01-02 15:17:29', '00:34:26'),
@@ -337,7 +339,9 @@ INSERT INTO `tasks` (`id`, `project`, `title`, `description`, `validation`, `sin
 	(51, 'AB23', 'creation dépôt git', '', 0, '2022-03-28 08:00:00', '2022-03-28 08:05:00', '00:05:00'),
 	(52, 'ABC Project', 'Secret', '', 0, '2022-03-28 10:00:00', '2022-03-28 11:00:00', '01:00:00'),
 	(53, 'test1', 'task1', 'adfafdafafdaffd', 0, '2022-03-28 08:00:00', '2022-03-28 09:10:00', '01:10:00'),
-	(54, 'Test1', 'task2', '', 0, '2022-03-28 10:00:00', '2022-03-28 10:01:00', '00:01:00');
+	(54, 'Test1', 'task2', '                                                                                 \r\n                                        ', 0, '2022-03-28 10:00:00', '2022-03-28 10:01:00', '00:01:00'),
+	(55, 'Pré-TPI', 'Archivage d\'employés', 'fonction permettant d\'archiver un/e employé/e de la liste des employés', 0, '2022-03-29 23:00:00', '2022-03-29 23:15:00', '00:15:00'),
+	(56, 'Pré-TPI', 'Test de caracères spéciaux', '[!@#$%^&*(),.?":{}|<>]', 0, '2022-03-29 23:15:00', '2022-03-29 23:17:00', '00:02:00');
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
