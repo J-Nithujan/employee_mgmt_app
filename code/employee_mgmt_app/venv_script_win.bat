@@ -1,6 +1,5 @@
+:: configure virtualenv for the project
 pip install virtualenv
 python -m venv .\env
-.\env\Scripts\activate.bat
-
-pip install -r requirements.txt
+cmd /k ".\env\Scripts\activate.bat & pip install -r requirements.txt"
 pause
