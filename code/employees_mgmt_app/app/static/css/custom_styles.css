@@ -2,7 +2,7 @@
 * File: custom_styles.css
 * Author: Nithujan Jegatheeswaran
 * Brief: 
-* Version: 22.03.2022
+* Version: 30.03.2022
 */
 
 #logo{
@@ -11,6 +11,11 @@
     border: solid black 2px;
     margin-right: 5px;
 }
+
+.fa-user-edit, .fa-edit, .fa-archive{
+    color: black;
+}
+
 
 /* Source: https://gist.github.com/ksloan/d1b9ace61fddd2356ebf */
 .fa-facebook-square {

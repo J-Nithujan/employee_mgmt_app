@@ -5,13 +5,15 @@
 
 
 from sqlalchemy.sql import *
+
 from app.model.models import *
 
 
 def get_all_departments() -> list[tuple]:
     """
+    Get a list of all rows of the table `departments`
 
-    :return:
+    :return: a tuple list containing the department's id an its name
     """
     stmt = select(Departments.id, Departments.name).order_by(Departments.id)
 

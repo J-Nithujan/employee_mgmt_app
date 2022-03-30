@@ -12,6 +12,21 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
+-- Listage de la structure de la base pour db_employees
+DROP DATABASE IF EXISTS `db_employees`;
+CREATE DATABASE IF NOT EXISTS `db_employees` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `db_employees`;
+
+-- Listage de la structure de la table db_employees. addresses
+CREATE TABLE IF NOT EXISTS `addresses` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `ZIP` varchar(25) NOT NULL,
+  `city` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `address_unique` (`ZIP`,`city`)
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb3;
+
 -- Listage des données de la table db_employees.addresses : ~50 rows (environ)
 /*!40000 ALTER TABLE `addresses` DISABLE KEYS */;
 INSERT INTO `addresses` (`id`, `ZIP`, `city`) VALUES
@@ -67,6 +82,14 @@ INSERT INTO `addresses` (`id`, `ZIP`, `city`) VALUES
 	(21, '97465', 'Limbach');
 /*!40000 ALTER TABLE `addresses` ENABLE KEYS */;
 
+-- Listage de la structure de la table db_employees. departments
+CREATE TABLE IF NOT EXISTS `departments` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3;
+
 -- Listage des données de la table db_employees.departments : ~12 rows (environ)
 /*!40000 ALTER TABLE `departments` DISABLE KEYS */;
 INSERT INTO `departments` (`id`, `name`) VALUES
@@ -84,7 +107,39 @@ INSERT INTO `departments` (`id`, `name`) VALUES
 	(8, 'Sales');
 /*!40000 ALTER TABLE `departments` ENABLE KEYS */;
 
--- Listage des données de la table db_employees.employees : ~53 rows (environ)
+-- Listage de la structure de la table db_employees. employees
+CREATE TABLE IF NOT EXISTS `employees` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `firstname` varchar(45) NOT NULL,
+  `lastname` varchar(45) NOT NULL,
+  `birthdate` date NOT NULL,
+  `phone_number` varchar(45) DEFAULT NULL,
+  `road` varchar(75) NOT NULL,
+  `hiring_date` date NOT NULL,
+  `percentage` decimal(5,2) NOT NULL,
+  `salary` decimal(7,2) NOT NULL,
+  `holiday_balance` decimal(4,2) DEFAULT '0.00',
+  `under_contract` tinyint DEFAULT '1',
+  `work_time` decimal(10,0) DEFAULT '0',
+  `password` varchar(64) NOT NULL,
+  `employee_id` int DEFAULT NULL,
+  `address_id` int NOT NULL,
+  `job_id` int NOT NULL,
+  `department_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email_UNIQUE` (`email`),
+  KEY `fk_employees_employees_idx` (`employee_id`),
+  KEY `fk_employees_addresses1_idx` (`address_id`),
+  KEY `fk_employees_job1_idx` (`job_id`),
+  KEY `fk_employees_departments1_idx` (`department_id`),
+  CONSTRAINT `fk_employees_addresses1` FOREIGN KEY (`address_id`) REFERENCES `addresses` (`id`),
+  CONSTRAINT `fk_employees_departments1` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`),
+  CONSTRAINT `fk_employees_employees` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`),
+  CONSTRAINT `fk_employees_job1` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb3;
+
+-- Listage des données de la table db_employees.employees : ~52 rows (environ)
 /*!40000 ALTER TABLE `employees` DISABLE KEYS */;
 INSERT INTO `employees` (`id`, `email`, `firstname`, `lastname`, `birthdate`, `phone_number`, `road`, `hiring_date`, `percentage`, `salary`, `holiday_balance`, `under_contract`, `work_time`, `password`, `employee_id`, `address_id`, `job_id`, `department_id`) VALUES
 	(1, 'Conrad_Frizzell61@example.com', 'Paschalis', 'Kleiner', '1980-01-16', '0722457009', '24-36 Wandsworth Bridge Road', '2015-02-14', 15.50, 6871.96, 5.00, 1, 73, '9ff5654065f786b252c6733a6651d87848e6f45603b30cdaec3a42eb47d2de90', NULL, 13, 3, 2),
@@ -142,7 +197,19 @@ INSERT INTO `employees` (`id`, `email`, `firstname`, `lastname`, `birthdate`, `p
 	(53, 'test1.1tset@example.com', '1tset', 'Test1', '1960-01-10', '', 'Road 66', '2021-09-27', 100.00, 9999.00, 0.00, 1, 0, '69aa423272eacf55bcbc6c36fc3923868565a2d2dc7ce18c1db1f9a44ac07f95', NULL, 1, 1, 1);
 /*!40000 ALTER TABLE `employees` ENABLE KEYS */;
 
--- Listage des données de la table db_employees.employee_has_task : ~54 rows (environ)
+-- Listage de la structure de la table db_employees. employee_has_task
+CREATE TABLE IF NOT EXISTS `employee_has_task` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `employee_id` int NOT NULL,
+  `task_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_employees_has_tasks_tasks1_idx` (`task_id`),
+  KEY `fk_employees_has_tasks_employees1_idx` (`employee_id`),
+  CONSTRAINT `fk_employee_has_task_employees1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`),
+  CONSTRAINT `fk_employee_has_task_tasks1` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb3;
+
+-- Listage des données de la table db_employees.employee_has_task : ~50 rows (environ)
 /*!40000 ALTER TABLE `employee_has_task` DISABLE KEYS */;
 INSERT INTO `employee_has_task` (`id`, `employee_id`, `task_id`) VALUES
 	(1, 3, 7),
@@ -203,6 +270,14 @@ INSERT INTO `employee_has_task` (`id`, `employee_id`, `task_id`) VALUES
 	(56, 51, 56);
 /*!40000 ALTER TABLE `employee_has_task` ENABLE KEYS */;
 
+-- Listage de la structure de la table db_employees. jobs
+CREATE TABLE IF NOT EXISTS `jobs` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb3;
+
 -- Listage des données de la table db_employees.jobs : ~20 rows (environ)
 /*!40000 ALTER TABLE `jobs` DISABLE KEYS */;
 INSERT INTO `jobs` (`id`, `name`) VALUES
@@ -227,6 +302,18 @@ INSERT INTO `jobs` (`id`, `name`) VALUES
 	(3, 'Travel Agent'),
 	(1, 'Vice President');
 /*!40000 ALTER TABLE `jobs` ENABLE KEYS */;
+
+-- Listage de la structure de la table db_employees. payslips
+CREATE TABLE IF NOT EXISTS `payslips` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `file_path` varchar(100) NOT NULL,
+  `date` date NOT NULL,
+  `employee_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `file_path_UNIQUE` (`file_path`),
+  KEY `fk_payslips_employees1_idx` (`employee_id`),
+  CONSTRAINT `fk_payslips_employees1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb3;
 
 -- Listage des données de la table db_employees.payslips : ~50 rows (environ)
 /*!40000 ALTER TABLE `payslips` DISABLE KEYS */;
@@ -283,7 +370,21 @@ INSERT INTO `payslips` (`id`, `file_path`, `date`, `employee_id`) VALUES
 	(50, '\\payslips\\42\\OCT-21.pdf', '2001-08-20', 42);
 /*!40000 ALTER TABLE `payslips` ENABLE KEYS */;
 
--- Listage des données de la table db_employees.tasks : ~54 rows (environ)
+-- Listage de la structure de la table db_employees. tasks
+CREATE TABLE IF NOT EXISTS `tasks` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `project` varchar(45) NOT NULL,
+  `title` varchar(45) NOT NULL,
+  `description` tinytext,
+  `validation` tinyint(1) DEFAULT '0',
+  `since` datetime NOT NULL,
+  `until` datetime NOT NULL,
+  `duration` time NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_tasks` (`project`,`title`)
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb3;
+
+-- Listage des données de la table db_employees.tasks : ~50 rows (environ)
 /*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
 INSERT INTO `tasks` (`id`, `project`, `title`, `description`, `validation`, `since`, `until`, `duration`) VALUES
 	(1, 'EVDF93', 'Omnis et neque.', 'Quibusdam eos reprehenderit.', 1, '2015-01-01 00:00:02', '2015-01-02 15:17:29', '00:34:26'),

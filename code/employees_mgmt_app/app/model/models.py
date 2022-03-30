@@ -21,7 +21,7 @@ employee_has_task = db.Table('employee_has_task',
 
 class Addresses(db.Model):
     """
-    A class for the table 'addresses' in the MySQL database
+    A class for the table `addresses` in the MySQL database
     """
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     zip = db.Column(db.VARCHAR, nullable=False)
@@ -33,7 +33,7 @@ class Addresses(db.Model):
 
 class Departments(db.Model):
     """
-        A class for the table 'departments' in the MySQL database
+        A class for the table `departments` in the MySQL database
     """
     id: db.Column = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.VARCHAR)
@@ -43,7 +43,7 @@ class Departments(db.Model):
 
 class Tasks(db.Model):
     """
-        A class for the table 'tasks' in the MySQL database
+        A class for the table `tasks` in the MySQL database
     """
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     project = db.Column(db.VARCHAR, nullable=False)
@@ -58,7 +58,7 @@ class Tasks(db.Model):
 
 class Employees(db.Model):
     """
-        A class for the table 'employees' in the MySQL database
+        A class for the table `employees` in the MySQL database
     """
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     email = db.Column(db.VARCHAR, nullable=False)
@@ -90,7 +90,7 @@ class Employees(db.Model):
 
 class Jobs(db.Model):
     """
-        A class for the table 'jobs' in the MySQL database
+        A class for the table `jobs` in the MySQL database
     """
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.VARCHAR, nullable=False)
@@ -100,7 +100,7 @@ class Jobs(db.Model):
 
 class Payslips(db.Model):
     """
-        A class for the table 'payslips' in the MySQL database
+        A class for the table `payslips` in the MySQL database
     """
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     file_path = db.Column(db.VARCHAR, nullable=False)

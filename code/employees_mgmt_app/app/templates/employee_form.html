@@ -1,17 +1,17 @@
-<!--
- * File: employee_form.html
- * Author: Nithujan Jegatheeswaran
- * Brief: Template containing the form to add or edit an employee in the database
- * Version: 29.03.2022
- -->
+{#
+ # File: employee_form.html
+ # Author: Nithujan Jegatheeswaran
+ # Brief: Template containing the form to add or edit an employee in the database
+ # Version: 30.03.2022
+ #}
 
 {% extends 'header_nav_footer.html' %}
 
-{% macro input(type, name, label, form, div_class='col-sm-6 mb-3', disabled=False) %}
+{% macro input(type, name, label, form, div_class='col-sm-6 mb-3', readonly=False) %}
     <div class="{{ div_class }}">
         <label for="{{ name }}" class="form-label">{{ label }}</label>
         <input type="{{ type }}" id="{{ name }}" name="{{ name }}" class="form-control"
-               {% if form %}value="{{ form[name] }}"{% endif %} min="" max="" {% if disabled %}disabled{% endif %}>
+               {% if form %}value="{{ form[name] }}"{% endif %} min="" max="" {% if readonly %}readonly{% endif %}>
     </div>
 {% endmacro %}
 
@@ -20,7 +20,7 @@
     <ol class="breadcrumb mb-4">
         {% block breadcrumb_list %}{% endblock breadcrumb_list %}
     </ol>
-    <form action="{% block form_action %}{% endblock form_action %}" method="post" enctype="multipart/form-data">
+    <form action="{% block form_action %}{% endblock form_action %}" method="post">
         <div class="row">
             {% if error_list %}
                 {% include 'error_messages.html' %}
@@ -33,10 +33,10 @@
                     <div class="card-body">
                         <div class="row">
                             {{ input('text', 'lastname', 'Nom', form=data) }}
-                            {{ input('date', 'birthdate', 'Date de naissance', form=data, disabled=is_disabled) }}
+                            {{ input('date', 'birthdate', 'Date de naissance', form=data, readonly=is_readonly) }}
                         </div>
                         <div class="row">
-                            {{ input('text', 'firstname', 'Prénom', form=data, disabled=is_disabled) }}
+                            {{ input('text', 'firstname', 'Prénom', form=data, readonly=is_readonly) }}
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                     <div class="card-header">Coordonnées</div>
                     <div class="card-body">
                         <div class="row">
-                            {{ input('email', 'email', 'Email', form=data, disabled=is_disabled) }}
+                            {{ input('email', 'email', 'Email', form=data, readonly=is_readonly) }}
                             {{ input('text', 'road', 'Rue', form=data) }}
                         </div>
                         <div class="row">
@@ -83,7 +83,7 @@
                     <div class="card-header">Données Professionnelles</div>
                     <div class="card-body">
                         <div class="row">
-                            {{ input('date', 'hiring_date', 'Date d\'engagment', form=data, div_class='col-xl-6 mb-3') }}
+                            {{ input('date', 'hiring_date', 'Date d\'engagment', form=data, div_class='col-xl-6 mb-3', readonly=is_readonly) }}
                             <div class="col-xl-6 mb-3">
                                 <label for="employee_id" class="form-label">Supérieur/e</label>
                                 <select name="employee_id" id="employee_id" class="form-select">

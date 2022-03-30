@@ -62,7 +62,7 @@ DROP TABLE IF EXISTS `db_employees`.`employees` ;
 
 CREATE TABLE IF NOT EXISTS `db_employees`.`employees` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `email` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
   `firstname` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NOT NULL,
   `birthdate` DATE NOT NULL,

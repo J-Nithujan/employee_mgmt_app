@@ -1,9 +1,9 @@
-<!--
- * File: task_list.html
- * Author: Nithujan Jegatheeswaran
- * Brief: Template used to display the logged employee's task list
- * Version: 28.03.2022
- -->
+{#
+ # File: task_list.html
+ # Author: Nithujan Jegatheeswaran
+ # Brief: Template used to display the logged employee's task list
+ # Version: 30.03.2022
+ #}
 {% extends 'header_nav_footer.html' %}
 
 {% block title %}Liste des tâches{% endblock title %}
@@ -21,12 +21,12 @@
                     <table id="datatablesSimple" class="table table-striped">
                         <thead>
                         <tr>
-                            <th>Projet</th>
-                            <th>Titre</th>
-                            <th>Heure de début</th>
-                            <th>Heure de fin</th>
-                            <th>Date</th>
-                            <th>Édition</th>
+                            <th class="text-primary">Projet</th>
+                            <th class="text-primary">Titre</th>
+                            <th class="text-primary">Heure de début</th>
+                            <th class="text-primary">Heure de fin</th>
+                            <th class="text-primary">Date</th>
+                            <th class="text-primary">Édition</th>
                         </tr>
                         </thead>
                         <tbody>

@@ -33,9 +33,9 @@ def get_tasks_list(email: str) -> list[Tasks]:
     return task_list
 
 
-def add_task(form: ImmutableMultiDict[str, str], email: str) -> list[str]:
+def insert_task(form: ImmutableMultiDict[str, str], email: str) -> list[str]:
     """
-    Adds a new task to the database related to the given email address.
+    Inserts a new row in the `tasks` table of the database and bind it to the employee with the given email address.
     
     :param form: form containing the task's data
     :param email: email address of the employee who did the task
@@ -47,14 +47,12 @@ def add_task(form: ImmutableMultiDict[str, str], email: str) -> list[str]:
     if len(msg_list) != 0:
         return msg_list
     else:
-        datetime_inputs: tuple = convert_str_to_datetime(form['since'], form['until'], form['date'])
-
+        datetime_inputs: tuple = _convert_str_to_datetime(form['since'], form['until'])
         duration: timedelta = datetime_inputs[1] - datetime_inputs[0]
-
-        logged_employee: Tasks = get_employee_by_email(email)
-
         task: Tasks = Tasks(project=form['project'], title=form['title'], description=form['description'],
                             since=datetime_inputs[0], until=datetime_inputs[1], duration=duration)
+
+        logged_employee: Tasks = get_employee_by_email(email)
         logged_employee.tasks.append(task)
         db.session.add(task)
         update_employee_work_time(logged_employee, duration)
@@ -75,7 +73,7 @@ def get_selected_task(task_id) -> Tasks:
 
 def update_task(form: ImmutableMultiDict[str, str], task_id: int, email: str) -> list[str]:
     """
-    Update the values of an existing row in the `tasks` table.
+    Update the values of an existing row in the table `tasks`.
     
     :param form: form containing the updated values for the task
     :param task_id: the `ìd` column's value of the task that will be updated
@@ -87,12 +85,14 @@ def update_task(form: ImmutableMultiDict[str, str], task_id: int, email: str) ->
         return messages
     else:
         task: Tasks = get_task_with_id(task_id)
-        
-        datetime_inputs = convert_str_to_datetime(form['since'], form['until'], form['date'])
+
+        datetime_inputs = _convert_str_to_datetime(form['since'], form['until'])
+        # Calculation of the task's duration difference
         new_duration: timedelta = datetime_inputs[1] - datetime_inputs[0]
         previous_duration: time = task.duration
         duration_diff = new_duration - timedelta(previous_duration.hour, previous_duration.minute)
-        
+
+        # Update of the `Tasks` class current instance's attributes
         task.since = datetime_inputs[0]
         task.until = datetime_inputs[1]
         task.duration = new_duration
@@ -106,20 +106,17 @@ def update_task(form: ImmutableMultiDict[str, str], task_id: int, email: str) ->
 # Functions used only in this file
 # ---------------------------------------------
 
-def convert_str_to_datetime(time_1: str, time_2: str, date: str) -> tuple:
+def _convert_str_to_datetime(time_1: str, time_2: str) -> tuple[datetime, datetime]:
     """
     Convert two `string` describing time to `datetime`.
     
     :param time_1: string value of the first time to convert, this value should be lower than time_2
     :param time_2: string value of the second time to convert
-    :param date: date that will be used to convert time_1 and time_2 from `string` to `datetime`
     :return: a tuple with two `datetime` variables
     """
-    time_1_str = date + " " + time_1
-    time_2_str = date + " " + time_2
 
-    since_dt = datetime.strptime(time_1_str, '%Y-%m-%d %H:%M')
-    until_dt = datetime.strptime(time_2_str, '%Y-%m-%d %H:%M')
+    since_dt = datetime.strptime(time_1, '%Y-%m-%dT%H:%M')
+    until_dt = datetime.strptime(time_2, '%Y-%m-%dT%H:%M')
     return since_dt, until_dt
 
 
@@ -136,9 +133,13 @@ def get_error_messages(form: ImmutableMultiDict[str, str], new_task: bool = True
     if new_task:
         if form['project'] == '':
             messages.append("Indiquer le nom du projet")
+        elif len(form['project']) > 45:
+            messages.append("Indiquer un nom de projet de moins de 45 caractères")
 
         if form['title'] == '':
             messages.append("Indiquer le titre de la tâche")
+        elif len(form['title']) > 45:
+            messages.append("Indiquer un titre de tâche de moins de 45 caractères")
 
     if form['since'] == '':
         messages.append("Indiquer l'heure de début")
@@ -146,18 +147,15 @@ def get_error_messages(form: ImmutableMultiDict[str, str], new_task: bool = True
     if form['until'] == '':
         messages.append("Indiquer l'heure de fin")
 
-    if form['date'] == '':
-        messages.append("Indiquer la date")
-
     if messages:
         return messages
     else:
-        form_datetime: tuple = convert_str_to_datetime(form['since'], form['until'], form['date'])
+        form_datetime: tuple = _convert_str_to_datetime(form['since'], form['until'])
 
         duration: timedelta = form_datetime[1] - form_datetime[0]
 
         if duration <= timedelta(0):
-            messages.append("L'heure de fin doit être supérieur à l'heure de début de la tâche")
+            messages.append("La date et l'heure de fin doivent être supérieur à la date et l'heure de début de la tâche")
 
         return messages
 

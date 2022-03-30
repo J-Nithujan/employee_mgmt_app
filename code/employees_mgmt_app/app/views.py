@@ -3,8 +3,6 @@
 # Brief: This file indicates the routes that are available to the Flask app
 # Version: 27.03.2022
 
-from datetime import date, datetime
-
 from flask import Flask, request, redirect, url_for, render_template, session
 
 from app.model.employees_mgmt import *
@@ -18,6 +16,7 @@ app = Flask(__name__)
 app.config.from_object('config')
 
 
+# TODO: leave all todos ???
 @app.route('/')
 @app.route('/login/', methods=['POST', 'GET'])
 def login():
@@ -25,17 +24,12 @@ def login():
     Displays the login page and handles the login form's submission,
     when the credentials are correct redirect to the index URL.
     
-    :return: Renders the 'login.html' template
+    :return: Renders the template 'login.html'
     """
     if request.method == 'POST':
         if check_login(request.form['email'], request.form['password']):
             # Successfully logged in
             session['email'] = request.form['email']
-
-            # TODO: the session.permanent value to test ???
-            # Keeps the session variables for 31 days:
-            # src: https://flask.palletsprojects.com/en/2.1.x/api/?highlight=session#flask.session
-            session.permanent = True
 
             return redirect(url_for('index'))
         else:
@@ -51,7 +45,7 @@ def logout():
     """
     Clear Flask's session variable and displays the login page.
     
-    :return: Renders the 'login.html' template
+    :return: Renders the template 'login.html'
     """
     session.clear()
     return redirect(url_for('login'))
@@ -62,8 +56,10 @@ def index():
     """
     Gets the index page data and displays it in the 'index.html' web page.
     
-    :return: Renders the 'index.html' template
+    :return: Renders the template 'index.html'
     """
+    # Check if the email was previously added to the session variable,
+    # useful when the web server has to be reboot for tests
     data = get_employee_data(session['email'])
     if data['department'] == 'Human Resources':
         session['is_hr_employee'] = True
@@ -85,24 +81,17 @@ def task_list(email):
                            list=tasks)
 
 
-@app.route('/new_task/')
-@app.route('/new_task/', methods=['POST'])
+@app.route('/new_task/', methods=['POST', 'GET'])
 def new_task():
     """
     Displays the web page used to add a new accomplished task,
     on the form's submission adds the task in the database and redirect to the tasks_list's URL.
 
-    :return: Renders the 'new_task.html' template
+    :return: Renders the template 'new_task.html'
     """
     if request.method == 'POST':
-        msg_list = add_task(request.form, session['email'])
+        msg_list = insert_task(request.form, session['email'])
         if msg_list:
-            if request.form['date'] != '':
-                date_input = datetime.strptime(request.form['date'], '%Y-%m-%d')
-                return render_template('new_task.html', is_hr_employee=session['is_hr_employee'],
-                                       email=session['email'],
-                                       error_list=msg_list, data=request.form, date=date_input)
-
             return render_template('new_task.html', is_hr_employee=session['is_hr_employee'], email=session['email'],
                                    error_list=msg_list, data=request.form)
         else:
@@ -111,54 +100,52 @@ def new_task():
         return render_template('new_task.html', is_hr_employee=session['is_hr_employee'], email=session['email'])
 
 
-@app.route('/task_list/edit_task/<task_id>')
-@app.route('/task_list/edit_task/<task_id>', methods=['POST'])
+@app.route('/task_list/edit_task/<task_id>', methods=['POST', 'GET'])
 def edit_task(task_id):
     """
     Displays the web page with the form used to modify an existing task,
     on the form's submission update the task in the database and redirect to the tasks_list's URL.
 
     :param task_id: Task's id in the database
-    :return: Renders the 'edit_task.html' template
+    :return: Renders the template 'edit_task.html'
     """
+    task: Tasks = get_selected_task(task_id)
+
     if request.method == 'POST':
         errors = update_task(request.form, int(task_id), session['email'])
         if errors:
             return render_template('edit_task.html', is_hr_employee=session['is_hr_employee'], email=session['email'],
-                                   is_disabled=True, data=request.form, task_id=task_id, error_list=errors)
+                                   is_readonly=True, data=request.form, task_id=task_id, error_list=errors)
         else:
             return redirect(url_for('task_list', email=session['email']))
     else:
-        task: Tasks = get_selected_task(task_id)
-        task_date = task.until.strftime('%Y-%m-%d')
-        task_until = task.until.strftime('%H:%M')
-        task_since = task.since.strftime('%H:%M')
+        until_time = task.until.strftime('%H:%M')
         return render_template('edit_task.html', is_hr_employee=session['is_hr_employee'], email=session['email'],
-                               is_disabled=True, data=task, since=task_since, until=task_until, date=task_date,
-                               task_id=task.id)
-
-
-@app.route('/payslips/')
-def payslips():
-    """
-    Gets the employee's payslips list in the database and displays it the 'payslips.html' web page.
-    
-    :return: Renders the 'payslips.html' template
-    """
-    # TODO: finish payslips template page and model functions
-    return render_template('payslips.html', is_hr_employee=session['is_hr_employee'], email=session['email'])
+                               is_readonly=True, data=task, since_time=task.since.strftime('%H:%M'),
+                               until_time=task.until.strftime('%H:%M'),
+                               since_date=task.since.date(), until_date=task.until.date(), task_id=task.id)
 
 
 @app.route('/employee_list/')
 def employee_list():
+    """
+    Display a page containing a list of all active employees
+
+    :return: Renders the template `employee_list.html`
+    """
     employees: list[tuple] = get_employee_list()
     return render_template('employee_list.html', is_hr_employee=session['is_hr_employee'],
                            email=session['email'], list=employees)
 
 
-@app.route('/new_employee/')
-@app.route('/new_employee/', methods=['POST'])
+# @app.route('/new_employee/')
+@app.route('/new_employee/', methods=['POST', 'GET'])
 def new_employee():
+    """
+    Renders the template with the form to add a new employee
+    :return: if form validation fails renders new_employee.html with the previous inputs, otherwise redirect to the view
+    employee_list
+    """
     options: dict = get_select_options_for_employee_form()
     if request.method == 'POST':
         errors = add_employee(request.form)
@@ -176,15 +163,23 @@ def new_employee():
                                departments=options['departments'], jobs=options['jobs'])
 
 
-@app.route('/employee_list/edit_employee/<employee_id>/')
-@app.route('/employee_list/edit_employee/<employee_id>/', methods=['POST'])
+# @app.route('/employee_list/edit_employee/<employee_id>/')  # todo: CHECK method post and get
+@app.route('/employee_list/edit_employee/<employee_id>/', methods=['POST', 'GET'])
 def edit_employee(employee_id):
+    """
+    Renders the template used to edits the values of the columns `lastname`, `road`, `phone_number`, `salary`,
+    `percentage`, `address_id`, `employee_id`, `department_id`, `job_id` of an employee
+
+    :param employee_id: the id of the employee that will have it's data updated
+    :return: if the form validation fails renders the template `edit_employee.html`, otherwise redirect to the views
+    employee_list
+    """
     options: dict = get_select_options_for_employee_form()
     if request.method == 'POST':
         errors = update_employee(request.form, int(employee_id))
         if errors:
             return render_template('edit_employee.html', is_hr_employee=session['is_hr_employee'],
-                                   email=session['email'], is_disabled=True,
+                                   email=session['email'], is_readonly=True,
                                    data=request.form, employee_id=employee_id, addresses=options['addresses'],
                                    supervisors=options['supervisors'], departments=options['departments'],
                                    jobs=options['jobs'], error_list=errors)
@@ -193,18 +188,53 @@ def edit_employee(employee_id):
     else:
         employee: Employees = get_selected_employee(employee_id)
         return render_template('edit_employee.html', is_hr_employee=session['is_hr_employee'], email=session['email'],
-                               is_disabled=True, data=employee, addresses=options['addresses'],
+                               is_readonly=True, data=employee, addresses=options['addresses'],
                                supervisors=options['supervisors'], departments=options['departments'],
                                jobs=options['jobs'], employee_id=employee_id)
 
 
 @app.route('/employee_list/remove_employee/<employee_id>/')
 def remove_employee(employee_id):
+    """
+    Remove an employee from the list of employees to display on the employee list table
+
+    :param employee_id: the id of the employee to remove
+    :return: Refresh the page by redirecting to the employee list view
+    """
     archive_employee(int(employee_id))
     return redirect(url_for('employee_list'))
 
 
+@app.route('/payslips/')
+def payslips():
+    """
+    Gets the employee's payslips list in the database and displays it in the 'payslips.html' web page.
+
+    :return: Renders the template 'payslips.html'
+    """
+    # TODO: complete payslips template page and model functions
+    return render_template('payslips.html', is_hr_employee=session['is_hr_employee'], email=session['email'])
+
+
+@app.errorhandler(401)
+def unauthorized_exception_handler(error):
+    """
+
+    :param error:
+    :return:
+    """
+    return render_template('error_unauthorized_exception.html')
+
+
+# Functions only used in this file
+# ---------------------------------------------
+
 def get_select_options_for_employee_form() -> dict:
+    """
+    Gets all the list needed to build the select options of the form used to add or update a new employee
+
+    :return: Returns a `dict` with the lists of addresses, supervisors, departments and jobs
+    """
     addresses = get_all_addresses()
     supervisors = get_all_supervisors()
     departments = get_all_departments()

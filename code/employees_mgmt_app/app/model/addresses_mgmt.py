@@ -3,9 +3,9 @@
 # Brief: This file contains all the functions retrieving data from the `addresses` table
 # Version: 27.03.2022
 
-from app.model.models import *
 from sqlalchemy.sql import *
-from sqlalchemy.orm import Query
+
+from app.model.models import *
 
 
 def get_all_addresses() -> list[tuple]:

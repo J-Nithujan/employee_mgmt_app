@@ -1,9 +1,9 @@
-<!--
- * File: employee_list.html
- * Author: Nithujan Jegatheeswaran
- * Brief: Template used to display the employee table
- * Version: 28.03.2022
- -->
+{#
+ # File: employee_list.html
+ # Author: Nithujan Jegatheeswaran
+ # Brief: Template used to display the table with the employee list
+ # Version: 30.03.2022
+ #}
 
 {% extends 'header_nav_footer.html' %}
 
@@ -22,16 +22,16 @@
                     <table id="datatablesSimple">
                         <thead>
                         <tr>
-                            <th>Nom</th>
-                            <th>Prénom</th>
-                            <th>Email</th>
-                            <th>Engagé/e le</th>
-                            <th>Fonction</th>
-                            <th>Département</th>
-                            <th>Taux de travail [%]</th>
-                            <th>Salaire [CHF]</th>
-                            <th>Modifier</th>
-                            <th>Archiver</th>
+                            <th class="text-primary">Nom</th>
+                            <th class="text-primary">Prénom</th>
+                            <th class="text-primary">Email</th>
+                            <th class="text-primary">Engagé/e le</th>
+                            <th class="text-primary">Fonction</th>
+                            <th class="text-primary">Département</th>
+                            <th class="text-primary">Taux de travail [%]</th>
+                            <th class="text-primary">Salaire [CHF]</th>
+                            <th class="text-primary">Modifier</th>
+                            <th class="text-primary">Archiver</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -45,12 +45,12 @@
                                 <td>{{ employee.department }}</td>
                                 <td>{{ employee.percentage }}</td>
                                 <td>{{ employee.salary }}</td>
-                                <td>
+                                <td class="text-center">
                                     <a href="{{ url_for('edit_employee', employee_id=employee.id) }}">
                                         <i class="fas fa-user-edit"></i>
                                     </a>
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <a href="{{ url_for('remove_employee', employee_id=employee.id) }}">
                                         <i class="fas fa-archive"></i>
                                     </a>
