@@ -25,13 +25,13 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="mb-3">
-                                    <label for="project" class="form-label">Projet</label>
+                                    <label for="project" class="form-label">Projet (définitif)</label>
                                     <input type="text" id="project" name="project" class="form-control"
                                             {% if data %} value="{{ data.project }}" {% endif %}
                                            {% if is_readonly %}readonly{% endif %} >
                                 </div>
                                 <div class="mb-3">
-                                    <label for="title" class="form-label">Titre</label>
+                                    <label for="title" class="form-label">Titre (définitif)</label>
                                     <input type="text" id="title" name="title" class="form-control"
                                             {% if data %}
                                            value="{{ data.title }}" {% endif %}
@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="since" class="form-label">Date et heure de début</label>
-                                    <input type="datetime-local" id="since" name="since" class="form-control"
+                                    <input type="datetime-local" id="since" name="since" class="form-control" min="2000-01-01T00:0" max="2100-12-31T23:59"
                                             {% if since_time and since_date %}
                                            value="{{ until_date }}T{{ since_time }}"
                                                 {% elif data %}{% if data.since %}
@@ -48,7 +48,8 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="until" class="form-label">Date et heure de fin</label>
-                                    <input type="datetime-local" id="until" name="until" class="form-control"
+                                    <input type="datetime-local" id="until" name="until" class="form-control" min="2000-01-01T23:59"
+                                           max="2100-12-31T23:59"
                                             {% if until_time and until_date %}
                                            value="{{ until_date }}T{{ until_time }}"
                                                 {% elif data %}{% if data.until %}
