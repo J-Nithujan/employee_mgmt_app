@@ -7,10 +7,10 @@
 
 {% extends 'header_nav_footer.html' %}
 
-{% macro input(type, name, label, form, div_class='col-sm-6 mb-3', readonly=False) %}
+{% macro input(type, name, label, form, min, max, div_class='col-sm-6 mb-3', readonly=False) %}
     <div class="{{ div_class }}">
         <label for="{{ name }}" class="form-label">{{ label }}</label>
-        <input type="{{ type }}" id="{{ name }}" name="{{ name }}" class="form-control"
+        <input type="{{ type }}" id="{{ name }}" name="{{ name }}" min="{{ min }}" max="{{ max }}" class="form-control"
                {% if form %}value="{{ form[name] }}"{% endif %} min="" max="" {% if readonly %}readonly{% endif %}>
     </div>
 {% endmacro %}
@@ -33,7 +33,7 @@
                     <div class="card-body">
                         <div class="row">
                             {{ input('text', 'lastname', 'Nom', form=data) }}
-                            {{ input('date', 'birthdate', 'Date de naissance', form=data, readonly=is_readonly) }}
+                            {{ input('date', 'birthdate', 'Date de naissance', max='2100-31-12',form=data, readonly=is_readonly) }}
                         </div>
                         <div class="row">
                             {{ input('text', 'firstname', 'Prénom', form=data, readonly=is_readonly) }}
@@ -83,7 +83,7 @@
                     <div class="card-header">Données Professionnelles</div>
                     <div class="card-body">
                         <div class="row">
-                            {{ input('date', 'hiring_date', 'Date d\'engagment', form=data, div_class='col-xl-6 mb-3', readonly=is_readonly) }}
+                            {{ input('date', 'hiring_date', 'Date d\'engagment', form=data, min='2000-01-01', max='2100-31-12', div_class='col-xl-6 mb-3', readonly=is_readonly) }}
                             <div class="col-xl-6 mb-3">
                                 <label for="employee_id" class="form-label">Supérieur/e</label>
                                 <select name="employee_id" id="employee_id" class="form-select">
