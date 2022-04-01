@@ -12,13 +12,8 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-
--- Listage de la structure de la base pour db_employees
-DROP DATABASE IF EXISTS `db_employees`;
-CREATE DATABASE IF NOT EXISTS `db_employees` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `db_employees`;
-
 -- Listage de la structure de la table db_employees. addresses
+DROP TABLE IF EXISTS `addresses`;
 CREATE TABLE IF NOT EXISTS `addresses` (
   `id` int NOT NULL AUTO_INCREMENT,
   `ZIP` varchar(25) NOT NULL,
@@ -83,6 +78,7 @@ INSERT INTO `addresses` (`id`, `ZIP`, `city`) VALUES
 /*!40000 ALTER TABLE `addresses` ENABLE KEYS */;
 
 -- Listage de la structure de la table db_employees. departments
+DROP TABLE IF EXISTS `departments`;
 CREATE TABLE IF NOT EXISTS `departments` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
@@ -108,6 +104,7 @@ INSERT INTO `departments` (`id`, `name`) VALUES
 /*!40000 ALTER TABLE `departments` ENABLE KEYS */;
 
 -- Listage de la structure de la table db_employees. employees
+DROP TABLE IF EXISTS `employees`;
 CREATE TABLE IF NOT EXISTS `employees` (
   `id` int NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
@@ -137,17 +134,17 @@ CREATE TABLE IF NOT EXISTS `employees` (
   CONSTRAINT `fk_employees_departments1` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`),
   CONSTRAINT `fk_employees_employees` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`),
   CONSTRAINT `fk_employees_job1` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb3;
 
--- Listage des données de la table db_employees.employees : ~52 rows (environ)
+-- Listage des données de la table db_employees.employees : ~53 rows (environ)
 /*!40000 ALTER TABLE `employees` DISABLE KEYS */;
 INSERT INTO `employees` (`id`, `email`, `firstname`, `lastname`, `birthdate`, `phone_number`, `road`, `hiring_date`, `percentage`, `salary`, `holiday_balance`, `under_contract`, `work_time`, `password`, `employee_id`, `address_id`, `job_id`, `department_id`) VALUES
 	(1, 'Conrad_Frizzell61@example.com', 'Paschalis', 'Kleiner', '1980-01-16', '0722457009', '24-36 Wandsworth Bridge Road', '2015-02-14', 15.50, 6871.96, 5.00, 1, 73, '9ff5654065f786b252c6733a6651d87848e6f45603b30cdaec3a42eb47d2de90', NULL, 13, 3, 2),
-	(2, 'Schuler@example.com', 'Joerge', 'Zurbriggen', '1986-08-14', '0732447390', '3 Eversholt Street', '2014-12-22', 80.50, 9111.41, 2.00, 0, 6, 'b56ec8f2611887143057b14d11a73910108506c5d8f4d4f4a163b41e3a839cfc', NULL, 29, 7, 10),
-	(3, 'ZapataF@example.com', 'Felin', 'Albrecht', '1965-01-14', '0732412758', '5-9 Bishops Square', '2015-04-02', 10.50, 8316.53, 8.00, 0, 8, '49d2262ea6ee5d742e7abdf5116300ebe488ce975af47c64e2af01987ca4316d', NULL, 32, 1, 7),
+	(2, 'Schuler@example.com', 'Joerge', 'Zurbriggen', '1986-08-14', '0732447390', '3 Eversholt Street', '2014-12-22', 80.50, 9111.41, 2.00, 1, 6, 'b56ec8f2611887143057b14d11a73910108506c5d8f4d4f4a163b41e3a839cfc', NULL, 29, 7, 10),
+	(3, 'ZapataF@example.com', 'Felin', 'Albrecht', '1965-01-14', '0732412758', '5-9 Bishops Square', '2015-04-02', 10.50, 8316.53, 8.00, 1, 8, '49d2262ea6ee5d742e7abdf5116300ebe488ce975af47c64e2af01987ca4316d', NULL, 32, 1, 7),
 	(4, 'Sanford549@nowhere.com', 'Balintt ', 'Büchner', '1992-04-27', '0753827508', '2-7 Pretoria Avenue', '2021-06-26', 75.00, 8973.45, 9.50, 1, 39, '45ba5d5e6701537c1121c599ecdcb0023418f47af5ad93d8f993c0eca6e50622', NULL, 48, 9, 8),
-	(5, 'Barr@nowhere.com', 'Filiberta', 'Altmann', '1994-02-05', '0742449929', '4 Allsopp Place', '2015-09-11', 50.00, 6338.52, 6.00, 0, 11, '1127319de447cc56fd27680051657a7bb1fbbae8d92165b4f60723867ec71e5b', NULL, 12, 8, 7),
-	(6, 'Almanza@example.com', 'Filina', 'Treviranus', '1998-02-27', '0784257658', '3-6 Abyssinia Close', '2016-04-15', 95.50, 9328.78, 6.00, 0, 7, 'd64e9af0a2ecc1590bbe8e50ae76d19b5122ad46c1f9a95f74e188e9ba516ceb', NULL, 33, 13, 7),
+	(5, 'Barr@nowhere.com', 'Filiberta', 'Altmann', '1994-02-05', '0742449929', '4 Allsopp Place', '2015-09-11', 50.00, 6338.52, 6.00, 1, 11, '1127319de447cc56fd27680051657a7bb1fbbae8d92165b4f60723867ec71e5b', NULL, 12, 8, 7),
+	(6, 'Almanza@example.com', 'Filina', 'Treviranus', '1998-02-27', '0784257658', '3-6 Abyssinia Close', '2016-04-15', 95.50, 9328.78, 6.00, 1, 7, 'd64e9af0a2ecc1590bbe8e50ae76d19b5122ad46c1f9a95f74e188e9ba516ceb', NULL, 33, 13, 7),
 	(7, 'Ron.Irish@example.com', 'Gotfrit', 'osenmüller', '1962-03-06', '0758612774', '1 Churchill Place', '2019-09-30', 25.00, 6316.04, 16.00, 0, 12, '89d901648314bc4b42f5752bdb8a7e393c3e7563a48d2986528060a232215e0b', NULL, 4, 14, 1),
 	(8, 'ktercnnp_okcisx@example.com', 'Adelisa ', 'Buhmann', '1956-04-10', '0742800522', '1-8 Buckingham Gate', '2014-07-31', 55.50, 9771.07, 18.50, 1, 57, 'c729f8d0dd8d62bb8abf3bfe760ed3e817d1f13927ce9404d104b33507324a02', 1, 4, 15, 11),
 	(9, 'mnksgeiq8021@example.com', 'Cathrine', 'choll', '1967-11-30', '0799211908', '32-59 Abbey Lane', '2019-11-24', 40.50, 6134.95, 9.50, 0, 42, '862a285723ca6322c5fab84d62f27bace7ef1bfc7cf52ae7fbbe4b5b95c7b434', 2, 19, 2, 11),
@@ -192,12 +189,15 @@ INSERT INTO `employees` (`id`, `email`, `firstname`, `lastname`, `birthdate`, `p
 	(48, 'AntoineLittlefield@nowhere.com', 'Kresandra', 'Fuchs', '1967-03-18', '0758602395', '9 St. Alban\'s Place', '2014-06-27', 95.00, 6191.46, 5.00, 0, 112, '1d34fec2f9bd590700efc740ec1a03f726cf2bd835663e8ca92404e7dd085481', 6, 26, 7, 2),
 	(49, 'jfhbwpxk.jxmonkyjvl@example.com', 'Rüder', 'üdiger', '1957-02-26', '0702495807', '12-17 Bishop\'s Bridge Road', '2020-04-13', 60.50, 7634.27, 8.00, 1, 87, '1f678b3f6ec73c5b9544c76354758cb82f8d1196fa68c43acc435aa7aa898ce8', 7, 37, 19, 9),
 	(50, 'pqjndav80@example.com', 'Eyck', 'Heuer', '1971-01-29', '0778825391', '1 A-B Guilford Street', '2016-09-16', 70.00, 8998.51, 14.50, 0, 20, '89c195f17b27f42399098f9b743291dc04d7c7567b2cbbe8c509ea66a5a1cb3c', 1, 6, 14, 7),
-	(51, 'john.smith@example.com', 'John', 'Smith', '1971-01-29', '0778825391', '1 A-B Guilford Street', '2016-09-16', 70.00, 8998.51, 14.50, 1, 21, '97c94ebe5d767a353b77f3c0ce2d429741f2e8c99473c3c150e2faa3d14c9da6', 7, 24, 17, 12),
+	(51, 'john.smith@example.com', 'John', 'Smith', '1971-01-29', '0778825391', '1 A-B Guilford Street', '2016-09-16', 70.00, 8998.51, 14.50, 1, 23, '97c94ebe5d767a353b77f3c0ce2d429741f2e8c99473c3c150e2faa3d14c9da6', 7, 24, 17, 12),
 	(52, 'mona.dupree@example.com', 'Mona', 'Dupree', '1971-01-29', '0778825391', '1 A-B Guilford Street', '2016-09-16', 70.00, 8998.51, 14.50, 1, 21, '97c94ebe5d767a353b77f3c0ce2d429741f2e8c99473c3c150e2faa3d14c9da6', 7, 24, 17, 9),
-	(53, 'test1.1tset@example.com', '1tset', 'Test1', '1960-01-10', '', 'Road 66', '2021-09-27', 100.00, 9999.00, 0.00, 1, 0, '69aa423272eacf55bcbc6c36fc3923868565a2d2dc7ce18c1db1f9a44ac07f95', NULL, 1, 1, 1);
+	(53, 'test1.1tset@example.com', '1tset', 'Test1', '1960-01-10', '', 'Road 66', '2021-09-27', 100.00, 9999.00, 0.00, 1, 0, '69aa423272eacf55bcbc6c36fc3923868565a2d2dc7ce18c1db1f9a44ac07f95', NULL, 1, 1, 1),
+	(54, 'Christophine.Jeanne@example.com', 'Christophine', 'Jeanne', '1996-10-29', '071 435 32 23', 'Rue du Beau Site 12', '2022-03-30', 90.00, 9999.00, 0.00, 1, 0, 'b0f12793f06d849b8aa8b9d511f6995b38f53b6300085bad91f7e76467d12fd2', 53, 1, 13, 1),
+	(55, 'sathu.jega@bg.com', 'Sathujan', 'Jegatheeswaran', '2002-06-02', '0772233212', 'Beacon Hills Steet 3', '2022-03-31', 10.00, 90000.00, 0.00, 1, 11, '6263496816cc4ab323e6a5a2357fc4e93200087e5b7e1099a97782c4cf5dc9c0', NULL, 1, 12, 1);
 /*!40000 ALTER TABLE `employees` ENABLE KEYS */;
 
 -- Listage de la structure de la table db_employees. employee_has_task
+DROP TABLE IF EXISTS `employee_has_task`;
 CREATE TABLE IF NOT EXISTS `employee_has_task` (
   `id` int NOT NULL AUTO_INCREMENT,
   `employee_id` int NOT NULL,
@@ -207,9 +207,9 @@ CREATE TABLE IF NOT EXISTS `employee_has_task` (
   KEY `fk_employees_has_tasks_employees1_idx` (`employee_id`),
   CONSTRAINT `fk_employee_has_task_employees1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`),
   CONSTRAINT `fk_employee_has_task_tasks1` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb3;
 
--- Listage des données de la table db_employees.employee_has_task : ~50 rows (environ)
+-- Listage des données de la table db_employees.employee_has_task : ~56 rows (environ)
 /*!40000 ALTER TABLE `employee_has_task` DISABLE KEYS */;
 INSERT INTO `employee_has_task` (`id`, `employee_id`, `task_id`) VALUES
 	(1, 3, 7),
@@ -267,10 +267,15 @@ INSERT INTO `employee_has_task` (`id`, `employee_id`, `task_id`) VALUES
 	(53, 52, 53),
 	(54, 52, 54),
 	(55, 51, 55),
-	(56, 51, 56);
+	(56, 51, 56),
+	(57, 51, 57),
+	(58, 55, 58),
+	(59, 55, 59),
+	(60, 55, 60);
 /*!40000 ALTER TABLE `employee_has_task` ENABLE KEYS */;
 
 -- Listage de la structure de la table db_employees. jobs
+DROP TABLE IF EXISTS `jobs`;
 CREATE TABLE IF NOT EXISTS `jobs` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
@@ -304,6 +309,7 @@ INSERT INTO `jobs` (`id`, `name`) VALUES
 /*!40000 ALTER TABLE `jobs` ENABLE KEYS */;
 
 -- Listage de la structure de la table db_employees. payslips
+DROP TABLE IF EXISTS `payslips`;
 CREATE TABLE IF NOT EXISTS `payslips` (
   `id` int NOT NULL AUTO_INCREMENT,
   `file_path` varchar(100) NOT NULL,
@@ -371,6 +377,7 @@ INSERT INTO `payslips` (`id`, `file_path`, `date`, `employee_id`) VALUES
 /*!40000 ALTER TABLE `payslips` ENABLE KEYS */;
 
 -- Listage de la structure de la table db_employees. tasks
+DROP TABLE IF EXISTS `tasks`;
 CREATE TABLE IF NOT EXISTS `tasks` (
   `id` int NOT NULL AUTO_INCREMENT,
   `project` varchar(45) NOT NULL,
@@ -382,9 +389,9 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   `duration` time NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_tasks` (`project`,`title`)
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb3;
 
--- Listage des données de la table db_employees.tasks : ~50 rows (environ)
+-- Listage des données de la table db_employees.tasks : ~56 rows (environ)
 /*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
 INSERT INTO `tasks` (`id`, `project`, `title`, `description`, `validation`, `since`, `until`, `duration`) VALUES
 	(1, 'EVDF93', 'Omnis et neque.', 'Quibusdam eos reprehenderit.', 1, '2015-01-01 00:00:02', '2015-01-02 15:17:29', '00:34:26'),
@@ -442,7 +449,11 @@ INSERT INTO `tasks` (`id`, `project`, `title`, `description`, `validation`, `sin
 	(53, 'test1', 'task1', 'adfafdafafdaffd', 0, '2022-03-28 08:00:00', '2022-03-28 09:10:00', '01:10:00'),
 	(54, 'Test1', 'task2', '                                                                                 \r\n                                        ', 0, '2022-03-28 10:00:00', '2022-03-28 10:01:00', '00:01:00'),
 	(55, 'Pré-TPI', 'Archivage d\'employés', 'fonction permettant d\'archiver un/e employé/e de la liste des employés', 0, '2022-03-29 23:00:00', '2022-03-29 23:15:00', '00:15:00'),
-	(56, 'Pré-TPI', 'Test de caracères spéciaux', '[!@#$%^&*(),.?":{}|<>]', 0, '2022-03-29 23:15:00', '2022-03-29 23:17:00', '00:02:00');
+	(56, 'Pré-TPI', 'Test de caracères spéciaux', '[!@#$%^&*(),.?":{}|<>]', 0, '2022-03-29 23:15:00', '2022-03-29 23:17:00', '00:02:00'),
+	(57, 'Pré-TPI', 'Conception', '', 0, '2022-02-11 11:15:00', '2022-02-11 12:15:00', '01:00:00'),
+	(58, 'entrer dans la légende', 'La légende', 'Comme le projet l\'indique\r\n', 0, '2022-12-13 12:12:00', '2022-12-13 12:13:00', '00:01:00'),
+	(59, 'Entrer chez les Heros', 'Héros', 'Je rentre actuellement dans la légende\r\nmaintenant les héros', 0, '2022-06-30 09:59:00', '2022-06-30 10:00:00', '00:01:00'),
+	(60, 'entrer chez moi', 'chez moi', 'la c\'est chaud faut que je rentre chez moi', 0, '2022-06-20 09:00:00', '2022-06-20 20:00:00', '11:00:00');
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
