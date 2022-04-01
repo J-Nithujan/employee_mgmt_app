@@ -38,20 +38,38 @@ It is assumed that you have Python 3.9 installed and added to your PATH variable
 2. Launch the batch script `venv_script.bat`
 3. Configure your IDE to use the newly created virtualenv
 4. The IDE used for this project was PyCharm, here are some screenshots to help you configure it :
-   - ...
+   - ![interpreter_config-1](C:\Pré-TPI\documentation\images\dev_env\interpreter_config-1.png)
 
-
+![interpreter_config-2](C:\Pré-TPI\documentation\images\dev_env\interpreter_config-2.png)
 
 This software uses Python 3.9  with the following requirements:
 
-- SQLAlchemy~=1.4.32
-- Werkzeug~=2.0.3
-- python-dateutil~=2.8.2
-- Flask~=2.0.3
+- click==8.1.0
+- colorama==0.4.4
+- Flask==2.1.0
+- Flask-SQLAlchemy==2.5.1
+- greenlet==1.1.2
+- importlib-metadata==4.11.3
+- itsdangerous==2.1.2
+- Jinja2==3.1.1
+- MarkupSafe==2.1.1
+- mysql-connector-python==8.0.28
+- protobuf==3.19.4
+- python-dateutil==2.8.2
+- six==1.16.0
+- SQLAlchemy==1.4.32
+- Werkzeug==2.1.0
+- zipp==3.7.0
 
 
 
 ## Run
 
-(write about run in PyCharm, bat and sh files)
+You can easily run it after you ran the`venv_script_win.bat` script file with runner_win.bat 
+
+
+
+You can also use the newly created venv in PyCharm:
+
+![pycharm_run_config](C:\Pré-TPI\documentation\images\dev_env\pycharm_run_config.png)
 
