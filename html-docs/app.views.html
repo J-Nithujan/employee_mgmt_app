@@ -1,0 +1,273 @@
+
+
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>app.views module &#8212; Employee_mgmt_app 0.9 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bizstyle.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="config module" href="config.html" />
+    <link rel="prev" title="app.model.test_queries module" href="app.model.test_queries.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="config.html" title="config module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="app.model.test_queries.html" title="app.model.test_queries module"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Employee_mgmt_app 0.9 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >employee_mgmt_app</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="app.html" accesskey="U">app package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">app.views module</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-app.views">
+<span id="app-views-module"></span><h1>app.views module<a class="headerlink" href="#module-app.views" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="app.views.edit_employee">
+<span class="sig-prename descclassname"><span class="pre">app.views.</span></span><span class="sig-name descname"><span class="pre">edit_employee</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">employee_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.views.edit_employee" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renders the template used to edits the values of the columns <cite>lastname</cite>, <cite>road</cite>, <cite>phone_number</cite>, <cite>salary</cite>,
+<cite>percentage</cite>, <cite>address_id</cite>, <cite>employee_id</cite>, <cite>department_id</cite>, <cite>job_id</cite> of an employee.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>employee_id</strong> – the id of the employee that will have it’s data updated</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>if the form validation fails renders the template <cite>edit_employee.html</cite>, otherwise redirect to the views
+employee_list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.views.edit_task">
+<span class="sig-prename descclassname"><span class="pre">app.views.</span></span><span class="sig-name descname"><span class="pre">edit_task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.views.edit_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the web page with the form used to modify an existing task,
+on the form’s submission update the task in the database and redirect to the tasks_list’s URL.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>task_id</strong> – Task’s id in the database</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Renders the template ‘edit_task.html’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.views.employee_list">
+<span class="sig-prename descclassname"><span class="pre">app.views.</span></span><span class="sig-name descname"><span class="pre">employee_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.views.employee_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display a page containing a list of all active employees</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Renders the template <cite>employee_list.html</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.views.get_select_options_for_employee_form">
+<span class="sig-prename descclassname"><span class="pre">app.views.</span></span><span class="sig-name descname"><span class="pre">get_select_options_for_employee_form</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#app.views.get_select_options_for_employee_form" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets all the list needed to build the select options of the form used to add or update a new employee</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns a <cite>dict</cite> with the lists of addresses, supervisors, departments and jobs</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.views.index">
+<span class="sig-prename descclassname"><span class="pre">app.views.</span></span><span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.views.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the index page data and displays it in the ‘index.html’ web page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Renders the template ‘index.html’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.views.login">
+<span class="sig-prename descclassname"><span class="pre">app.views.</span></span><span class="sig-name descname"><span class="pre">login</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.views.login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the login page and handles the login form’s submission,
+when the credentials are correct redirect to the index URL.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Renders the template ‘login.html’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.views.logout">
+<span class="sig-prename descclassname"><span class="pre">app.views.</span></span><span class="sig-name descname"><span class="pre">logout</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.views.logout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear Flask’s session variable and displays the login page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Renders the template ‘login.html’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.views.new_employee">
+<span class="sig-prename descclassname"><span class="pre">app.views.</span></span><span class="sig-name descname"><span class="pre">new_employee</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.views.new_employee" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renders the template with the form to add a new employee</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>if form validation fails renders new_employee.html with the previous inputs, otherwise redirect to the view
+employee_list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.views.new_task">
+<span class="sig-prename descclassname"><span class="pre">app.views.</span></span><span class="sig-name descname"><span class="pre">new_task</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.views.new_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the web page used to add a new accomplished task,
+on the form’s submission adds the task in the database and redirect to the tasks_list’s URL.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Renders the template ‘new_task.html’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.views.payslips">
+<span class="sig-prename descclassname"><span class="pre">app.views.</span></span><span class="sig-name descname"><span class="pre">payslips</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.views.payslips" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the employee’s payslips list in the database and displays it in the ‘payslips.html’ web page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Renders the template ‘payslips.html’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.views.remove_employee">
+<span class="sig-prename descclassname"><span class="pre">app.views.</span></span><span class="sig-name descname"><span class="pre">remove_employee</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">employee_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.views.remove_employee" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove an employee from the list of employees to display on the employee list table</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>employee_id</strong> – the id of the employee to remove</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Refresh the page by redirecting to the employee list view</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.views.task_list">
+<span class="sig-prename descclassname"><span class="pre">app.views.</span></span><span class="sig-name descname"><span class="pre">task_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.views.task_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the logged employee’s tasks list for the current month and displays it in the ‘task_list.html’ web page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>email</strong> – logged employee’s email address</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Renders the ‘task_list.html’ template</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="app.model.test_queries.html"
+                          title="previous chapter">app.model.test_queries module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="config.html"
+                          title="next chapter">config module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/app.views.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="config.html" title="config module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="app.model.test_queries.html" title="app.model.test_queries module"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Employee_mgmt_app 0.9 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >employee_mgmt_app</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="app.html" >app package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">app.views module</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, Nithujan Jegatheeswaran.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    </div>
+  </body>
+</html>

@@ -40,7 +40,7 @@ def insert_task(form: ImmutableMultiDict[str, str], email: str) -> list[str]:
     :param form: form containing the task's data
     :param email: email address of the employee who did the task
     :return: A list of error messages for the task creation,
-    an empty list means that the inputs are correct
+     an empty list means that the inputs are correct
     """
     msg_list: list[str] = get_error_messages(form)
 

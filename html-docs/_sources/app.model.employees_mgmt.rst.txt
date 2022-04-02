@@ -1,0 +1,7 @@
+app.model.employees\_mgmt module
+================================
+
+.. automodule:: app.model.employees_mgmt
+   :members:
+   :undoc-members:
+   :show-inheritance:

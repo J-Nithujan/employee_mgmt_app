@@ -1,0 +1,7 @@
+app.model.payslips\_mgmt module
+===============================
+
+.. automodule:: app.model.payslips_mgmt
+   :members:
+   :undoc-members:
+   :show-inheritance:

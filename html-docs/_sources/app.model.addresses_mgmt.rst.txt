@@ -1,0 +1,7 @@
+app.model.addresses\_mgmt module
+================================
+
+.. automodule:: app.model.addresses_mgmt
+   :members:
+   :undoc-members:
+   :show-inheritance:

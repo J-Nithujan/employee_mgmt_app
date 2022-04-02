@@ -1,0 +1,7 @@
+app.model.test\_queries module
+==============================
+
+.. automodule:: app.model.test_queries
+   :members:
+   :undoc-members:
+   :show-inheritance:

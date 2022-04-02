@@ -1,0 +1,407 @@
+
+
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>app.model.models module &#8212; Employee_mgmt_app 0.9 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bizstyle.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="app.model.payslips_mgmt module" href="app.model.payslips_mgmt.html" />
+    <link rel="prev" title="app.model.jobs_mgmt module" href="app.model.jobs_mgmt.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="app.model.payslips_mgmt.html" title="app.model.payslips_mgmt module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="app.model.jobs_mgmt.html" title="app.model.jobs_mgmt module"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Employee_mgmt_app 0.9 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >employee_mgmt_app</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="app.html" >app package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="app.model.html" accesskey="U">app.model package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">app.model.models module</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-app.model.models">
+<span id="app-model-models-module"></span><h1>app.model.models module<a class="headerlink" href="#module-app.model.models" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.model.models.Addresses">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.model.models.</span></span><span class="sig-name descname"><span class="pre">Addresses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.model.models.Addresses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Model</span></code></p>
+<p>A class for the table <cite>addresses</cite> in the MySQL database</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Addresses.city">
+<span class="sig-name descname"><span class="pre">city</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Addresses.city" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Addresses.employees">
+<span class="sig-name descname"><span class="pre">employees</span></span><a class="headerlink" href="#app.model.models.Addresses.employees" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Addresses.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Addresses.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Addresses.zip">
+<span class="sig-name descname"><span class="pre">zip</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Addresses.zip" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.model.models.Departments">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.model.models.</span></span><span class="sig-name descname"><span class="pre">Departments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.model.models.Departments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Model</span></code></p>
+<p>A class for the table <cite>departments</cite> in the MySQL database</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Departments.employees">
+<span class="sig-name descname"><span class="pre">employees</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.orm.relationship</span></em><a class="headerlink" href="#app.model.models.Departments.employees" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Departments.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.schema.Column</span></em><a class="headerlink" href="#app.model.models.Departments.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Departments.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Departments.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.model.models.Employees">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.model.models.</span></span><span class="sig-name descname"><span class="pre">Employees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.model.models.Employees" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Model</span></code></p>
+<p>A class for the table <cite>employees</cite> in the MySQL database</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.address">
+<span class="sig-name descname"><span class="pre">address</span></span><a class="headerlink" href="#app.model.models.Employees.address" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.address_id">
+<span class="sig-name descname"><span class="pre">address_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Employees.address_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.birthdate">
+<span class="sig-name descname"><span class="pre">birthdate</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Employees.birthdate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.department">
+<span class="sig-name descname"><span class="pre">department</span></span><a class="headerlink" href="#app.model.models.Employees.department" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.department_id">
+<span class="sig-name descname"><span class="pre">department_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Employees.department_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.email">
+<span class="sig-name descname"><span class="pre">email</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Employees.email" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.employee_id">
+<span class="sig-name descname"><span class="pre">employee_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Employees.employee_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.employees">
+<span class="sig-name descname"><span class="pre">employees</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.orm.relationship</span></em><a class="headerlink" href="#app.model.models.Employees.employees" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.firstname">
+<span class="sig-name descname"><span class="pre">firstname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Employees.firstname" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.hiring_date">
+<span class="sig-name descname"><span class="pre">hiring_date</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Employees.hiring_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.holiday_balance">
+<span class="sig-name descname"><span class="pre">holiday_balance</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Employees.holiday_balance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Employees.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.job">
+<span class="sig-name descname"><span class="pre">job</span></span><a class="headerlink" href="#app.model.models.Employees.job" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.job_id">
+<span class="sig-name descname"><span class="pre">job_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Employees.job_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.lastname">
+<span class="sig-name descname"><span class="pre">lastname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Employees.lastname" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.password">
+<span class="sig-name descname"><span class="pre">password</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Employees.password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.payslips">
+<span class="sig-name descname"><span class="pre">payslips</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.orm.relationship</span></em><a class="headerlink" href="#app.model.models.Employees.payslips" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.percentage">
+<span class="sig-name descname"><span class="pre">percentage</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Employees.percentage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.phone_number">
+<span class="sig-name descname"><span class="pre">phone_number</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Employees.phone_number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.road">
+<span class="sig-name descname"><span class="pre">road</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Employees.road" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.salary">
+<span class="sig-name descname"><span class="pre">salary</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Employees.salary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.tasks">
+<span class="sig-name descname"><span class="pre">tasks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.orm.relationship</span></em><a class="headerlink" href="#app.model.models.Employees.tasks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.under_contract">
+<span class="sig-name descname"><span class="pre">under_contract</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Employees.under_contract" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Employees.work_time">
+<span class="sig-name descname"><span class="pre">work_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Employees.work_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.model.models.Jobs">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.model.models.</span></span><span class="sig-name descname"><span class="pre">Jobs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.model.models.Jobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Model</span></code></p>
+<p>A class for the table <cite>jobs</cite> in the MySQL database</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Jobs.employees">
+<span class="sig-name descname"><span class="pre">employees</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.orm.relationship</span></em><a class="headerlink" href="#app.model.models.Jobs.employees" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Jobs.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Jobs.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Jobs.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Jobs.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.model.models.Payslips">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.model.models.</span></span><span class="sig-name descname"><span class="pre">Payslips</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.model.models.Payslips" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Model</span></code></p>
+<p>A class for the table <cite>payslips</cite> in the MySQL database</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Payslips.date">
+<span class="sig-name descname"><span class="pre">date</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Payslips.date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Payslips.employee_id">
+<span class="sig-name descname"><span class="pre">employee_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Payslips.employee_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Payslips.file_path">
+<span class="sig-name descname"><span class="pre">file_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Payslips.file_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Payslips.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Payslips.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Payslips.payslips">
+<span class="sig-name descname"><span class="pre">payslips</span></span><a class="headerlink" href="#app.model.models.Payslips.payslips" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.model.models.Tasks">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.model.models.</span></span><span class="sig-name descname"><span class="pre">Tasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.model.models.Tasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Model</span></code></p>
+<p>A class for the table <cite>tasks</cite> in the MySQL database</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Tasks.description">
+<span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Tasks.description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Tasks.duration">
+<span class="sig-name descname"><span class="pre">duration</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Tasks.duration" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Tasks.employee">
+<span class="sig-name descname"><span class="pre">employee</span></span><a class="headerlink" href="#app.model.models.Tasks.employee" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Tasks.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Tasks.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Tasks.project">
+<span class="sig-name descname"><span class="pre">project</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Tasks.project" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Tasks.since">
+<span class="sig-name descname"><span class="pre">since</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Tasks.since" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Tasks.title">
+<span class="sig-name descname"><span class="pre">title</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Tasks.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Tasks.until">
+<span class="sig-name descname"><span class="pre">until</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Tasks.until" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.model.models.Tasks.validation">
+<span class="sig-name descname"><span class="pre">validation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sqlalchemy.sql.expression.column</span></em><a class="headerlink" href="#app.model.models.Tasks.validation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="app.model.jobs_mgmt.html"
+                          title="previous chapter">app.model.jobs_mgmt module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="app.model.payslips_mgmt.html"
+                          title="next chapter">app.model.payslips_mgmt module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/app.model.models.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="app.model.payslips_mgmt.html" title="app.model.payslips_mgmt module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="app.model.jobs_mgmt.html" title="app.model.jobs_mgmt module"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Employee_mgmt_app 0.9 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >employee_mgmt_app</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="app.html" >app package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="app.model.html" >app.model package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">app.model.models module</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, Nithujan Jegatheeswaran.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    </div>
+  </body>
+</html>

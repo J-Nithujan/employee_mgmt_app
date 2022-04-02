@@ -1,0 +1,9 @@
+employee_mgmt_app
+=================
+
+.. toctree::
+   :maxdepth: 4
+
+   app
+   config
+   run

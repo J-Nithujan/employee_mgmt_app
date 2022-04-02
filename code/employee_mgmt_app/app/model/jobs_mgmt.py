@@ -10,6 +10,7 @@ from sqlalchemy.sql import *
 def get_all_jobs() -> list[tuple]:
     """
     Gets a list of all the jobs
+    
     :return: a list of jobs tuple with their id and name
     """
     stmt = select(Jobs.id, Jobs.name).order_by(Jobs.id)

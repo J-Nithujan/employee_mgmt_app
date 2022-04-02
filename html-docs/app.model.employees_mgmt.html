@@ -1,0 +1,328 @@
+
+
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>app.model.employees_mgmt module &#8212; Employee_mgmt_app 0.9 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bizstyle.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="app.model.jobs_mgmt module" href="app.model.jobs_mgmt.html" />
+    <link rel="prev" title="app.model.departments_mgmt module" href="app.model.departments_mgmt.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="app.model.jobs_mgmt.html" title="app.model.jobs_mgmt module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="app.model.departments_mgmt.html" title="app.model.departments_mgmt module"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Employee_mgmt_app 0.9 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >employee_mgmt_app</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="app.html" >app package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="app.model.html" accesskey="U">app.model package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">app.model.employees_mgmt module</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-app.model.employees_mgmt">
+<span id="app-model-employees-mgmt-module"></span><h1>app.model.employees_mgmt module<a class="headerlink" href="#module-app.model.employees_mgmt" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="app.model.employees_mgmt.add_employee">
+<span class="sig-prename descclassname"><span class="pre">app.model.employees_mgmt.</span></span><span class="sig-name descname"><span class="pre">add_employee</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">werkzeug.datastructures.ImmutableMultiDict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#app.model.employees_mgmt.add_employee" title="Permalink to this definition">¶</a></dt>
+<dd><p>A string list with all error messages if there are any errors on the <cite>new_employee.html</cite> form, nothing otherwise</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>form</strong> – data of the form sent by the user about a new employee</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list of error messages concerning for the form used to add new employees</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.model.employees_mgmt.archive_employee">
+<span class="sig-prename descclassname"><span class="pre">app.model.employees_mgmt.</span></span><span class="sig-name descname"><span class="pre">archive_employee</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">employee_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#app.model.employees_mgmt.archive_employee" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets an employee’s <cite>under_contract</cite> column’s value to zero.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>employee_id</strong> – The id of the employee that will be archived</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.model.employees_mgmt.check_login">
+<span class="sig-prename descclassname"><span class="pre">app.model.employees_mgmt.</span></span><span class="sig-name descname"><span class="pre">check_login</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#app.model.employees_mgmt.check_login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the given credentials with a SQLAlchemy query on the table <cite>employees</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>email</strong> – unique field of the table <cite>employees</cite></p></li>
+<li><p><strong>password</strong> – plain text string variable</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if the credentials are correct and the employee is still working for the company, <cite>False</cite> otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.model.employees_mgmt.create_password">
+<span class="sig-prename descclassname"><span class="pre">app.model.employees_mgmt.</span></span><span class="sig-name descname"><span class="pre">create_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">firstname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lastname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#app.model.employees_mgmt.create_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function used to create a hashed password when a new employee is going to be added in the databases</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>firstname</strong> – firstname of the employee</p></li>
+<li><p><strong>lastname</strong> – lastname of the employee</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a password hashed with sha256</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.model.employees_mgmt.get_all_supervisors">
+<span class="sig-prename descclassname"><span class="pre">app.model.employees_mgmt.</span></span><span class="sig-name descname"><span class="pre">get_all_supervisors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="app.model.models.html#app.model.models.Employees" title="app.model.models.Employees"><span class="pre">app.model.models.Employees</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#app.model.employees_mgmt.get_all_supervisors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a list of all supervisor under contract.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>An employee list of supervisors who are still under contract</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.model.employees_mgmt.get_employee_by_email">
+<span class="sig-prename descclassname"><span class="pre">app.model.employees_mgmt.</span></span><span class="sig-name descname"><span class="pre">get_employee_by_email</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="app.model.models.html#app.model.models.Employees" title="app.model.models.Employees"><span class="pre">app.model.models.Employees</span></a></span></span><a class="headerlink" href="#app.model.employees_mgmt.get_employee_by_email" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the <cite>Employees</cite> object of an employee.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>email</strong> – used to select the employee that will be returned</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>an <cite>Employees</cite> ORM object of the selected employee</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.model.employees_mgmt.get_employee_data">
+<span class="sig-prename descclassname"><span class="pre">app.model.employees_mgmt.</span></span><span class="sig-name descname"><span class="pre">get_employee_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#app.model.employees_mgmt.get_employee_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queries the table <cite>employees</cite> for the data related to the given email address.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>email</strong> – logged employee’s email address</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An object with equivalent to a ‘namedtuple’,
+containing all the data needed on the index web page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.model.employees_mgmt.get_employee_list">
+<span class="sig-prename descclassname"><span class="pre">app.model.employees_mgmt.</span></span><span class="sig-name descname"><span class="pre">get_employee_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#app.model.employees_mgmt.get_employee_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the list of all active employees</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a tuple list of  employees under contract. Structure of the tuples: (id, lastname, firstname, birthdate,
+email, road, zip code, city, hiring_date, department’s name, job’s name). The list is ordered by employees’ id.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.model.employees_mgmt.get_employee_work_time">
+<span class="sig-prename descclassname"><span class="pre">app.model.employees_mgmt.</span></span><span class="sig-name descname"><span class="pre">get_employee_work_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">employee_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">decimal.Decimal</span></span></span><a class="headerlink" href="#app.model.employees_mgmt.get_employee_work_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets an employee’s work_time in the database</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>employee_id</strong> – id of the employee that will have his/her work_time retrieved</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>value of the column’s <cite>work_time</cite> from the specified employee’s row</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.model.employees_mgmt.get_error_messages">
+<span class="sig-prename descclassname"><span class="pre">app.model.employees_mgmt.</span></span><span class="sig-name descname"><span class="pre">get_error_messages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">werkzeug.datastructures.ImmutableMultiDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_new</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#app.model.employees_mgmt.get_error_messages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks all the fields of the form on <cite>employee_form.html</cite>. Some checks are been made to prevent errrors in the
+database</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>form</strong> – the form data that were sent by the user</p></li>
+<li><p><strong>is_new</strong> – some fields will be ignored whether a new employee is added or an existing employee is updated</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list containing all the errors on the required fields of the form</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.model.employees_mgmt.get_selected_employee">
+<span class="sig-prename descclassname"><span class="pre">app.model.employees_mgmt.</span></span><span class="sig-name descname"><span class="pre">get_selected_employee</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">employee_id</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="app.model.models.html#app.model.models.Employees" title="app.model.models.Employees"><span class="pre">app.model.models.Employees</span></a></span></span><a class="headerlink" href="#app.model.employees_mgmt.get_selected_employee" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the employees object for the given employees.id</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>employee_id</strong> – id that will be used to look for an employee</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the instance of the <cite>Employees</cite> class with the given <cite>id</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.model.employees_mgmt.get_supervisor">
+<span class="sig-prename descclassname"><span class="pre">app.model.employees_mgmt.</span></span><span class="sig-name descname"><span class="pre">get_supervisor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#app.model.employees_mgmt.get_supervisor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the supervisor of an employee
+:param email: value that will be used to retrieve the supervisor
+:return: returns a tuple containing the supervisor’s firstname and lastname</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.model.employees_mgmt.update_employee">
+<span class="sig-prename descclassname"><span class="pre">app.model.employees_mgmt.</span></span><span class="sig-name descname"><span class="pre">update_employee</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">werkzeug.datastructures.ImmutableMultiDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">employee_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#app.model.employees_mgmt.update_employee" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update an employee and commit the changes to the database. If there are errors in the form errors will be returned</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>form</strong> – list of updated values of an employee</p></li>
+<li><p><strong>employee_id</strong> – id of the employee that needs to be updated</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list of error that were made on the form of <cite>edit_employee.html</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.model.employees_mgmt.update_employee_work_time">
+<span class="sig-prename descclassname"><span class="pre">app.model.employees_mgmt.</span></span><span class="sig-name descname"><span class="pre">update_employee_work_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">employee</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="app.model.models.html#app.model.models.Employees" title="app.model.models.Employees"><span class="pre">app.model.models.Employees</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime.timedelta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positive</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#app.model.employees_mgmt.update_employee_work_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the employee’s work time. Does NOT commit the change, do it after all your queries</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>employee</strong> – instance of the class <cite>Employees</cite> that will have its work time updated</p></li>
+<li><p><strong>duration</strong> – the timedelta value that will be added / subtracted on the employee’s <cite>work_time</cite> column</p></li>
+<li><p><strong>positive</strong> – indicates if the change has to be added or subtracted</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="app.model.departments_mgmt.html"
+                          title="previous chapter">app.model.departments_mgmt module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="app.model.jobs_mgmt.html"
+                          title="next chapter">app.model.jobs_mgmt module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/app.model.employees_mgmt.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="app.model.jobs_mgmt.html" title="app.model.jobs_mgmt module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="app.model.departments_mgmt.html" title="app.model.departments_mgmt module"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Employee_mgmt_app 0.9 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >employee_mgmt_app</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="app.html" >app package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="app.model.html" >app.model package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">app.model.employees_mgmt module</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, Nithujan Jegatheeswaran.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    </div>
+  </body>
+</html>

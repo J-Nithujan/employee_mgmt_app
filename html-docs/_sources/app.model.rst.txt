@@ -1,0 +1,25 @@
+app.model package
+=================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   app.model.addresses_mgmt
+   app.model.departments_mgmt
+   app.model.employees_mgmt
+   app.model.jobs_mgmt
+   app.model.models
+   app.model.payslips_mgmt
+   app.model.tasks_mgmt
+   app.model.test_queries
+
+Module contents
+---------------
+
+.. automodule:: app.model
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -16,7 +16,6 @@ app = Flask(__name__)
 app.config.from_object('config')
 
 
-# TODO: leave all todos ???
 @app.route('/')
 @app.route('/login/', methods=['POST', 'GET'])
 def login():
@@ -143,8 +142,9 @@ def employee_list():
 def new_employee():
     """
     Renders the template with the form to add a new employee
+
     :return: if form validation fails renders new_employee.html with the previous inputs, otherwise redirect to the view
-    employee_list
+     employee_list
     """
     options: dict = get_select_options_for_employee_form()
     if request.method == 'POST':
@@ -163,16 +163,15 @@ def new_employee():
                                departments=options['departments'], jobs=options['jobs'])
 
 
-# @app.route('/employee_list/edit_employee/<employee_id>/')  # todo: CHECK method post and get
 @app.route('/employee_list/edit_employee/<employee_id>/', methods=['POST', 'GET'])
 def edit_employee(employee_id):
     """
     Renders the template used to edits the values of the columns `lastname`, `road`, `phone_number`, `salary`,
-    `percentage`, `address_id`, `employee_id`, `department_id`, `job_id` of an employee
+    `percentage`, `address_id`, `employee_id`, `department_id`, `job_id` of an employee.
 
-    :param employee_id: the id of the employee that will have it's data updated
+    :parameter employee_id: the id of the employee that will have it's data updated
     :return: if the form validation fails renders the template `edit_employee.html`, otherwise redirect to the views
-    employee_list
+     employee_list
     """
     options: dict = get_select_options_for_employee_form()
     if request.method == 'POST':
@@ -214,16 +213,6 @@ def payslips():
     """
     # TODO: complete payslips template page and model functions
     return render_template('payslips.html', is_hr_employee=session['is_hr_employee'], email=session['email'])
-
-
-@app.errorhandler(401)
-def unauthorized_exception_handler(error):
-    """
-
-    :param error:
-    :return:
-    """
-    return render_template('error_unauthorized_exception.html')
 
 
 # Functions only used in this file

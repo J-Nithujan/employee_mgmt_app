@@ -39,7 +39,7 @@ def get_employee_data(email: str) -> tuple:
 
     :param email: logged employee's email address
     :return: An object with equivalent to a 'namedtuple',
-    containing all the data needed on the index web page.
+     containing all the data needed on the index web page.
     """
     supervisor = get_supervisor(email)
     # We need to check if the employee is a supervisor because otherwise the `employee_id` column is empty and cannot be
@@ -71,10 +71,10 @@ def get_employee_data(email: str) -> tuple:
 
 def get_employee_list() -> list[tuple]:
     """
-   Gets the list of all active employees
+    Gets the list of all active employees
 
     :return: a tuple list of  employees under contract. Structure of the tuples: (id, lastname, firstname, birthdate,
-    email, road, zip code, city, hiring_date, department's name, job's name). The list is ordered by employees' id.
+     email, road, zip code, city, hiring_date, department's name, job's name). The list is ordered by employees' id.
     """
     stmt = select(Employees.id, Employees.firstname, Employees.lastname, Employees.birthdate, Employees.email,
                   Employees.road, Addresses.zip, Addresses.city, Employees.hiring_date,
@@ -101,7 +101,7 @@ def add_employee(form: ImmutableMultiDict) -> list[str]:
     A string list with all error messages if there are any errors on the `new_employee.html` form, nothing otherwise
 
     :param form: data of the form sent by the user about a new employee
-    :return: a list of error messages concerning for the form used to add new employees_
+    :return: a list of error messages concerning for the form used to add new employees
     """
     errors = get_error_messages(form)
 
