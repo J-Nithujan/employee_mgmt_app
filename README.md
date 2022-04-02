@@ -5,18 +5,18 @@ A Python web app made using the Flask framework and a MySQL database designed to
 
 ## Key Features
 
-For standard employees:
+For a standard  employee:
 
 - A login page that checks the user inputs
 - Profile page that shows all key data about the logged employee
 - A form that allows an employee to clock in all the task he / she did, these tasks can be edited afterwards
 
-Employees from the H.R. department:
+For an Employees from the H.R. department:
 
 - A table that lists all the employees still under contract
   -  These employees' data can be edited
   - An employee can also be archived, thus he / she won't appear in the list anymore
-- A form made to add new employee to the list
+- A form made to add new a employee to the list
 
 All the persistent data are stored in the database `db_employees`.
 
@@ -27,49 +27,53 @@ All the persistent data are stored in the database `db_employees`.
 - Generation of payslips on PDF format at the end of a month
   - After payslips have been generated the inserted tasks cannot be edited anymore
   - The employees can see and download their payslips
+  - If an employee's work time is lower that the one required by his / her contract, the app sends a warning email to this employee his / her supervisor.
 
 
 
 ## Installation
 
-It is assumed that you have Python 3.9 installed and added to your PATH variable.
+### Web app
 
-1. Download the directory `/code/employee_mgmt_app` from this repository
-2. Launch the batch script `venv_script.bat`
-3. Configure your IDE to use the newly created virtualenv
-4. The IDE used for this project was PyCharm, here are some screenshots to help you configure it :
-   - ![interpreter_config-1](C:\Pré-TPI\documentation\images\dev_env\interpreter_config-1.png)
+This software uses Python 3.9  with the requirements listed under `/code/emyploee_app_mgmt/requirements.txt` .
 
-![interpreter_config-2](C:\Pré-TPI\documentation\images\dev_env\interpreter_config-2.png)
+Note: some of these packages are automatically installed when you install some main libraries (e.g. Flask, Flask-SQLAlchemy) but they won't be necessarily used.  
 
-This software uses Python 3.9  with the following requirements:
+It is assumed that you have Python 3.9 installed and youd added it to your PATH variable.
 
-- click==8.1.0
-- colorama==0.4.4
-- Flask==2.1.0
-- Flask-SQLAlchemy==2.5.1
-- greenlet==1.1.2
-- importlib-metadata==4.11.3
-- itsdangerous==2.1.2
-- Jinja2==3.1.1
-- MarkupSafe==2.1.1
-- mysql-connector-python==8.0.28
-- protobuf==3.19.4
-- python-dateutil==2.8.2
-- six==1.16.0
-- SQLAlchemy==1.4.32
-- Werkzeug==2.1.0
-- zipp==3.7.0
+1. The project can be found under `/code/employee_mgmt_app` 
+
+2. Download the required packages with `pip install -r requirements.txt` or uses the virtualenv at `code/employee_mgmt_app/env`
+
+   - if you want to use the existing virtualenv environment as the project's interpreter:
+
+     1. First you need to add it to the list of interpreters:
+
+        <img src=".\img\dev_env\interpreter_config-1.png" style="zoom:80%;" />
+
+        <img src=".\img\dev_env\interpreter_config-2.png" style="zoom:75%;" />
+
+   2. Then configure the project to run using this interpreter
+
+   <img src=".\img\dev_env\run_config.png" style="zoom:75%;" />
+
+
+
+### Database
+
+- Use a MySQL server such as HeidiSQL
+
+- Create the database `db_employees` with the scripts `/data/db_tables_creation_with_drop.sql`  and populate it with `/data/updated_data.sql`
+
+- The changes in the database made by the application can be seen when you compare the data of the script `/data/DataGeneration_dbforge.sql` which only contains auto-generated data.
+
+- This is the database's structure:
+
+  <img src="D:\FPA\Annee_2\T3\Pre-TPI\employees_mgmt_app\img\db\MLD_Employees.png" style="zoom:75%;" />
 
 
 
 ## Run
 
-You can easily run it after you ran the`venv_script_win.bat` script file with runner_win.bat 
-
-
-
-You can also use the newly created venv in PyCharm:
-
-![pycharm_run_config](C:\Pré-TPI\documentation\images\dev_env\pycharm_run_config.png)
+To run this project you can use PyCharm with the configuration described above or if your OS is Windows you can simply run it with  `code/employee_mgmt_app/runner.bat`  
 

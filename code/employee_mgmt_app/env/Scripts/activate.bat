@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Pré-TPI\code\employee_mgmt_app\env
+set VIRTUAL_ENV=D:\FPA\Annee_2\T3\Pre-TPI\employees_mgmt_app\code\employee_mgmt_app\env
 
 if not defined PROMPT set PROMPT=$P$G
 
