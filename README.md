@@ -65,6 +65,10 @@ It is assumed that you have Python 3.9 installed and youd added it to your PATH 
 
 - Create the database `db_employees` with the scripts `/data/db_tables_creation_with_drop.sql`  and populate it with `/data/updated_data.sql`
 
+- Don't forget to change the credientials in `/code/employee_mgmt_app/config.py` , default are `employee: Pa$$w0rd`
+
+  ![](D:\FPA\Annee_2\T3\Pre-TPI\employees_mgmt_app\img\dev_env\sql-credentials.png)
+
 - The changes in the database made by the application can be seen when you compare the data of the script `/data/DataGeneration_dbforge.sql` which only contains auto-generated data.
 
 - This is the database's structure:
