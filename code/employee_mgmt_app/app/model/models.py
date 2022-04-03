@@ -28,7 +28,7 @@ class Addresses(db.Model):
     city: db.column = db.Column(db.VARCHAR, nullable=False)
 
     # one-to-many collection
-    employees = db.relationship("Employees", lazy=True, backref=db.backref("address", lazy=False))
+    employees: db.relationship = db.relationship("Employees", lazy=True, backref=db.backref("address", lazy=False))
 
 
 class Departments(db.Model):
