@@ -1,0 +1,21 @@
+{#
+ # File: edit_employee.html
+ # Author: Nithujan Jegatheeswaran
+ # Brief: Specific
+ # Version: 30.03.2022
+ #}
+
+{% extends 'employee_form.html' %}
+
+{% block title %}Mise à jour d'un/e employé/e{% endblock title %}
+
+{% block h1 %}Modification des données d'un/e employé/e{% endblock h1 %}
+
+{% block breadcrumb_list %}
+    <li class="breadcrumb-item"><a href="{{ url_for('employee_list', employee_id=employee_id) }}">Liste des employés</a></li>
+    <li class="breadcrumb-item active">Mise à jour d'un/e employé/e</li>
+{% endblock breadcrumb_list %}
+
+{% block form_action %}{{ url_for('edit_employee', employee_id=employee_id) }}{% endblock form_action %}
+
+{% block button_value %}Modifier{% endblock button_value %}

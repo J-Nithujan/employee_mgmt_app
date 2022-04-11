@@ -1,0 +1,20 @@
+{#
+ # File: edit_employee.html
+ # Author: Nithujan Jegatheeswaran
+ # Brief: Template used to show the form to add a new employee to the database
+ # Version: 30.03.2022
+ #}
+
+{% extends 'employee_form.html' %}
+
+{% block title %}Nouvel/le employé/e{% endblock title %}
+
+{% block h1 %}Ajout d'un/e employé/e{% endblock h1 %}
+
+{% block breadcrumb_list %}
+<li class="breadcrumb-item active">Nouvel/le employé/e</li>
+{% endblock breadcrumb_list %}
+
+{% block form_action %}{{ url_for('new_employee') }}{% endblock form_action %}
+
+{% block button_value %}Ajouter{% endblock button_value %}

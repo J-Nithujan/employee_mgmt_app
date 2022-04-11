@@ -1,0 +1,112 @@
+{#
+ # File: index.html
+ # Author: Nithujan Jegatheeswaran
+ # Brief: Template used to display the profil page's main content
+ # Version: 30.03.2022
+ #}
+{% extends 'header_nav_footer.html' %}
+
+{% block title %}Index{% endblock title %}
+
+{% block content %}
+    <h1 class="mt-4">Mon Profil</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Profil</li>
+    </ol>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow mb-3">
+                <div class="card-header">Données Personnelles</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6 mb-3">
+                            <div class="fst-italic fw-bold text-primary">Nom</div>
+                            {{ data.lastname }}
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <div class="fst-italic fw-bold text-primary">Date de naissance</div>
+                            {{ data.birthdate.strftime('%d-%m-%Y') }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 mb-3">
+                            <div class="fst-italic fw-bold text-primary">Prénom</div>
+                            {{ data.firstname }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card  shadow mb-4">
+                <div class="card-header">Coordonnées</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6 mb-3">
+                            <div class="fst-italic fw-bold text-primary">Email</div>
+                            {{ email }}
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <div class="fst-italic fw-bold text-primary">Rue</div>
+                            {{ data.road }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 mb-3">
+                            <div class="fst-italic fw-bold text-primary">N° de téléphone</div>
+                            {% if data.phone_number %}{{ data.phone_number }}{% else %} - {% endif %}
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <div class="fst-italic fw-bold text-primary">NPA Localité</div>
+                            {{ data.zip }} {{ data.city }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow mb-4">
+                <div class="card-header">Données Professionnelles</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xl-6 mb-3">
+                            <div class="fst-italic fw-bold text-primary">Date d'engagement</div>
+                            {{ data.hiring_date.strftime('%d-%m-%Y') }}
+                        </div>
+                        <div class="col-xl-6 mb-3">
+                            <div class="fst-italic fw-bold text-primary">Supérieur/e</div>
+                            {% if data.supervisor_lastname and data.supervisor_firstname %}
+                                {{ data.supervisor_lastname }} {{ data.supervisor_firstname }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 mb-3">
+                            <div class="fst-italic fw-bold text-primary">Département</div>
+                            {{ data.department }}
+                        </div>
+                        <div class="col-xl-6 mb-3">
+                            <div class="fst-italic fw-bold text-primary">Fonction</div>
+                            {{ data.job }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 mb-3">
+                            <div class="fst-italic fw-bold text-primary">Salaire</div>
+                            {{ data.salary }} CHF
+                        </div>
+                        <div class="col-xl-6 mb-3">
+                            <div class="fst-italic fw-bold text-primary">Taux de travail</div>
+                            {{ data.percentage }}%
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock content %}
