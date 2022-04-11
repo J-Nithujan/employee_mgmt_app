@@ -1,0 +1,7 @@
+app.model.jobs\_mgmt module
+===========================
+
+.. automodule:: app.model.jobs_mgmt
+   :members:
+   :undoc-members:
+   :show-inheritance:

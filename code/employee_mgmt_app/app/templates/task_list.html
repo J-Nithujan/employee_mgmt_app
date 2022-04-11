@@ -23,9 +23,10 @@
                         <tr>
                             <th class="text-primary">Projet</th>
                             <th class="text-primary">Titre</th>
+                            <th class="text-primary">Date de début</th>
                             <th class="text-primary">Heure de début</th>
                             <th class="text-primary">Heure de fin</th>
-                            <th class="text-primary">Date</th>
+                            <th class="text-primary">Date de fin</th>
                             <th class="text-primary">Édition</th>
                         </tr>
                         </thead>
@@ -35,6 +36,7 @@
                                 <tr>
                                     <td>{{ task.project }}</td>
                                     <td>{{ task.title }}</td>
+                                    <td>{{ task.since.strftime('%d-%m-%Y') }}</td>
                                     <td>{{ task.since.strftime('%H:%M') }}</td>
                                     <td>{{ task.until.strftime('%H:%M') }}</td>
                                     <td>{{ task.until.strftime('%d-%m-%Y') }}</td>

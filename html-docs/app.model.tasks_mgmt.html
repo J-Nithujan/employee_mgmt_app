@@ -1,0 +1,222 @@
+
+
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>app.model.tasks_mgmt module &#8212; Employee_mgmt_app 0.9 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bizstyle.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="app.model.test_queries module" href="app.model.test_queries.html" />
+    <link rel="prev" title="app.model.payslips_mgmt module" href="app.model.payslips_mgmt.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="app.model.test_queries.html" title="app.model.test_queries module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="app.model.payslips_mgmt.html" title="app.model.payslips_mgmt module"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Employee_mgmt_app 0.9 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >employee_mgmt_app</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="app.html" >app package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="app.model.html" accesskey="U">app.model package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">app.model.tasks_mgmt module</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-app.model.tasks_mgmt">
+<span id="app-model-tasks-mgmt-module"></span><h1>app.model.tasks_mgmt module<a class="headerlink" href="#module-app.model.tasks_mgmt" title="Permalink to this headline">¶</a></h1>
+<p>This module contains all the functions designed to select, add or update a task. Also update the related table
+<cite>empoyees</cite>.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="app.model.tasks_mgmt.get_error_messages">
+<span class="sig-prename descclassname"><span class="pre">app.model.tasks_mgmt.</span></span><span class="sig-name descname"><span class="pre">get_error_messages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">werkzeug.datastructures.ImmutableMultiDict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_task</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#app.model.tasks_mgmt.get_error_messages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the POST form’s inputs for a new or updated task and returns the errors in a message list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>form</strong> – POST variable sent from either ‘new_task.html’ or ‘edit_task.html’</p></li>
+<li><p><strong>new_task</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of string variables describing the errors of the form’s values</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.model.tasks_mgmt.get_selected_task">
+<span class="sig-prename descclassname"><span class="pre">app.model.tasks_mgmt.</span></span><span class="sig-name descname"><span class="pre">get_selected_task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_id</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="app.model.models.html#app.model.models.Tasks" title="app.model.models.Tasks"><span class="pre">app.model.models.Tasks</span></a></span></span><a class="headerlink" href="#app.model.tasks_mgmt.get_selected_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the task using the column <cite>id</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>task_id</strong> – value of the <cite>id</cite> column to look for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a <cite>Tasks</cite> object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.model.tasks_mgmt.get_task_with_id">
+<span class="sig-prename descclassname"><span class="pre">app.model.tasks_mgmt.</span></span><span class="sig-name descname"><span class="pre">get_task_with_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="app.model.models.html#app.model.models.Tasks" title="app.model.models.Tasks"><span class="pre">app.model.models.Tasks</span></a></span></span><a class="headerlink" href="#app.model.tasks_mgmt.get_task_with_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the Task ORM object corresponding to the given id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>task_id</strong> – <cite>id</cite> of the task to retrieve</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The selected Task object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.model.tasks_mgmt.get_tasks_list">
+<span class="sig-prename descclassname"><span class="pre">app.model.tasks_mgmt.</span></span><span class="sig-name descname"><span class="pre">get_tasks_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="app.model.models.html#app.model.models.Tasks" title="app.model.models.Tasks"><span class="pre">app.model.models.Tasks</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#app.model.tasks_mgmt.get_tasks_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the list of not approved yet for the employee with the given email address.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>email</strong> – email address of the employee corresponding to the task list</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list of task object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.model.tasks_mgmt.insert_task">
+<span class="sig-prename descclassname"><span class="pre">app.model.tasks_mgmt.</span></span><span class="sig-name descname"><span class="pre">insert_task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">werkzeug.datastructures.ImmutableMultiDict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#app.model.tasks_mgmt.insert_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts a new row in the <cite>tasks</cite> table of the database and bind it to the employee with the given email address.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>form</strong> – form containing the task’s data</p></li>
+<li><p><strong>email</strong> – email address of the employee who did the task</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of error messages for the task creation,
+an empty list means that the inputs are correct</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.model.tasks_mgmt.update_task">
+<span class="sig-prename descclassname"><span class="pre">app.model.tasks_mgmt.</span></span><span class="sig-name descname"><span class="pre">update_task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">werkzeug.datastructures.ImmutableMultiDict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#app.model.tasks_mgmt.update_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the values of an existing row in the table <cite>tasks</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>form</strong> – form containing the updated values for the task</p></li>
+<li><p><strong>task_id</strong> – the <cite>ìd</cite> column’s value of the task that will be updated</p></li>
+<li><p><strong>email</strong> – the <cite>email</cite> column’s value of the employee who did the task</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list of error messages or nothing if the form’s values were valid</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="app.model.payslips_mgmt.html"
+                          title="previous chapter">app.model.payslips_mgmt module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="app.model.test_queries.html"
+                          title="next chapter">app.model.test_queries module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/app.model.tasks_mgmt.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="app.model.test_queries.html" title="app.model.test_queries module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="app.model.payslips_mgmt.html" title="app.model.payslips_mgmt module"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Employee_mgmt_app 0.9 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >employee_mgmt_app</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="app.html" >app package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="app.model.html" >app.model package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">app.model.tasks_mgmt module</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, Nithujan Jegatheeswaran.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    </div>
+  </body>
+</html>

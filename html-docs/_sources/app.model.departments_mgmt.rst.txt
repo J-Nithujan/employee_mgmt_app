@@ -1,0 +1,7 @@
+app.model.departments\_mgmt module
+==================================
+
+.. automodule:: app.model.departments_mgmt
+   :members:
+   :undoc-members:
+   :show-inheritance:

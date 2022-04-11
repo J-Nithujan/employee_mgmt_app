@@ -1,0 +1,7 @@
+app.model.tasks\_mgmt module
+============================
+
+.. automodule:: app.model.tasks_mgmt
+   :members:
+   :undoc-members:
+   :show-inheritance:
