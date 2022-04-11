@@ -19,7 +19,7 @@ from app.model.models import db, Tasks, Employees
 
 def get_tasks_list(email: str) -> list[Tasks]:
     """
-    Gets the list of not approved yet for the employee with the given email address.
+    Gets the list of task not approved yet for the employee with the given email address.
     
     :param email: email address of the employee corresponding to the task list
     :return: a list of task object
@@ -28,7 +28,7 @@ def get_tasks_list(email: str) -> list[Tasks]:
     task_list: list[Tasks] = []
     for task in employee.tasks:
         if task.validation is False:
-            task_list = employee.tasks
+            task_list.append(task)
             
     return task_list
 
