@@ -3,6 +3,7 @@
 # Brief: Contains all the configuration variables for the Flask application
 # Version: 27.03.2022
 
+import os
 import random
 import string
 
@@ -16,4 +17,5 @@ SQLALCHEMY_TRACK_MODIFICATIONS = True
 SQLALCHEMY_ECHO = True
 
 # Specify the rdbms, the db connector used by python and the credentials used by the database
-SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://employee:Pa$$w0rd@localhost/db_employees'
+correct_db_uri = os.environ.get('DATABASE_URL').replace('postgres', 'postgresql')
+SQLALCHEMY_DATABASE_URI = correct_db_uri
