@@ -3,7 +3,6 @@
 # Brief: This file contains all the classes for the database tables
 # Version: 27.03.2022
 
-from decimal import Decimal
 
 from flask_sqlalchemy import SQLAlchemy
 

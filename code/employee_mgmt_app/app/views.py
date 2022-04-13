@@ -11,9 +11,16 @@ from app.model.addresses_mgmt import *
 from app.model.jobs_mgmt import *
 from app.model.departments_mgmt import *
 from app.model.payslips_mgmt import *
+from forms import TaskForm
 
 app = Flask(__name__)
 app.config.from_object('config')
+
+
+@app.route('/form/')
+def form_page():
+    form = TaskForm()
+    return render_template('form_test.html', form=form)
 
 
 @app.route('/')

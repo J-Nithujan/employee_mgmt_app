@@ -6,7 +6,7 @@
 
 from datetime import date
 
-from app.model.models import db, Payslips
+from app.model.models import Payslips
 
 
 def get_payslips(employee_id: int) -> list[Payslips]:

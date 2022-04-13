@@ -16,6 +16,6 @@ SQLALCHEMY_TRACK_MODIFICATIONS = True
 # To display the interaction with the database and the program in the console
 SQLALCHEMY_ECHO = True
 
-# Specify the rdbms, the db connector used by python and the credentials used by the database
+# Use the heroku postgree database uri with postgresql instead of postgres for the rdbms name
 correct_db_uri = os.environ.get('DATABASE_URL').replace('postgres', 'postgresql')
 SQLALCHEMY_DATABASE_URI = correct_db_uri

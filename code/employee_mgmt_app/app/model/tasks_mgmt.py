@@ -5,7 +5,7 @@
 
 """
 This module contains all the functions designed to select, add or update a task. Also update the related table
-`empoyees`.
+`employees`.
 """
 
 
