@@ -3,6 +3,7 @@
 # Brief: This file contains all the model functions related to the table `employees` of the database
 # Version: 27.03.2022
 
+from decimal import Decimal
 from hashlib import sha256
 from datetime import datetime, timedelta
 import re

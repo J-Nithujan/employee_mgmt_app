@@ -5,7 +5,9 @@
     <title>Form Test</title>
 </head>
 <body>
-{% block form %}
-{% endblock form %}
+<form action="">
+    {{ form.csrf_token }}
+    {{ form.project.label }} {{ form.project }}
+</form>
 </body>
 </html>

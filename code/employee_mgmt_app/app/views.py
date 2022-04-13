@@ -5,16 +5,29 @@
 
 from flask import Flask, request, redirect, url_for, render_template, session
 
+from flask_wtf import FlaskForm
+from wtforms import validators, StringField, DateTimeLocalField, TextAreaField
+from wtforms.validators import InputRequired
+
 from app.model.employees_mgmt import *
 from app.model.tasks_mgmt import *
 from app.model.addresses_mgmt import *
 from app.model.jobs_mgmt import *
 from app.model.departments_mgmt import *
 from app.model.payslips_mgmt import *
-from forms import TaskForm
 
 app = Flask(__name__)
 app.config.from_object('config')
+
+
+class TaskForm(FlaskForm):
+    project = StringField('project', validators=[InputRequired(), validators.EqualTo('Indiquer une nom de projet')])
+    title = StringField('title', validators=[InputRequired(), validators.EqualTo('Indiquer un titre pour la tâche')])
+    since = StringField('since',
+                        validators=[InputRequired(), validators.EqualTo('Indiquer une heure et une date de début')])
+    until = StringField('until', validators=[InputRequired(), validators.EqualTo('Indiquer une nom de projet')])
+    description = StringField('description',
+                              validators=[InputRequired(), validators.EqualTo('Indiquer une nom de projet')])
 
 
 @app.route('/form/')
@@ -36,7 +49,7 @@ def login():
         if check_login(request.form['email'], request.form['password']):
             # Successfully logged in
             session['email'] = request.form['email']
-
+            
             return redirect(url_for('index'))
         else:
             # Login failed
@@ -116,7 +129,7 @@ def edit_task(task_id):
     :return: Renders the template 'edit_task.html'
     """
     task: Tasks = get_selected_task(task_id)
-
+    
     if request.method == 'POST':
         errors = update_task(request.form, int(task_id), session['email'])
         if errors:
