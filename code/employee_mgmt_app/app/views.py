@@ -5,35 +5,25 @@
 
 from flask import Flask, request, redirect, url_for, render_template, session
 
-from flask_wtf import FlaskForm
-from wtforms import validators, StringField, DateTimeLocalField, TextAreaField
-from wtforms.validators import InputRequired
-
 from app.model.employees_mgmt import *
 from app.model.tasks_mgmt import *
 from app.model.addresses_mgmt import *
 from app.model.jobs_mgmt import *
 from app.model.departments_mgmt import *
-from app.model.payslips_mgmt import *
+from app.model.forms import LoginForm, EmployeeForm
 
 app = Flask(__name__)
 app.config.from_object('config')
 
 
-class TaskForm(FlaskForm):
-    project = StringField('project', validators=[InputRequired(), validators.EqualTo('Indiquer une nom de projet')])
-    title = StringField('title', validators=[InputRequired(), validators.EqualTo('Indiquer un titre pour la tâche')])
-    since = StringField('since',
-                        validators=[InputRequired(), validators.EqualTo('Indiquer une heure et une date de début')])
-    until = StringField('until', validators=[InputRequired(), validators.EqualTo('Indiquer une nom de projet')])
-    description = StringField('description',
-                              validators=[InputRequired(), validators.EqualTo('Indiquer une nom de projet')])
-
-
-@app.route('/form/')
-def form_page():
-    form = TaskForm()
-    return render_template('form_test.html', form=form)
+# class TaskForm(FlaskForm):
+#     project = StringField('project', validators=[InputRequired(), validators.EqualTo('Indiquer une nom de projet')])
+#     title = StringField('title', validators=[InputRequired(), validators.EqualTo('Indiquer un titre pour la tâche')])
+#     since = StringField('since',
+#                         validators=[InputRequired(), validators.EqualTo('Indiquer une heure et une date de début')])
+#     until = StringField('until', validators=[InputRequired(), validators.EqualTo('Indiquer une nom de projet')])
+#     description = StringField('description',
+#                               validators=[InputRequired(), validators.EqualTo('Indiquer une nom de projet')])
 
 
 @app.route('/')
@@ -45,18 +35,33 @@ def login():
     
     :return: Renders the template 'login.html'
     """
-    if request.method == 'POST':
-        if check_login(request.form['email'], request.form['password']):
+    form = LoginForm()
+
+    addresses = get_all_addresses()
+    form2 = EmployeeForm()
+
+    for addr in addresses:
+        form2.address_id.choices.append((addr[0], addr[1] + ' ' + addr[2]))
+
+    if form.validate_on_submit():
+    # if request.method == 'POST':
+
+        # if check_login(request.form['email'], request.form['password']):
+        # if check_login(form.email.data, form.password.data):
+        if check_login2(form):
             # Successfully logged in
             session['email'] = request.form['email']
             
             return redirect(url_for('index'))
         else:
-            # Login failed
-            return render_template('login.html')
+        #     # Login failed
+        #     return render_template('login.html')
+        #     form.login.errors.append('Identifiants incorrects')
+            return render_template('form_test.html', form=form, form2=form2)
     else:
-        # First visit on the login page
-        return render_template('login.html')
+        # First visit on the login page or error in the form (WTForms)
+        # return render_template('login.html')
+        return render_template('form_test.html', form=form, form2=form2)
 
 
 @app.route('/logout/')

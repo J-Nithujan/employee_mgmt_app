@@ -4,7 +4,6 @@
 # Version: 27.03.2022
 
 from decimal import Decimal
-from hashlib import sha256
 from datetime import datetime, timedelta
 import re
 
@@ -14,6 +13,7 @@ from werkzeug.datastructures import ImmutableMultiDict
 from dateutil.relativedelta import relativedelta
 
 from app.model.models import *
+from app.model.forms import *
 
 
 def check_login(email: str, password: str) -> bool:
@@ -33,6 +33,18 @@ def check_login(email: str, password: str) -> bool:
     else:
         return False
 
+
+def check_login2(form: LoginForm) -> bool:
+
+    encoded: bytes = form.password.data.encode()
+    hashed = sha256(encoded)
+    employee: Employees = Employees.query.filter_by(email=form.email.data, password=hashed.hexdigest()).first()
+
+    if employee and employee.under_contract:
+        return True
+    else:
+        form.login.errors.append('Identifiants incorrects')
+        return False
 
 def get_employee_data(email: str) -> tuple:
     """
